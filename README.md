@@ -1,3 +1,6 @@
+The NHS Business Services Authority has [openly published hospital medicines use data](https://opendata.nhsbsa.net/dataset/secondary-care-medicines-data) entitled secondary care medicines data. This repository will be used for exploratory analysis and documenting issues. Unfortunately we have no funding to build a hospital version of www.OpenPrescribing.net but if any funders would like us to, please get in touch! feedback@openprescribing.net
+
+
 # EBM DataLab's skeleton notebook environment
 
 ## Getting started with this skeleton project
