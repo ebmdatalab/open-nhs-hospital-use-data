@@ -211,12 +211,16 @@ asthma_mabs <- left_join(scmd_asthma_mabs, dmd_asthma_mabs, by = "vmp_product_na
   left_join(., hospital_to_stp_map, by = "ods_code") %>%
   # some data cleaning as scmd uses some ods codes that are not up to date
   mutate(stp_code = as.character(stp_code),
-         stp_code = ifelse(ods_code == "RQ6", "QYG",
-                           ifelse(ods_code %in% c("RNL","RE9","RLN"), "QHM",
-                                  ifelse(ods_code %in% c("RM2", "RW3"), "QOP",
-                                         ifelse(ods_code == "RGQ", "QJG",
-                                                ifelse(ods_code == "RJF", "QJ2",
-                                                       ifelse(ods_code == "RR1", "QHL", stp_code))))))) %>%
+         stp_code = case_when(
+           ods_code == "RQ6" ~ "QYG",
+           ods_code %in% c("RNL", "RE9", "RLN") ~ "QHM",
+           ods_code %in% c("RM2", "RW3") ~ "QOP",
+           ods_code == "RGQ" ~ "QJG",
+           ods_code == "RJF" ~ "QJ2",
+           ods_code == "RR1" ~ "QHL",
+           TRUE ~ stp_code
+         )
+  ) %>%
   left_join(., stp_to_region_map, by = "stp_code") %>%
   select(-c("COMM_REGION_CODE"))
 
@@ -240,12 +244,16 @@ The final data cleaning step is to convert the volume from VMP quantity (as prov
 ```{r, message = FALSE, warning = FALSE}
 asthma_mabs_with_DDD <- asthma_mabs %>%
   mutate(volume_singles = total_quantity / udfs,
-         volume_mg_strength = volume_singles * ifelse(is.na(strnt_dnmtr_val),strnt_nmrtr_val, strnt_nmrtr_val * (udfs / strnt_dnmtr_val)),
-         mg_per_DDD = ifelse(vtmnm == "Omalizumab", 16,
-                             ifelse(vtmnm == "Mepolizumab", 3.6,
-                                    ifelse(vtmnm == "Reslizumab", 7.1,
-                                           ifelse(vtmnm == "Benralizumab", 0.54, NA)))),
-         volume_DDD = volume_mg_strength / mg_per_DDD)
+         volume_mg_strength = volume_singles * ifelse(is.na(strnt_dnmtr_val), strnt_nmrtr_val, strnt_nmrtr_val * (udfs / strnt_dnmtr_val)),
+         mg_per_DDD = case_when(
+           vtmnm == "Omalizumab" ~ 16,
+           vtmnm == "Mepolizumab" ~ 3.6,
+           vtmnm == "Reslizumab" ~ 7.1,
+           vtmnm == "Benralizumab" ~ 0.54,
+           TRUE ~ NA_real_
+         ), 
+         volume_DDD = volume_mg_strength / mg_per_DDD
+  )
 
 kable(asthma_mabs_with_DDD[1:5, ], caption = "Preview of asthma_mabs_with_DDD data table")
 ```
@@ -380,9 +388,10 @@ Trust_split_Top20 <- Trust_split %>%
   arrange(desc(total)) %>%
   filter(rank <= 20) %>%
   mutate(trust_name = as.character(trust_name),
-         trust_name = ifelse(ods_code == "RM2", "UNIVERSITY HOSPITAL OF SOUTH MANCHESTER NHS FOUNDATION TRUST",
-                             ifelse(ods_code == "RR1", "HEART OF ENGLAND NHS FOUNDATION TRUST",
-                                    trust_name)))
+         trust_name = case_when(ods_code == "RM2" ~ "UNIVERSITY HOSPITAL OF SOUTH MANCHESTER NHS FOUNDATION TRUST",
+                                ods_code == "RR1" ~  "HEART OF ENGLAND NHS FOUNDATION TRUST",
+                                TRUE ~ trust_name)
+  )
 
 ggplot(data = Trust_split_Top20, aes(x = reorder(trust_name,total), y = volume_DDD, fill = vtmnm)) +
   geom_bar(position = "stack", stat = "identity") +
