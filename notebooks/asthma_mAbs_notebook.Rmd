@@ -53,11 +53,8 @@ We also use information on the daily defined dose (DDD) of each asthma mAb, so t
 
 ```{r, message = FALSE, warning = FALSE}
 # reading in hospital issues data for asthma mabs
-library(dplyr)
 library(tidyverse)
 library(reshape)
-library(scales)
-library(ggplot2)
 library(bigrquery)
 library(DBI)
 library(knitr)
