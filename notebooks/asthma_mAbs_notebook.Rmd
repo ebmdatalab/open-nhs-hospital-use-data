@@ -186,7 +186,7 @@ kable(dmd_asthma_mabs[1:5, ], caption = "Preview of dmd_asthma_mabs data table")
 
 ```{r, message = FALSE, warning = FALSE}
 # reading in ods data on hospitals - no header information so need to add this in
-hospital_to_stp_map <- read.csv(file = "C:/Users/HP/Documents/GitHub/open-nhs-hospital-use-data/data/etr.csv", header = FALSE) %>%
+hospital_to_stp_map <- read.csv(file = here::here("data", "etr.csv"), header = FALSE) %>%
   select(1:4) 
 colnames(hospital_to_stp_map) <- c("ods_code", "trust_name", "region_code", "stp_code")
 
@@ -195,7 +195,7 @@ kable(hospital_to_stp_map[1:5, ], caption = "Preview of hospital_to_stp_map data
 
 ```{r, message = FALSE, warning = FALSE}
 # reading in map from ccg codes to stp and region codes because this gives a map from stp_code to stp_name
-stp_to_region_map <- read.csv("C:/Users/HP/Documents/GitHub/open-nhs-hospital-use-data/data/gp-reg-pat-prac-map.csv") %>%
+stp_to_region_map <- read.csv(here::here("data","gp-reg-pat-prac-map.csv")) %>%
   group_by(STP_CODE, STP_NAME) %>%
   summarise(COMM_REGION_NAME = first(COMM_REGION_NAME),
             COMM_REGION_CODE = first(COMM_REGION_CODE)) %>%
