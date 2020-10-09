@@ -289,7 +289,7 @@ Reg_time_series <- asthma_mabs_with_DDD %>%
 
 ggplot(Reg_time_series, aes(x = year_month, y = volume_DDD, group = COMM_REGION_NAME)) +
   geom_line(aes(color = COMM_REGION_NAME), size = 1) +
-  facet_wrap(~vtmnm) +
+  facet_wrap(facets=vars(vtmnm)) +
   labs(x = "Month", y = "Total volume issued in hospitals - DDD") +
   scale_y_continuous(labels = scales::number) +
   theme_bw() +
@@ -323,6 +323,7 @@ ggplot(data = Reg_split, aes(x = reorder(COMM_REGION_NAME,total), y = volume_DDD
   labs(x = "Region",
        y = "Volume of asthma mAbs issues - DDDs") +
   theme(strip.text.x = element_text(size = 8),
+        panel.grid.major.x = element_blank(),
         legend.position = "bottom") + 
   scale_y_continuous(labels = scales::number) +
   ggtitle(label = "Regional use of asthma mAbs",
@@ -352,6 +353,7 @@ ggplot(data = Trust_split, aes(x = reorder(ods_code,total), y = volume_DDD, fill
        y = "Volume of asthma mAbs issues - DDDs") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1),
         strip.text.x = element_text(size = 8),
+        panel.grid.major.x = element_blank(),
         legend.position = "bottom") + 
   scale_y_continuous(labels = scales::number) +
   ggtitle(label = "Trust use of asthma mAbs",
@@ -367,7 +369,7 @@ trust_volume_by_prop_Omal <- asthma_mabs_with_DDD %>%
   arrange(desc(volume_DDD))
 
 ggplot(trust_volume_by_prop_Omal, aes(x = volume_DDD, y = prop_omalizumab)) +
-  geom_point(size = 2) +
+  geom_point(size = 2, alpha=0.2, shape=16) +
   labs(x = "Total asthma mAb issues in DDDs", y = "% of total volume through Omalizumab") +
   scale_x_continuous(labels = scales::number) +
   scale_y_continuous(labels = scales::percent) +
@@ -398,7 +400,8 @@ ggplot(data = Trust_split_Top20, aes(x = reorder(trust_name,total), y = volume_D
   theme_bw() +
   labs(x = "Trust",
        y = "Volume of asthma mAbs issues - DDDs") +
-  theme(legend.position = "bottom") + 
+  theme(panel.grid.major.y = element_blank(),
+        legend.position = "bottom") + 
   scale_y_continuous(labels = scales::number) +
   ggtitle(label = "Trust use of asthma mAbs - Top 20 trusts by DDD volume",
           subtitle = "Between August 2019 and July 2020") +
