@@ -57,6 +57,7 @@ library(tidyverse)
 library(bigrquery)
 library(DBI)
 library(knitr)
+library(here)
 
 options(scipen = 999)
 
@@ -265,7 +266,7 @@ The public secondary care medicines dataset provides information on hospital use
 
 At a national level we can see that the total use of asthma mAbs has increase over this period, but the size of the change varies by type of chemical. Use of Benralizumab has increased the most (in both absolute and proportional terms) and there is very little use of Reslizumab over the period.
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, fig.width = 10}
 Nat_time_series <- asthma_mabs_with_DDD %>%
   group_by(year_month, vtmnm) %>%
   summarise(volume_DDD = sum(volume_DDD))
@@ -303,7 +304,7 @@ We can look at the total issues of asthma mAbs over the latest 12 months of data
 
 At a regional level the volume of total asthma mAbs issued in hospitals ranges from 141,000 DDDs in the East of England to 694,000 issues in the North East and Yorkshire. Across most regions Omalizumab and Mepolizumab make up the vast majority of issues, with the exception of London where Benralizumab has the greatest share of issues.
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, fig.width = 10}
 # Look at regional use by product
 Reg_split <- asthma_mabs_with_DDD %>%
   filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
@@ -331,7 +332,7 @@ ggplot(data = Reg_split, aes(x = reorder(COMM_REGION_NAME,total), y = volume_DDD
 
 At a trust level, again there is clear variation in the total issues of asthma mAbs between August 2019 and July 2020 and in the type of asthma mAb used. For trusts with very low issues Omalizumab seems to be the preferred choice, whereas there is more variation in the type of asthma mAb used in trusts with higher volumes of issues.
 
-```{r, message = FALSE, warning = FALSE}
+```{r, message = FALSE, warning = FALSE, fig.width = 10}
 # Look at trust use by product
 Trust_split <- asthma_mabs_with_DDD %>%
   filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
