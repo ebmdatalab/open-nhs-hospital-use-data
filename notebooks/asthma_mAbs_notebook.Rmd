@@ -25,12 +25,18 @@ pre[class] {
 
 Patients with severe asthma can be treated with biologic medicinces. NICE has approved four biologics for use in England for people with severe asthma; benralizumab, mepolizumab and most recently reslizumab for treating severe eosinophilic asthma and omalizumab for treating severe persistent confirmed allergic IgE‑mediated asthma. Our team delivers [OpenPrescribing.net](https://openprescribing.net/), a publicly funded and openly accessible explorer for NHS primary care prescribing supported by prescribing data openly published by the NHS Business Services Authority. We were concerned that the NHS did not share hospital medicines data in a similar manner to primary care and [advocated openly](https://www.bmj.com/content/370/bmj.m2607) that it should be shared. Asthma UK have [similarly advocated](https://www.asthma.org.uk/support-us/campaigns/publications/living-in-limbo/) that hospital medicines data should be shared to enable transparent assessment of access to new treatments and accountability for public spending
 
-In September 2020 NHS BSA published hospital medicines data for the first time. We have prepared the following notebook for investigating the use of bilogic medicines in English hospitals.
+In September 2020 NHS BSA published hospital medicines data for the first time. We have prepared the following notebook for investigating the use of asthma biologic medicines in English hospitals. If you have any feedback or insight The DataLab team cin be contacted at ebmdatalab@phc.ox.ac.uk
 
 ## Contents
 [Data preparation](#prep)
+[Analysis](#analysis)
+ - [Use of asthma biologics over time](#time)
+ - [Variation by region and trust](#trustregion)
+ - [Top 20 hospitals for use of asthma biologics](#top)
+ - [Data Caveats](#caveats)
 
-## Data preparation <a name="section"></a>
+
+## Data preparation <a name="prep"></a>
 
 Before we can analyse trends and variation in the use of asthma mAbs we need to prepare our dataset. This analysis uses:
 
@@ -261,9 +267,9 @@ asthma_mabs_with_DDD <- asthma_mabs %>%
 kable(asthma_mabs_with_DDD[1:5, ], caption = "Preview of asthma_mabs_with_DDD data table")
 ```
 
-## Analysis
+## Analysis <a name="analysis"></a>
 
-### Use of Asthma mAbs over time
+### Use of Asthma mAbs over time <a name="time"></a>
 
 The public secondary care medicines dataset provides information on hospital use of asthma mAbs from January 2019 to July 2020. 
 
@@ -301,7 +307,7 @@ ggplot(Reg_time_series, aes(x = year_month, y = volume_DDD, group = COMM_REGION_
   ggtitle("Prescribing of asthma mAbs over time - Regional")
 ```
 
-### Variation in the use of Asthma mAbs - by region and trust
+### Variation in the use of Asthma mAbs - by region and trust <a name="trustregion"></a>
 
 We can look at the total issues of asthma mAbs over the latest 12 months of data available, August 2019 to July 2020 inclusive, to understand the variation in total issues and type of issues.
 
@@ -382,9 +388,9 @@ ggplot(trust_volume_by_prop_Omal, aes(x = volume_DDD, y = prop_omalizumab)) +
 
 ```
 
-### Top twenty trusts
+### Top twenty trusts <a name="top"></a>
 
-Looking at the twenty trusts that use the greatest volume fo asthma mAbs we can see that University of Manchester and Guy's and St Thomas' trusts are the outliers in terms of total usage and Royal Brompton & Harefield trust stands out because there is no use of Omalizumab.
+Looking at the twenty trusts that use the greatest volume fo asthma mAbs we can see that University of Manchester and Guy's and St Thomas' trusts are the outliers in terms of total usage and Royal Brompton & Harefield (see [caveats section](<a name="caveats"></a>)) trust stands out because there is no use of Omalizumab.
 
 ```{r, message = FALSE, warning = FALSE, fig.width = 10}
 # Top 20 trusts
@@ -410,3 +416,13 @@ ggplot(data = Trust_split_Top20, aes(x = reorder(trust_name,total), y = volume_D
           subtitle = "Between August 2019 and July 2020") +
   coord_flip()
 ```
+
+
+### Data Caveats <a name="caveats"></a>
+
+A detailed description of the data can be read on the [NHS Business Services Authority website](https://opendata.nhsbsa.net/dataset/secondary-care-medicines-data). We note some further caveats relevant to this analysis
+- ODS codes: The published ODS codes are not all current so some hospital trusts may have older names.
+- Omalizumab usage at the Royal Brompton: There apears to be no use of omalizumab at RBHT recorded in the data. Our invetigations to date suggest that there is. 
+We will share both of these findings with the NHS Business Services Authority.
+
+
