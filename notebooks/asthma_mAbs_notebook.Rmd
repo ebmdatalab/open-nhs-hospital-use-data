@@ -1,6 +1,6 @@
 ---
-title: "Asthma Monoclonal Antibodies"
-author: "Anna Rowan"
+title: "Biologic Therapies for Severe Asthma"
+author: "[The DataLab](https://www.thedatalab.org/)"
 date: "08/10/2020"
 output: html_document
 ---
@@ -23,11 +23,14 @@ pre[class] {
 
 ## Introduction
 
-Patients with severe asthma can be treated with biologic medicinces. NICE has approved four biologics for use in England for people with severe asthma; benralizumab, mepolizumab and most recently reslizumab for treating severe eosinophilic asthma and omalizumab for treating severe persistent confirmed allergic IgE‑mediated asthma.
+Patients with severe asthma can be treated with biologic medicinces. NICE has approved four biologics for use in England for people with severe asthma; benralizumab, mepolizumab and most recently reslizumab for treating severe eosinophilic asthma and omalizumab for treating severe persistent confirmed allergic IgE‑mediated asthma. Our team delivers [OpenPrescribing.net](https://openprescribing.net/), a publicly funded and openly accessible explorer for NHS primary care prescribing supported by prescribing data openly published by the NHS Business Services Authority. We were concerned that the NHS did not share hospital medicines data in a similar manner to primary care and [advocated openly](https://www.bmj.com/content/370/bmj.m2607) that it should be shared. Asthma UK have [similarly advocated](https://www.asthma.org.uk/support-us/campaigns/publications/living-in-limbo/) that hospital medicines data should be shared to enable transparent assessment of access to new treatments and accountability for public spending
 
-In September 2020 NHS BSA published hospital medicines data for the first time. This data allows us to analyse the use of asthma monoclonal antibodies (asthma mAbs) in hospitals in England.
+In September 2020 NHS BSA published hospital medicines data for the first time. We have prepared the following notebook for investigating the use of bilogic medicines in English hospitals.
 
-## Data preperation
+## Contents
+[Data preparation](#prep)
+
+## Data preparation <a name="section"></a>
 
 Before we can analyse trends and variation in the use of asthma mAbs we need to prepare our dataset. This analysis uses:
 
