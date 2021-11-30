@@ -2,20 +2,18 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
 # pyenv
 .python-version
-
 # jupyter
 .ipynb_checkpoints
 .ipython/
 .jupyter/
 .local/
-
 # sublime test/pycharm
 .idea/
 .DS_Store
-
 # Emacs
 *~
 .Rproj.user
+.Rhistory
+.vscode
