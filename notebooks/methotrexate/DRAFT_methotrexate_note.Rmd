@@ -1,0 +1,185 @@
+---
+title: "DRAFT_MethotrexateAnalysis"
+author: "Anna Rowan"
+date: "17/09/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r , include=FALSE}
+options(width = 60)
+local({
+  hook_output <- knitr::knit_hooks$get('output')
+  knitr::knit_hooks$set(output = function(x, options) {
+    if (!is.null(options$max.height)) options$attr.output <- c(
+      options$attr.output,
+      sprintf('style="max-height: %s;"', options$max.height)
+    )
+    hook_output(x, options)
+  })
+})
+```
+
+## Background
+
+Prescribing high doses of Methotrexate increases the potentially fatal risk of toxicity. To minimise risk, it is recommended that only 2.5mg tablets are prescribed. Evidence Based Medicines Datalab published analysis of trends and variation in unsafe prescribing of methotrexate in primary care in the British Journal of General Practice in July 2020. This paper analysed prescribing in primary care between 2010 and 2018. We now have access to more recent primary care prescribing data (up to June 2020) and secondary care usage data (from January 2019 to June 2020). This note provides an update to the previous analysis.
+
+## Aim
+The aim of this note is to describe the prescribing of Methotrexate across primary and secondary care between January 2019 and June 2020 at a national level and understand the variation between Sustainability and Transformation Partnerships (STPs), the lowest level common geographical area shared between CCGs and Trusts.
+
+## Method
+The main outcome measures were: total volume of prescribing and the variation in ratio of non-adherent/adherant prescribing geographically, by care setting (primary vs secondary) and over time.
+
+## Results
+[To update summary]
+
+## Gathering data
+This analysis uses the public dataset of English GP prescribing data ([insert link], the public dataset of English hospitals issues data ([insert link]) and geographic reference data to link CCGs and hosptials to STPs.
+
+```{r, message = FALSE, warning = FALSE, max.height = '150px'}
+library(dplyr)
+library(tidyverse)
+library(reshape)
+library(scales)
+
+setwd("C:/Users/User/Documents/GitHub/open-nhs-hospital-use-data/")
+
+# reading in data extracted from bigquery (see code here [to add link])
+hospital_data <- read.csv(file = "./data/methotrexate_hospital_data.csv")
+community_data <- read.csv(file = "./data/methotrexate_community_data.csv")
+# reading in ods data on hospitals - no header information so need to add this in
+hospital_to_stp_map <- read.csv(file = "./data/etr.csv", header = FALSE) %>%
+  select(1:4) 
+colnames(hospital_to_stp_map) <- c("ods_code", "trust_name", "region_code", "stp_code")
+# reading in map from ccg codes to stp and region codes, published on nhs digital site: https://digital.nhs.uk/data-and-information/publications/statistical/patients-registered-at-a-gp-practice/september-2020
+ccg_to_stp_map <- read.csv("./data/gp-reg-pat-prac-map.csv") %>%
+  group_by(CCG_CODE) %>%
+  summarise(STP_CODE = first(STP_CODE),
+            STP_NAME = first(STP_NAME),
+            COMM_REGION_NAME = first(COMM_REGION_NAME),
+            COMM_REGION_CODE = first(COMM_REGION_CODE))
+
+# merge stp information on to hospital dataset and change variable names so can join with community dataset
+hospital_data_with_stp <- left_join(hospital_data, hospital_to_stp_map, by = "ods_code") %>%
+  mutate(source = "hospital") %>%
+  dplyr::rename(month = year_month,
+                stp = stp_code,
+                product_name = vmp_product_name,
+                quantity = total_quantity) %>%
+  group_by(month, stp, source, product_name) %>%
+  summarise(quantity = sum(quantity)) %>%
+  mutate(COMM_REGION_NAME = NA,
+         STP_NAME = NA)
+
+combined_data <- community_data %>%
+  mutate(source = "community") %>%
+  dplyr::rename(product_name = bnf_name,
+                CCG_CODE = pct) %>%
+  select(month, CCG_CODE, source, product_name, quantity) %>%
+  left_join(., ccg_to_stp_map, by = "CCG_CODE") %>%
+  group_by(COMM_REGION_NAME, STP_NAME, STP_CODE, month, source, product_name) %>%
+  summarise(quantity = sum(quantity)) %>%
+  dplyr::rename(stp = STP_CODE) %>%
+  union(., hospital_data_with_stp) %>%
+  filter(!is.na(stp)) %>%
+  group_by(stp) %>%
+  mutate(COMM_REGION_NAME = first(na.omit(COMM_REGION_NAME)),
+         STP_NAME = first(na.omit(STP_NAME))) %>%
+  ungroup() %>%
+  filter(!is.na(STP_NAME))
+
+```
+
+## National prescribing trends
+Prescribing of methotrexate tablets is much more common in the community than in hospitals, in June 2020 3.9 million tablets were dispensed in the community compared to 0.4m in hospitals (Figure 1).
+10mg methotrexate as a proportion of all methotrexate prescribed is very low in both community and hospital usage, only around 1% between January 2019 and June 2020 (Figure 2). Prescribing of 10mg methotrexate as a proportion of all methotrexate tablets  10mg tablets is trending downwards in the community but more volitle in hospitals. 
+
+
+```{r, message = FALSE, warning = FALSE, max.height = '150px'}
+library(dplyr)
+# National time series
+national_time_series <- combined_data %>%
+  group_by(month, source, product_name) %>%
+  summarise(nat_quantity = sum(quantity)) %>%
+  group_by(month, source) %>%
+  mutate(prop_prescribing = nat_quantity / sum(nat_quantity)) %>%
+  ungroup()
+
+national_time_series_total <- national_time_series %>%
+  group_by(month, source) %>%
+  summarise(nat_total_quantity = sum(nat_quantity))
+```
+
+``` {r, message = FALSE, warning = FALSE, fig.align = "center"}
+library(ggplot2)
+ggplot(national_time_series_total, aes(x = month, y = nat_total_quantity, group = source)) +
+  geom_line(aes(color = source), size = 2) +
+  labs(x = "Month", y = "Total methotrexate tablets") +
+  scale_y_continuous(labels = scales::number) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  ggtitle("Prescribing of methotrexate tablets over time")
+
+```
+
+``` {r, message = FALSE, warning = FALSE, max.height = '150px'}
+library(dplyr)
+national_time_series_10mg <- national_time_series %>%
+  filter(product_name == "Methotrexate 10mg tablets")
+```
+
+```{r, message = FALSE, warning = FALSE, fig.align = "center"}
+library(ggplot2)
+ggplot(national_time_series_10mg, aes(x = month, y = prop_prescribing, group = source)) +
+  geom_line(aes(color = source), size = 2) +
+  labs(x = "Month", y = "10mg tablets as a proportion of all methotrexate tablets") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  ggtitle("Prescribing of 10mg tablets as a proportion of all methotrexate tablets over time")
+```
+
+## STP prescribing trends
+Although prescribing of 10mg methotrexate as a proportion of all methotrexate tablets is low at a national level there is variation across England. Analysis at a STP level allows us to summarise community and hospital prescribing data as STPs are a common geographical level. Figure 3 shows the variation in prescribing of  10mg methotrexate between July 2019 and June 2020 at a STP level.
+
+```{r stp, message = FALSE, warning = FALSE, max.height = '150px'}
+library(dplyr)
+stp_july2019_june2020 <- combined_data %>%
+  mutate(month = as.Date(month, "%Y-%m-%d"))%>%
+  filter(month >= as.Date("2019-07-01") & month <= as.Date("2020-06-01"))%>%
+  group_by(STP_NAME, stp, source, product_name) %>%
+  summarise(stp_quantity = sum(quantity)) %>%
+  group_by(stp) %>%
+  mutate(prop_prescribing = stp_quantity / sum(stp_quantity)) %>%
+  ungroup() %>%
+  filter(product_name == "Methotrexate 10mg tablets") %>%
+  group_by(stp) %>%
+  mutate(total = sum(prop_prescribing)) %>%
+  ungroup()
+```
+```{r, message = FALSE, warning = FALSE, fig.align = "center"}
+library(ggplot2)
+ggplot(stp_july2019_june2020, aes(x = reorder(STP_NAME, total), y = prop_prescribing, fill = source)) +
+  geom_bar(position = "stack", stat = "identity") +
+  labs(x = "STP", y = "10mg tablets as a proportion of all methotrexate tablets") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_bw() +
+  theme(legend.position = "top") +
+  ggtitle("Prescribing of methotrexate tablets (July 2019 to June 2020)") +
+  coord_flip()
+```
+```{r, message = FALSE, warning = FALSE}
+library(DT)
+stp_table <- stp_july2019_june2020 %>%
+  select(STP_NAME, stp, product_name, source, prop_prescribing) %>%
+  cast(., STP_NAME + stp + product_name ~ source, vale = "prop_prescribing") %>%
+  mutate(Total = community + hospital) %>%
+  arrange(desc(Total))
+
+datatable(stp_table, rownames = FALSE, filter="top", options = list(pageLength = 5, scrollX=T)) %>%
+  DT::formatPercentage(c("community", "hospital", "Total"), 2)
+```
+  
