@@ -16,6 +16,3 @@ conn_ebm_hscic <- DBI::dbConnect(bigrquery::bigquery(),
 # DBI::dbListTables(conn_ebm_scmd)
 # DBI::dbListTables(conn_ebm_dmd)
 # DBI::dbListTables(conn_ebm_hscic)
-
-
-
