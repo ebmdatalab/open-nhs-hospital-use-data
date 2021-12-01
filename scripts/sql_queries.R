@@ -19,13 +19,13 @@ sql_query_scmd <- dbplyr::sql("SELECT
 
 # Define SQL query for Dictionary of Medicines and Devices (dm+d) information
 # Rename some variables to match names across different queries (e.g., vmp_snomed_code)
-sql_query_dmd_info <- dbplyr::sql("SELECT 
+sql_query_dmd_info <- dbplyr::sql("SELECT
                                    CAST(a.id AS STRING) AS vmp_snomed_code,
                                    a.nm AS vmp_product_name,
                                    a.vtm AS vtmid,
                                    j.nm AS vtmnm,
                                    b.form AS form_cd,
-                                   c.descr AS formdescr,
+                                   c.descr AS form_descr,
                                    a.df_ind AS df_ind_cd,
                                    d.descr AS df_descr,
                                    a.udfs,
