@@ -126,7 +126,7 @@ db_scmd_asthma <- db_scmd %>%
 df_scmd_asthma <- dplyr::collect(db_scmd_asthma)
 
 df_scmd_asthma_names <- df_scmd_asthma %>% 
-  dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name), by = "ods_code") %>% 
+  dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
   dplyr::mutate(ods_name = dplyr::case_when(is.na(ods_name) ~ ods_code,
                                             TRUE ~ ods_name))
 ```
@@ -208,7 +208,7 @@ df_dmd_info %>%
 - Defined Daily Dose (DDD)
 
 ```{r}
-df_scmd_asthma_ddd <- df_scmd_asthma %>% 
+df_scmd_asthma_ddd <- df_scmd_asthma_names %>% 
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
   mutate(volume_singles = total_quantity / udfs,
          volume_mg_strength = volume_singles * ifelse(is.na(strnt_dnmtr_val), strnt_nmrtr_val, strnt_nmrtr_val * (udfs / strnt_dnmtr_val)),
@@ -226,13 +226,15 @@ df_scmd_asthma_ddd <- df_scmd_asthma %>%
 ## Results
 
 
+### National prescribing
 
 ```{r, layout="l-page", fig.width=10, fig.height=5, cache=TRUE}
 
 temp_ggplot <- df_scmd_asthma_ddd %>%
   group_by(year_month, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>% 
-  ggplot(aes(x = year_month, y = volume_ddd, colour = vtmnm, group = vtmnm)) +
+  ggplot(aes(x = year_month, y = volume_ddd, shape = vtmnm,
+             colour = vtmnm, group = vtmnm)) +
   geom_line(size = 1, alpha = 0.5) +
   geom_point(aes(text = paste0("<b>Date:</b> ", year_month, "<br>",
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
@@ -241,7 +243,8 @@ temp_ggplot <- df_scmd_asthma_ddd %>%
   scale_colour_viridis_d(end = .9) +
   labs(title = "National prescribing of asthma biologics",
        x = NULL, y = "Defined Daily Dose",
-       colour = NULL)
+       colour = NULL,
+       shape = NULL)
 
 plotly::ggplotly(temp_ggplot,
                  tooltip = "text") %>%
@@ -249,6 +252,41 @@ plotly::ggplotly(temp_ggplot,
 ```
 
 
+### Regional prescribing
 
+```{r}
+stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
+  group_by(STP_CODE, STP_NAME) %>%
+  summarise(COMM_REGION_NAME = first(COMM_REGION_NAME),
+            COMM_REGION_CODE = first(COMM_REGION_CODE)) %>%
+  janitor::clean_names()
 
+df_scmd_asthma_ddd_map <- df_scmd_asthma_ddd %>% 
+  left_join(stp_to_region_map, by = "stp_code")
+```
 
+```{r, layout="l-page", fig.width=10, fig.height=8, cache=TRUE}
+
+temp_ggplot <- df_scmd_asthma_ddd_map %>%
+  group_by(comm_region_name, year_month, vtmnm) %>%
+  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
+  ggplot(aes(x = year_month, y = volume_ddd, shape = comm_region_name,
+             colour = comm_region_name, group = comm_region_name)) +
+  geom_line(size = 1, alpha = 0.5) +
+  geom_point(aes(text = paste0("<b>Date:</b> ", year_month, "<br>",
+                               "<b>Region:</b> ", comm_region_name, "<br>",
+                               "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
+                               "<b>Medication:</b> ", vtmnm)), size = 2) +
+  scale_x_date() +
+  scale_colour_viridis_d(end = 1) +
+  labs(title = "Regional prescribing of asthma biologics",
+       x = NULL, y = "Defined Daily Dose",
+       colour = NULL,
+       shape = NULL) +
+  facet_wrap(~vtmnm)
+
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE)
+```
