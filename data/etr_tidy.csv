@@ -1,4 +1,4 @@
-organisation_code,name,national_grouping,high_level_health_geography,address_line_1,address_line_2,address_line_3,address_line_4,address_line_5,postcode,open_date,close_date,amended_record_indicator,gor_code
+ods_code,ods_name,region_code,stp_code,address_line_1,address_line_2,address_line_3,address_line_4,address_line_5,postcode,open_date,close_date,amended_record_indicator,gor_code
 R0A,Manchester University NHS Foundation Trust,Y62,QOP,COBBETT HOUSE,OXFORD ROAD,NA,MANCHESTER,NA,M13 9WL,2017-10-01,NA,0,B
 R0B,South Tyneside and Sunderland NHS Foundation Trust,Y63,QHM,SUNDERLAND ROYAL HOSPITAL,KAYLL ROAD,NA,SUNDERLAND,NA,SR4 7TP,2019-04-01,NA,0,A
 R0D,University Hospitals Dorset NHS Foundation Trust,Y58,QVV,MANAGEMENT OFFICES,POOLE HOSPITAL,LONGFLEET ROAD,POOLE,NA,BH15 2JB,2020-10-01,NA,0,K

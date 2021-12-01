@@ -44,7 +44,20 @@ data <- readr::read_csv(unz(temp, "etr.csv"),
                       name = stringr::str_replace(name, "Nhs", "NHS"),
                       name = stringr::str_replace(name, "And", "and"),
                       open_date = as.Date(as.character(open_date), format = '%Y%m%d'),
-                      close_date = as.Date(as.character(close_date), format = '%Y%m%d'))
+                      close_date = as.Date(as.character(close_date), format = '%Y%m%d')) %>% 
+  dplyr::rename(region_code = national_grouping, 
+                stp_code = high_level_health_geography,
+                ods_code = organisation_code,
+                ods_name = name) %>% 
+  # Some data cleaning as SCMD uses some ODS codes that are not up to date
+  dplyr::mutate(stp_code = dplyr::case_when(
+    ods_code == "RQ6" ~ "QYG",
+    ods_code %in% c("RNL", "RE9", "RLN") ~ "QHM",
+    ods_code %in% c("RM2", "RW3") ~ "QOP",
+    ods_code == "RGQ" ~ "QJG",
+    ods_code == "RJF" ~ "QJ2",
+    ods_code == "RR1" ~ "QHL",
+    TRUE ~ stp_code))
 
 # Write tidy data
 readr::write_csv(data, here::here("data/etr_tidy.csv"))
