@@ -61,3 +61,8 @@ data <- readr::read_csv(unz(temp, "etr.csv"),
 
 # Write tidy data
 readr::write_csv(data, here::here("data/etr_tidy.csv"))
+
+
+# gp-reg-pat-prac-map ----
+# Is this the file I'm looking for?
+# readr::read_csv(url("https://files.digital.nhs.uk/BA/206EF1/gp-reg-pat-prac-map.csv"))
