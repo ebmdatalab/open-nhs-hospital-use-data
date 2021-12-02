@@ -3,46 +3,27 @@ title: "Exploring trends and variation in biologic therapies for severe asthma"
 # description: "Secondary Care Medicines Data"
 date: "`r lubridate::today()`"
 repository_url: https://github.com/ebmdatalab/open-nhs-hospital-medicines-pilot
-author:
-  - first_name: "Milan"
-    last_name: "Wiedemann"
-    url: https://github.com/milanwiedemann
-    # affiliation: University of Oxford, The Data Lab
-    # affiliation_url: https://www.bennett.ox.ac.uk/
-    orcid_id: 0000-0003-1991-282X
-  - first_name: "Anna"
-    last_name: "Rowan"
-    url: https://github.com/AnnaB45
-    # affiliation: University of Oxford, The Data Lab
-    # affiliation_url: https://www.bennett.ox.ac.uk/
-  - first_name: "Helen"
-    last_name: "Curtis"
-    url: https://github.com/HelenCEBM
-    # affiliation: University of Oxford, The Data Lab
-    # affiliation_url: https://www.bennett.ox.ac.uk/
-    orcid_id: 0000-0003-3429-9576
-  - first_name: "Brian"
-    last_name: "MacKenna"
-    url: https://github.com/brianmackenna
-    # affiliation: University of Oxford, The Data Lab
-    # affiliation_url: https://www.bennett.ox.ac.uk/
-    orcid_id: 0000-0002-3786-9063
-
 output:
-  distill::distill_article:
-    code_folding: true
+  html_document:
+    code_folding: hide
     toc: true
-    toc_depth: 4
+    toc_depth: 3
+    toc_float: true
 navbar:
   search: true
 bibliography: "references.bib"
 link-citations: true
+editor_options: 
+  chunk_output_type: console
 ---
 
-```{r setup, include=FALSE}
+```{r rmd-setup, include=FALSE}
 # R Markdown settings
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
 
+
+```{r setup, include=FALSE}
 # Load utils for this project
 source(here::here("scripts/connect_bigquery.R"))
 source(here::here("scripts/sql_queries.R"))
@@ -55,18 +36,30 @@ library(here)
 library(reactable)
 library(htmltools)
 library(plotly)
-
+library(dplyr)
+library(dbplyr)
+library(sparkline)
+library(tsibble)
+library(lubridate)
 ```
 
-## Background
+# Background
 
 See this paper [@Goldacre2020].
 
-## Methods
+# Methods
 
-### Medicines codelist
+## Medicines codelist
 
 ```{r}
+
+# Define tibble for join later
+lookup_mg_per_ddd <- tibble::tribble(~vtmnm, ~mg_per_ddd,
+                                   "Omalizumab", 16, 
+                                   "Mepolizumab", 3.6, 
+                                   "Reslizumab", 7.1, 
+                                   "Benralizumab", 0.54)
+
 # Define vector with selected SNOMED codes for XXX
 snomed_asthma_mabs_list <- c("18671311000001102",
                              "18671411000001109",
@@ -79,49 +72,54 @@ snomed_asthma_mabs_list <- c("18671311000001102",
                              "35298511000001102")
 ```
 
-### Data
+## Data
 
-#### NHS Trusts
+### NHS Trusts
 
 ```{r, cache=TRUE}
 # Load ETR data
 df_etr <- readr::read_csv(here::here("data/etr_tidy.csv")) 
+
+# Load stp to regions data
+stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
+  group_by(STP_CODE, STP_NAME) %>%
+  summarise(COMM_REGION_NAME = first(COMM_REGION_NAME),
+            COMM_REGION_CODE = first(COMM_REGION_CODE)) %>%
+  janitor::clean_names()
+
+
 ```
 
-```{r tab-etr, layout="l-page", cache=TRUE}
+```{r tab-etr, cache=TRUE}
 # Sustainability and Transformation Partnerships (STPs) 
 df_etr %>% 
-  select(ods_code, ods_name, region_code, stp_code, address_line_4, postcode) %>%
+  left_join(stp_to_region_map) %>% 
+  select(ods_name, stp_name, comm_region_name) %>% 
+  mutate(stp_name = fct_explicit_na(stp_name),
+         comm_region_name = fct_explicit_na(comm_region_name)) %>%
   reactable::reactable(filterable = TRUE,
-                       columns = list(ods_code = reactable::colDef(name = "Code", 
-                                                                   minWidth = 50),
-                                      ods_name = reactable::colDef(name = "Name", 
+                       columns = list(ods_name = reactable::colDef(name = "Name", 
                                                                    minWidth = 200),
-                                      region_code = reactable::colDef(name = "Region", 
-                                                                   minWidth = 50),
-                                      stp_code = reactable::colDef(name = "STP", 
-                                                                   minWidth = 50),
-                                      address_line_4 = reactable::colDef(name = "City", 
-                                                                   minWidth = 100),
-                                      postcode = reactable::colDef(name = "Postcode", 
-                                                                   minWidth = 50)
-                                      ),
+                                      stp_name = reactable::colDef(name = "STP", 
+                                                                   minWidth = 150),
+                                      comm_region_name = reactable::colDef(name = "Region", 
+                                                                           minWidth = 70)
+                       ),
                        style = list(fontSize = "12px"),
                        highlight = TRUE)
 ```
 
-#### Secondary Care Medicines Data (SCMD)
-
-Connect to database, filter, and collect data.
+### SCMD
 
 ```{r, cache=TRUE}
+# Secondary Care Medicines Data
+# Connect to database, filter, and collect data.
 # Get SCMD dataset
 db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
 
 # Create dataframe for table
 db_scmd_asthma <- db_scmd %>% 
-  dplyr::filter(vmp_snomed_code %in% snomed_asthma_mabs_list) %>% 
-  dplyr::arrange(ods_code, year_month, dplyr::desc(total_quantity))
+  dplyr::filter(vmp_snomed_code %in% snomed_asthma_mabs_list)
 
 df_scmd_asthma <- dplyr::collect(db_scmd_asthma)
 
@@ -131,45 +129,92 @@ df_scmd_asthma_names <- df_scmd_asthma %>%
                                             TRUE ~ ods_name))
 ```
 
-The following table shows the full raw data used in this notebook.
 
-```{r tab-data-raw, layout="l-page", cache=TRUE}
+```{r}
+# Fill explicit missing and create dataset for sparkline in table
+df_tab_sparkline <- df_scmd_asthma_names %>% 
+  select(-c(vmp_product_name, ods_name, stp_code, stp_code, ods_name)) %>% 
+  arrange(ods_code, vmp_snomed_code, year_month) %>% 
+  as_tsibble(key = c(ods_code, vmp_snomed_code), index = year_month) %>% 
+  fill_gaps(total_quantity = 0, .full = TRUE) %>% 
+  tidyr::fill(.direction = "down") %>% 
+  as_tibble() %>% 
+  mutate(year_month = floor_date(year_month, unit = "month")) %>% 
+  group_by(year_month, ods_code, vmp_snomed_code) %>% 
+  arrange(ods_code, vmp_snomed_code, year_month) %>% 
+  mutate(total_quantity = sum(total_quantity)) %>%
+  arrange(ods_code, vmp_snomed_code, year_month) %>% 
+  distinct() %>% 
+  group_by(ods_code, vmp_snomed_code) %>%
+  dplyr::summarise(count_sparkline = list(total_quantity)) %>% 
+  group_by(ods_code, vmp_snomed_code) %>% 
+  dplyr::mutate(total_quantity = sum(unlist(count_sparkline)))
 
-# Create table
-df_scmd_asthma_names %>% 
-  dplyr::select(ods_name, year_month, vmp_snomed_code, vmp_product_name, total_quantity) %>%
-  reactable::reactable(filterable = TRUE,
-                       defaultSorted = list("total_quantity" = "desc", "year_month" = "desc"),
-                       groupBy = c("ods_name"),
-                       columns = list(total_quantity = reactable::colDef(name = "Count",
-                                                                         minWidth = 50,
-                                                                         aggregate = "sum",
-                                                                         format = reactable::colFormat(digits = 0)),
-                                      ods_name = reactable::colDef(name = "Trust", 
-                                                                   minWidth = 200),
-                                      vmp_product_name = reactable::colDef(name = "Product", 
-                                                                           minWidth = 200,
-                                                                           cell = function(value, index) {
-                                                                             vmp_snomed_code <- paste0("SNOMED Code: ", df_scmd_asthma_names$vmp_snomed_code[index])
-                                                                             vmp_snomed_code <- if (!is.na(vmp_snomed_code)) vmp_snomed_code else "Unknown"
-                                                                             div(
-                                                                               div(style = list(fontWeight = 600), value),
-                                                                               div(style = list(fontSize = 12), vmp_snomed_code))
-                                                                             }
-                                                                           ),
-                                      year_month = reactable::colDef(name = "Month", 
-                                                                     minWidth = 50),
-                                      vmp_snomed_code = reactable::colDef(show = FALSE)
-                                      
-                                      ),
-                       style = list(fontSize = "12px"),
-                       highlight = TRUE)
+# Create lookup datasets for joining
+# SNOMED
+vmp_snomed_names_lookup <- df_scmd_asthma_names %>% 
+  select(vmp_snomed_code, vmp_product_name) %>% 
+  dplyr::distinct()
+
+# Trust
+trust_names_lookup <- df_scmd_asthma_names %>% 
+  select(ods_code, ods_name, stp_code) %>% 
+  dplyr::distinct()
+
+# Join data
+df_tab_sparkline <- df_tab_sparkline %>%
+  ungroup() %>% 
+  arrange(ods_code) %>% 
+  left_join(trust_names_lookup, by = c("ods_code")) %>% 
+  left_join(vmp_snomed_names_lookup, by = c("vmp_snomed_code"))
 
 ```
 
-#### Dictionary of Medicines and Devices (dm+d)
 
-Connect to database, filter, and collect data.
+
+```{r, cache=TRUE}
+
+df_tab_sparkline %>% 
+  select(ods_name, vmp_product_name,vmp_snomed_code, count_sparkline, total_quantity, -ods_code, -stp_code) %>% 
+  reactable(filterable = TRUE,
+            defaultSorted = c("ods_name", "total_quantity"),
+            groupBy = c("ods_name"),
+            columns = list(
+              ods_name = reactable::colDef(name = "Trust", 
+                                           minWidth = 200),
+              count_sparkline = colDef(name = "Trend",
+                                       minWidth = 50,
+                                       cell = function(value, index) {
+                                         sparkline(df_tab_sparkline$count_sparkline[[index]]
+                                                   # type = "bar"
+                                         )
+                                       }),
+              total_quantity = reactable::colDef(name = "Count",
+                                                 minWidth = 50,
+                                                 aggregate = "sum",
+                                                 format = reactable::colFormat(digits = 0)),
+              vmp_product_name = reactable::colDef(name = "Product", 
+                                                   minWidth = 100,
+                                                   cell = function(value, index) {
+                                                     vmp_snomed_code <- paste0("SNOMED: ", df_tab_sparkline$vmp_snomed_code[index])
+                                                     vmp_snomed_code <- if (!is.na(vmp_snomed_code)) vmp_snomed_code else "Unknown"
+                                                     div(
+                                                       div(style = list(fontWeight = 600), value),
+                                                       div(style = list(fontSize = 12), vmp_snomed_code))
+                                                   }
+              ),
+              vmp_snomed_code = reactable::colDef(show = FALSE)
+            ),
+            style = list(fontSize = "12px"),
+            highlight = TRUE
+)
+
+```
+
+### dm+d
+
+Dictionary of Medicines and Devices
+
 
 ```{r, cache=TRUE}
 db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
@@ -180,71 +225,111 @@ df_dmd_info <- db_dmd_info %>%
 
 ```
 
-Table with raw data.
+```{r}
+# df_scmd_asthma_names %>% 
+#   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
+#   select(-vmp_product_name, -ods_name, -form_descr, -unit_dose_descr, -bnf_presentation) %>% 
+#   select(total_quantity, udfs, strnt_dnmtr_val, strnt_nmrtr_val) %>% 
+#   filter(is.na(strnt_dnmtr_val))
 
-```{r tab-dmd-info, layout="l-page", cache=TRUE}
-df_dmd_info %>% 
-  select(vmp_snomed_code, bnf_code, vtmnm, form_descr, form_cd, 
-         udfs, udfs_descr,
-         strnt_nmrtr_val, strnt_nmrtr_uom) %>%
-  reactable::reactable(filterable = TRUE,
-                       columns = list(vmp_snomed_code = reactable::colDef(name = "SNOMED Code", 
-                                                                           minWidth = 200,
-                                                                           cell = function(value, index) {
-                                                                             bnf_code <- paste0("BNF: ", df_dmd_info$bnf_code[index])
-                                                                             bnf_code <- if (!is.na(bnf_code)) bnf_code else "Unknown"
-                                                                             div(
-                                                                               div(style = list(fontWeight = 600), value),
-                                                                               div(style = list(fontSize = 12), bnf_code))
-                                                                             }
-                                                                           ),
-                                      bnf_code = reactable::colDef(show = FALSE)),
-                       style = list(fontSize = "12px"),
-                       highlight = TRUE)
+df_scmd_asthma_mg <- df_scmd_asthma_names %>% 
+  left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
+  left_join(lookup_mg_per_ddd, by = "vtmnm") 
 ```
 
-### Convert volume
-
-- Defined Daily Dose (DDD)
 
 ```{r}
-df_scmd_asthma_ddd <- df_scmd_asthma_names %>% 
-  left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
+df_scmd_asthma_mg %>% 
+  select(vmp_snomed_code, vtmnm, form_descr, udfs, udfs_descr,
+         strnt_nmrtr_val, strnt_nmrtr_uom, strnt_dnmtr_val,strnt_dnmtr_descr, mg_per_ddd) %>% 
+  distinct() %>% 
+    reactable(filterable = TRUE,
+              columns = list(
+                vmp_snomed_code = reactable::colDef(name = "SNOMED", 
+                                                    minWidth = 100),
+                vtmnm = reactable::colDef(name = "Name", 
+                                          minWidth = 100),
+                form_descr = reactable::colDef(name = "Form", 
+                                               minWidth = 100),
+                # udfs is the VMP unit dose form strength
+                udfs = reactable::colDef(name = "Value", 
+                                         minWidth = 50),
+                udfs_descr = reactable::colDef(name = "Unit", 
+                                               minWidth = 50),
+                # strnt_nmrtr
+                strnt_nmrtr_val = reactable::colDef(name = "strnt_nmrtr", 
+                                                    minWidth = 50,
+                                                    format = colFormat(suffix = " mg")),
+                strnt_nmrtr_uom = reactable::colDef(show = FALSE),
+                # strnt_dnmtr
+                strnt_dnmtr_val = reactable::colDef(name = "strnt_dnmtr", 
+                                                    minWidth = 50,
+                                                    format = colFormat(suffix = " ml")),
+                strnt_dnmtr_descr = reactable::colDef(show = FALSE),
+                mg_per_ddd = reactable::colDef(name = "mg/ddd", 
+                                               minWidth = 50)),
+              columnGroups = list(
+                colGroup(name = "UDFS", columns = c("udfs", "udfs_descr"))
+              ),
+              style = list(fontSize = "12px"),
+              highlight = TRUE
+    )
+
+```
+
+## Convert volume
+
+
+
+
+```{r}
+
+df_scmd_asthma_ddd <- df_scmd_asthma_mg %>% 
   mutate(volume_singles = total_quantity / udfs,
-         volume_mg_strength = volume_singles * ifelse(is.na(strnt_dnmtr_val), strnt_nmrtr_val, strnt_nmrtr_val * (udfs / strnt_dnmtr_val)),
-         mg_per_ddd = case_when(
-           vtmnm == "Omalizumab" ~ 16,
-           vtmnm == "Mepolizumab" ~ 3.6,
-           vtmnm == "Reslizumab" ~ 7.1,
-           vtmnm == "Benralizumab" ~ 0.54,
-           TRUE ~ NA_real_), 
+         volume_mg_strength = volume_singles * if_else(is.na(strnt_dnmtr_val), 
+                                                       true = strnt_nmrtr_val, 
+                                                       false = strnt_nmrtr_val * (udfs / strnt_dnmtr_val)),
          volume_ddd = volume_mg_strength / mg_per_ddd)
+
+
 ```
 
 
 
-## Results
 
 
-### National prescribing
+# Results
 
-```{r, layout="l-page", fig.width=10, fig.height=5, cache=TRUE}
+
+## National prescribing
+
+```{r, fig.width=8, fig.height=4, cache=TRUE}
 
 temp_ggplot <- df_scmd_asthma_ddd %>%
   group_by(year_month, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>% 
-  ggplot(aes(x = year_month, y = volume_ddd, shape = vtmnm,
-             colour = vtmnm, group = vtmnm)) +
+  ggplot(aes(x = year_month, 
+             y = volume_ddd, 
+             colour = vtmnm, 
+             group = vtmnm)) +
   geom_line(size = 1, alpha = 0.5) +
-  geom_point(aes(text = paste0("<b>Date:</b> ", year_month, "<br>",
+  geom_point(aes(text = paste0("<b>Month:</b> ", 
+                               lubridate::month(year_month, label = TRUE), " ",
+                               lubridate::year(year_month), "<br>",
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", vtmnm)), size = 2) +
-  scale_x_date() +
-  scale_colour_viridis_d(end = .9) +
-  labs(title = "National prescribing of asthma biologics",
+  scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
+  labs(title = "National prescribing of asthma biologics over time",
        x = NULL, y = "Defined Daily Dose",
-       colour = NULL,
-       shape = NULL)
+       colour = NULL) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
+             color = "orange", 
+             linetype = 2,
+             lwd = .5, 
+             alpha = .5) +
+  theme(text = element_text(size = 14))
+
+# temp_ggplot
 
 plotly::ggplotly(temp_ggplot,
                  tooltip = "text") %>%
@@ -252,41 +337,91 @@ plotly::ggplotly(temp_ggplot,
 ```
 
 
-### Regional prescribing
+## Regional prescribing
 
 ```{r}
-stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
-  group_by(STP_CODE, STP_NAME) %>%
-  summarise(COMM_REGION_NAME = first(COMM_REGION_NAME),
-            COMM_REGION_CODE = first(COMM_REGION_CODE)) %>%
-  janitor::clean_names()
-
 df_scmd_asthma_ddd_map <- df_scmd_asthma_ddd %>% 
   left_join(stp_to_region_map, by = "stp_code")
 ```
 
-```{r, layout="l-page", fig.width=10, fig.height=8, cache=TRUE}
+
+
+```{r, fig.width=8, fig.height=6}
 
 temp_ggplot <- df_scmd_asthma_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
-  ggplot(aes(x = year_month, y = volume_ddd, shape = comm_region_name,
+  ggplot(aes(x = year_month, y = volume_ddd, 
              colour = comm_region_name, group = comm_region_name)) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
+             color = "orange", 
+             linetype = 2,
+             lwd = .5, 
+             alpha = .5) +
   geom_line(size = 1, alpha = 0.5) +
-  geom_point(aes(text = paste0("<b>Date:</b> ", year_month, "<br>",
+  geom_point(aes(text = paste0("<b>Month:</b> ", 
+                               lubridate::month(year_month, label = TRUE), " ",
+                               lubridate::year(year_month), "<br>",
                                "<b>Region:</b> ", comm_region_name, "<br>",
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
-                               "<b>Medication:</b> ", vtmnm)), size = 2) +
-  scale_x_date() +
+                               "<b>Medication:</b> ", vtmnm)), 
+             size = 2) +
+  scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +
   scale_colour_viridis_d(end = 1) +
-  labs(title = "Regional prescribing of asthma biologics",
-       x = NULL, y = "Defined Daily Dose",
-       colour = NULL,
-       shape = NULL) +
-  facet_wrap(~vtmnm)
+  labs(title = "Regional prescribing of asthma biologics over time",
+       x = NULL, 
+       y = "Defined Daily Dose",
+       colour = NULL) +
+  facet_wrap(~vtmnm) +
+  theme(text = element_text(size = 14)) 
+  
+# temp_ggplot
 
 plotly::ggplotly(temp_ggplot,
                  tooltip = "text") %>%
   plotly::config(displayModeBar = FALSE)
+
 ```
+
+
+
+```{r}
+temp_ggplot <- df_scmd_asthma_ddd_map %>% 
+  select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
+  mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
+  group_by(comm_region_name, vtmnm) %>%
+  summarise(volume_ddd = sum(volume_ddd)) %>%
+  group_by(comm_region_name) %>%
+  mutate(prop_use = volume_ddd / sum(volume_ddd),
+         pos = cumsum(volume_ddd) - volume_ddd/2,
+         total = sum(volume_ddd)) %>%
+  ungroup() %>% 
+  mutate(comm_region_name = fct_reorder(comm_region_name, total)) %>% 
+  ggplot(aes(comm_region_name)) +
+  geom_bar(aes(y = volume_ddd,
+               fill = vtmnm,
+               text = paste0("<b>Region:</b> ", comm_region_name, "<br>",
+                             "<b>Volume:</b> ", round(total, 0), "<br>",
+                             "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
+                             "<b>Medication:</b> ", vtmnm)), 
+           stat='identity',
+           # position = position_dodge()
+           ) +
+  scale_fill_viridis_d() +
+  labs(title = "Total regional prescribing of asthma biologics",
+       subtitle = paste0("From: ", min(df_scmd_asthma_ddd_map$year_month), " to ", max(df_scmd_asthma_ddd_map$year_month)),
+       x = NULL,
+       y = NULL,
+       fill = NULL) +
+  scale_y_continuous(labels = scales::comma) +
+  theme(text = element_text(size = 14))
+
+# temp_ggplot
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE)
+```
+
+
+# References
