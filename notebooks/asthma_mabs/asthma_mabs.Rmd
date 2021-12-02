@@ -52,15 +52,19 @@ See this paper [@Goldacre2020].
 ## Medicines codelist
 
 ```{r}
-
-# Define tibble for join later
+# Define tibble with mg_per_ddd for join later
+# Is there a way this step could be automated?
 lookup_mg_per_ddd <- tibble::tribble(~vtmnm, ~mg_per_ddd,
-                                   "Omalizumab", 16, 
-                                   "Mepolizumab", 3.6, 
-                                   "Reslizumab", 7.1, 
-                                   "Benralizumab", 0.54)
+                                     "Omalizumab", 16, 
+                                     "Mepolizumab", 3.6, 
+                                     "Reslizumab", 7.1, 
+                                     "Benralizumab", 0.54)
+```
 
-# Define vector with selected SNOMED codes for XXX
+
+```{r}
+# Define vector with selected SNOMED codes for Asthma Medicines
+# Consider getting these from opencodelists at some point maybe
 snomed_asthma_mabs_list <- c("18671311000001102",
                              "18671411000001109",
                              "37564311000001105",
@@ -86,7 +90,6 @@ stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
   summarise(COMM_REGION_NAME = first(COMM_REGION_NAME),
             COMM_REGION_CODE = first(COMM_REGION_CODE)) %>%
   janitor::clean_names()
-
 
 ```
 
@@ -125,8 +128,17 @@ df_scmd_asthma <- dplyr::collect(db_scmd_asthma)
 
 df_scmd_asthma_names <- df_scmd_asthma %>% 
   dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
-  dplyr::mutate(ods_name = dplyr::case_when(is.na(ods_name) ~ ods_code,
-                                            TRUE ~ ods_name))
+  # some data cleaning as scmd uses some ods codes that are not up to date
+  mutate(stp_code = as.character(stp_code),
+         stp_code = case_when(
+           ods_code == "RQ6" ~ "QYG",
+           ods_code %in% c("RNL", "RE9", "RLN") ~ "QHM",
+           ods_code %in% c("RM2", "RW3") ~ "QOP",
+           ods_code == "RGQ" ~ "QJG",
+           ods_code == "RJF" ~ "QJ2",
+           ods_code == "RR1" ~ "QHL",
+           TRUE ~ stp_code
+         ))
 ```
 
 
@@ -300,10 +312,11 @@ df_scmd_asthma_ddd <- df_scmd_asthma_mg %>%
 
 # Results
 
+## Trends over time
 
-## National prescribing
+### National prescribing
 
-```{r, fig.width=8, fig.height=4, cache=TRUE}
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of asthma biologics over time."}
 
 temp_ggplot <- df_scmd_asthma_ddd %>%
   group_by(year_month, vtmnm) %>%
@@ -319,15 +332,14 @@ temp_ggplot <- df_scmd_asthma_ddd %>%
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", vtmnm)), size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
-  labs(title = "National prescribing of asthma biologics over time",
-       x = NULL, y = "Defined Daily Dose",
+  labs(x = NULL, y = "Defined Daily Dose",
        colour = NULL) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
              linetype = 2,
              lwd = .5, 
              alpha = .5) +
-  theme(text = element_text(size = 14))
+  theme(text = element_text(size = 12))
 
 # temp_ggplot
 
@@ -337,7 +349,7 @@ plotly::ggplotly(temp_ggplot,
 ```
 
 
-## Regional prescribing
+### Regional prescribing
 
 ```{r}
 df_scmd_asthma_ddd_map <- df_scmd_asthma_ddd %>% 
@@ -346,7 +358,7 @@ df_scmd_asthma_ddd_map <- df_scmd_asthma_ddd %>%
 
 
 
-```{r, fig.width=8, fig.height=6}
+```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of asthma biologics over time."}
 
 temp_ggplot <- df_scmd_asthma_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
@@ -369,12 +381,11 @@ temp_ggplot <- df_scmd_asthma_ddd_map %>%
              size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +
   scale_colour_viridis_d(end = 1) +
-  labs(title = "Regional prescribing of asthma biologics over time",
-       x = NULL, 
+  labs(x = NULL, 
        y = "Defined Daily Dose",
        colour = NULL) +
-  facet_wrap(~vtmnm) +
-  theme(text = element_text(size = 14)) 
+  facet_wrap(~vtmnm, ncol = 1) +
+  theme(text = element_text(size = 12)) 
   
 # temp_ggplot
 
@@ -384,9 +395,11 @@ plotly::ggplotly(temp_ggplot,
 
 ```
 
+## Total volume per year
 
+### Regional prescribing
 
-```{r}
+```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of asthma biologics."}
 temp_ggplot <- df_scmd_asthma_ddd_map %>% 
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
@@ -409,19 +422,65 @@ temp_ggplot <- df_scmd_asthma_ddd_map %>%
            # position = position_dodge()
            ) +
   scale_fill_viridis_d() +
-  labs(title = "Total regional prescribing of asthma biologics",
-       subtitle = paste0("From: ", min(df_scmd_asthma_ddd_map$year_month), " to ", max(df_scmd_asthma_ddd_map$year_month)),
+  labs(subtitle = paste0("From: ", min(df_scmd_asthma_ddd_map$year_month), " to ", max(df_scmd_asthma_ddd_map$year_month)),
        x = NULL,
-       y = NULL,
+       y = "Defined Daily Dose",
        fill = NULL) +
   scale_y_continuous(labels = scales::comma) +
-  theme(text = element_text(size = 14))
+  theme(text = element_text(size = 12)) +
+  coord_flip()
 
 # temp_ggplot
 plotly::ggplotly(temp_ggplot,
                  tooltip = "text") %>%
   plotly::config(displayModeBar = FALSE)
 ```
+
+### Individual NHS Trusts
+
+```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of asthma biologics for 20 Trusts with the largest volume across all selected medications."}
+temp_ggplot <- df_scmd_asthma_ddd_map %>% 
+  filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
+  select(year_month, ods_code, vtmnm, volume_ddd, stp_name) %>% 
+  mutate(stp_name = fct_explicit_na(stp_name)) %>% 
+  group_by(stp_name, vtmnm) %>%
+  summarise(volume_ddd = sum(volume_ddd)) %>%
+  group_by(stp_name) %>%
+  mutate(prop_use = volume_ddd / sum(volume_ddd),
+         pos = cumsum(volume_ddd) - volume_ddd/2,
+         total = sum(volume_ddd)) %>%
+  ungroup() %>% 
+  mutate(rank = dense_rank(-total),
+         stp_name = fct_reorder(stp_name, -rank)) %>% 
+  filter(rank <= 20) %>% 
+  
+  ggplot(aes(stp_name)) +
+  geom_bar(aes(y = volume_ddd,
+               fill = vtmnm,
+               text = paste0("<b>Trust:</b> ", stp_name, "<br>",
+                             "<b>Volume:</b> ", round(total, 0), "<br>",
+                             "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
+                             "<b>Medication:</b> ", vtmnm)), 
+           stat='identity',
+           # position = position_dodge()
+           ) +
+  scale_fill_viridis_d() +
+  labs(subtitle = paste0("From: ", min(df_scmd_asthma_ddd_map$year_month), " to ", max(df_scmd_asthma_ddd_map$year_month)),
+       x = NULL,
+       y = "Defined Daily Dose",
+       fill = NULL) +
+  scale_y_continuous(labels = scales::comma) +
+  theme(text = element_text(size = 12),
+        legend.position="bottom") +
+  coord_flip()
+
+# temp_ggplot
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE) %>% 
+layout(legend = list(orientation = "h", x = -0.5, y =-.15))
+```
+
 
 
 # References
