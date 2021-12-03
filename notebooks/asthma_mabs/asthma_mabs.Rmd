@@ -26,8 +26,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```{r setup, include=FALSE}
 # Load utils for this project
 source(here::here("scripts/connect_bigquery.R"))
+
 source(here::here("scripts/sql_queries.R"))
-DBI::dbListTables(conn_ebm_scmd)
+# DBI::dbListTables(conn_ebm_scmd)
 
 # Load R packages
 library(tidyverse)
@@ -202,36 +203,59 @@ df_tab_sparkline <- df_tab_sparkline %>%
   ungroup() %>% 
   arrange(ods_code) %>% 
   left_join(trust_names_lookup, by = c("ods_code")) %>% 
-  left_join(vmp_snomed_names_lookup, by = c("vmp_snomed_code"))
+  left_join(vmp_snomed_names_lookup, by = c("vmp_snomed_code")) %>% 
+  mutate(count_box = count_sparkline)
+library(htmltools)
+library(tippy)
+library(reactable)
 
+# See the ?tippy documentation to learn how to customize tooltips
+with_tooltip <- function(value, tooltip, ...) {
+  div(style = "text-decoration: underline; text-decoration-style: dotted; cursor: help",
+      tippy(value, tooltip, ...))
+}
 # Create table
 df_tab_sparkline %>% 
-  select(ods_name, vmp_product_name,vmp_snomed_code, count_sparkline, total_quantity, -ods_code, -stp_code) %>% 
+  select(ods_name, vmp_product_name,vmp_snomed_code, count_sparkline, count_box, total_quantity, 
+         -ods_code, -stp_code) %>% 
   reactable(filterable = TRUE,
             defaultSorted = c("ods_name", "total_quantity"),
             groupBy = c("ods_name"),
             columns = list(
               ods_name = reactable::colDef(name = "Trust", 
+                                           # header = with_tooltip("Trust", "ods_name"),
                                            minWidth = 200),
               count_sparkline = colDef(name = "Trend",
+                                       header = with_tooltip("Trend", "Note that the y axis cannot be compared across different entries."),
                                        minWidth = 50,
                                        cell = function(value, index) {
-                                         sparkline(df_tab_sparkline$count_sparkline[[index]]
-                                                   # type = "bar"
-                                         )
+                                         sparkline(df_tab_sparkline$count_sparkline[[index]])
                                        }),
-              total_quantity = reactable::colDef(name = "Count",
+              count_box = colDef(name = "Boxplot",
+                                 header = with_tooltip("Boxplot", "Boxplot of monthly quantity for entries with more than 10 data points."),
+                                 minWidth = 40,
+                                 cell = function(value, index) {
+                                   if (sum(df_tab_sparkline$count_box[[index]] > 0) > 10) {
+                                     
+                                     sparkline(df_tab_sparkline$count_box[[index]],
+                                               type = "box")
+                                   }
+                                 }),
+              total_quantity = reactable::colDef(name = "Quantity",
+                                                 # header = with_tooltip("Total quantity", "total_quantity"),
                                                  minWidth = 50,
                                                  aggregate = "sum",
                                                  format = reactable::colFormat(digits = 0)),
               vmp_product_name = reactable::colDef(name = "Product", 
-                                                   minWidth = 100,
+                                                   # header = with_tooltip("Product", "total_quantity"),
+
+                                                   minWidth = 150,
                                                    cell = function(value, index) {
                                                      vmp_snomed_code <- paste0("SNOMED: ", df_tab_sparkline$vmp_snomed_code[index])
                                                      vmp_snomed_code <- if (!is.na(vmp_snomed_code)) vmp_snomed_code else "Unknown"
                                                      div(
                                                        div(style = list(fontWeight = 600), value),
-                                                       div(style = list(fontSize = 12), vmp_snomed_code))
+                                                       div(style = list(fontSize = 10), vmp_snomed_code))
                                                    }
               ),
               vmp_snomed_code = reactable::colDef(show = FALSE)
@@ -289,30 +313,32 @@ df_scmd_asthma_mg %>%
                 vtmnm = reactable::colDef(name = "Name", 
                                           minWidth = 100),
                 form_descr = reactable::colDef(name = "Form", 
-                                               minWidth = 100),
+                                               minWidth = 80),
                 # udfs is the VMP unit dose form strength
                 udfs = reactable::colDef(name = "Value", 
-                                         minWidth = 50),
+                                         minWidth = 40),
                 udfs_descr = reactable::colDef(name = "Unit", 
-                                               minWidth = 50),
+                                               minWidth = 40),
                 # strnt_nmrtr
-                strnt_nmrtr_val = reactable::colDef(name = "strnt_nmrtr", 
-                                                    minWidth = 50,
+                strnt_nmrtr_val = reactable::colDef(name = "Numerator", 
+                                                    minWidth = 60,
                                                     format = colFormat(suffix = " mg")),
                 strnt_nmrtr_uom = reactable::colDef(show = FALSE),
                 # strnt_dnmtr
-                strnt_dnmtr_val = reactable::colDef(name = "strnt_dnmtr", 
-                                                    minWidth = 50,
+                strnt_dnmtr_val = reactable::colDef(name = "Denominator", 
+                                                    minWidth = 60,
                                                     format = colFormat(suffix = " ml")),
                 strnt_dnmtr_descr = reactable::colDef(show = FALSE),
                 mg_per_ddd = reactable::colDef(name = "mg/ddd", 
                                                minWidth = 50)),
               columnGroups = list(
-                colGroup(name = "UDFS", columns = c("udfs", "udfs_descr"))
+                colGroup(name = "UDFS", columns = c("udfs", "udfs_descr")),
+                colGroup(name = "Strength", columns = c("strnt_nmrtr_val", "strnt_dnmtr_val"))
               ),
               style = list(fontSize = "12px"),
               highlight = TRUE
     )
+
 
 ```
 
@@ -468,10 +494,10 @@ plotly::ggplotly(temp_ggplot,
   plotly::config(displayModeBar = FALSE)
 ```
 
-### Individual NHS Trusts
+### STPs
 
-```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of asthma biologics for 20 Trusts with the largest volume across all selected medications."}
-temp_ggplot <- df_scmd_asthma_ddd_map %>% 
+```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of asthma biologics for 20 STPs with the largest volume across all selected medications."}
+df_scmd_asthma_ddd_map_temp <- df_scmd_asthma_ddd_map %>% 
   filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
   select(year_month, ods_code, vtmnm, volume_ddd, stp_name) %>% 
   mutate(stp_name = fct_explicit_na(stp_name)) %>% 
@@ -483,13 +509,14 @@ temp_ggplot <- df_scmd_asthma_ddd_map %>%
          total = sum(volume_ddd)) %>%
   ungroup() %>% 
   mutate(rank = dense_rank(-total),
-         stp_name = fct_reorder(stp_name, -rank)) %>% 
+         stp_name = fct_reorder(stp_name, -rank))
+
+temp_ggplot <- df_scmd_asthma_ddd_map_temp %>% 
   filter(rank <= 20) %>% 
-  
   ggplot(aes(stp_name)) +
   geom_bar(aes(y = volume_ddd,
                fill = vtmnm,
-               text = paste0("<b>Trust:</b> ", stp_name, "<br>",
+               text = paste0("<b>STP:</b> ", stp_name, "<br>",
                              "<b>Volume:</b> ", round(total, 0), "<br>",
                              "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
                              "<b>Medication:</b> ", vtmnm)), 
@@ -513,6 +540,67 @@ plotly::ggplotly(temp_ggplot,
 layout(legend = list(orientation = "h", x = -0.5, y =-.15))
 ```
 
+
+
+```{r}
+green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
+
+df_scmd_asthma_ddd_map_temp_temp <- df_scmd_asthma_ddd_map_temp %>% 
+  mutate(prop_use = round(prop_use, 3)) %>% 
+  pivot_wider(id_cols = c(stp_name, total, rank),
+              names_from = vtmnm, 
+              values_from = c(volume_ddd, prop_use), 
+              values_fill = 0) %>% 
+  select(stp_name, starts_with("prop"))
+
+data <- df_scmd_asthma_ddd_map_temp_temp %>% 
+  mutate(prop_scale = seq(from = 0, to = 1, length = nrow(df_scmd_asthma_ddd_map_temp_temp)))
+
+reactable(data, 
+          filterable = TRUE,
+          # searchable = TRUE,
+          columns = list(
+            stp_name = colDef(name = "STP", 
+                              minWidth = 300),
+            prop_use_Benralizumab = colDef(name = "Benralizumab", 
+                                           format = colFormat(percent = TRUE, digits = 1),
+                                           minWidth = 100,
+                                           style = function(value) {
+                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             color <- green_pal(normalized)
+                                             list(background = color)
+                                           }),
+            prop_use_Mepolizumab = colDef(name = "Mepolizumab", 
+                                          format = colFormat(percent = TRUE, digits = 1),
+                                          minWidth = 100,
+                                           style = function(value) {
+                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             color <- green_pal(normalized)
+                                             list(background = color)
+                                           }),
+            prop_use_Omalizumab = colDef(name = "Omalizumab", 
+                                         format = colFormat(percent = TRUE, digits = 1),
+                                         minWidth = 100,
+                                           style = function(value) {
+                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             color <- green_pal(normalized)
+                                             list(background = color)
+                                           }),
+            prop_use_Reslizumab = colDef(name = "Reslizumab", 
+                                         format = colFormat(percent = TRUE, digits = 1),
+                                         minWidth = 100,
+                                           style = function(value) {
+                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             color <- green_pal(normalized)
+                                             list(background = color)
+                                           }),
+            prop_scale = reactable::colDef(show = FALSE)
+            ),
+          style = list(fontSize = "12px"),
+          highlight = TRUE
+)
+# format = colFormat(suffix = " mg")),
+```
 
 
 # References
