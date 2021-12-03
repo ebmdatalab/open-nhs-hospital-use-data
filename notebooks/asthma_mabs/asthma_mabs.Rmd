@@ -551,12 +551,12 @@ df_scmd_asthma_ddd_map_temp_temp <- df_scmd_asthma_ddd_map_temp %>%
               names_from = vtmnm, 
               values_from = c(volume_ddd, prop_use), 
               values_fill = 0) %>% 
-  select(stp_name, starts_with("prop"))
+  select(stp_name, starts_with("prop"), total)
 
-data <- df_scmd_asthma_ddd_map_temp_temp %>% 
+data_tab <- df_scmd_asthma_ddd_map_temp_temp %>% 
   mutate(prop_scale = seq(from = 0, to = 1, length = nrow(df_scmd_asthma_ddd_map_temp_temp)))
 
-reactable(data, 
+reactable(data_tab, 
           filterable = TRUE,
           # searchable = TRUE,
           columns = list(
@@ -566,7 +566,7 @@ reactable(data,
                                            format = colFormat(percent = TRUE, digits = 1),
                                            minWidth = 100,
                                            style = function(value) {
-                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
                                              color <- green_pal(normalized)
                                              list(background = color)
                                            }),
@@ -574,7 +574,7 @@ reactable(data,
                                           format = colFormat(percent = TRUE, digits = 1),
                                           minWidth = 100,
                                            style = function(value) {
-                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
                                              color <- green_pal(normalized)
                                              list(background = color)
                                            }),
@@ -582,7 +582,7 @@ reactable(data,
                                          format = colFormat(percent = TRUE, digits = 1),
                                          minWidth = 100,
                                            style = function(value) {
-                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
                                              color <- green_pal(normalized)
                                              list(background = color)
                                            }),
@@ -590,16 +590,18 @@ reactable(data,
                                          format = colFormat(percent = TRUE, digits = 1),
                                          minWidth = 100,
                                            style = function(value) {
-                                             normalized <- (value - min(data$prop_scale)) / (max(data$prop_scale) - min(data$prop_scale))
+                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
                                              color <- green_pal(normalized)
                                              list(background = color)
                                            }),
+            total = colDef(name = "Total (ddd)", 
+                           minWidth = 65,
+                           format = colFormat(digits = 0)),
             prop_scale = reactable::colDef(show = FALSE)
             ),
           style = list(fontSize = "12px"),
-          highlight = TRUE
-)
-# format = colFormat(suffix = " mg")),
+          highlight = TRUE)
+
 ```
 
 
