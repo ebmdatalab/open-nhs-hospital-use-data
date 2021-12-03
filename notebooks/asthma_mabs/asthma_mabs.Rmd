@@ -19,7 +19,7 @@ editor_options:
 
 ```{r rmd-setup, include=FALSE}
 # R Markdown settings
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
 
@@ -27,6 +27,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 # Load utils for this project
 source(here::here("scripts/connect_bigquery.R"))
 source(here::here("scripts/sql_queries.R"))
+DBI::dbListTables(conn_ebm_scmd)
 
 # Load R packages
 library(tidyverse)
@@ -45,22 +46,21 @@ library(lubridate)
 
 # Background
 
-See this paper [@Goldacre2020].
+Patients with severe asthma can be treated with biologic medicinces. 
+NICE has approved four biologics for use in England for people with severe asthma; benralizumab, mepolizumab and most recently reslizumab for treating severe eosinophilic asthma and omalizumab for treating severe persistent confirmed allergic IgE‑mediated asthma. 
+Our team delivers [OpenPrescribing.net](https://openprescribing.net/), a publicly funded and openly accessible explorer for NHS primary care prescribing supported by prescribing data openly published by the NHS Business Services Authority. 
+We were concerned that the NHS did not share hospital medicines data in a similar manner to primary care and that it should be shared [see @Goldacre2020]. 
+Asthma UK have [similarly advocated](https://www.asthma.org.uk/support-us/campaigns/publications/living-in-limbo/) that hospital medicines data should be shared to enable transparent assessment of access to new treatments and accountability for public spending.
+
+In September 2020 NHS BSA published hospital medicines data for the first time. 
+We have prepared the following notebook for investigating the use of asthma biologic medicines in English hospitals. 
+If you have any feedback or insight The DataLab team can be contacted at ebmdatalab@phc.ox.ac.uk.
 
 # Methods
 
 ## Medicines codelist
 
-```{r}
-# Define tibble with mg_per_ddd for join later
-# Is there a way this step could be automated?
-lookup_mg_per_ddd <- tibble::tribble(~vtmnm, ~mg_per_ddd,
-                                     "Omalizumab", 16, 
-                                     "Mepolizumab", 3.6, 
-                                     "Reslizumab", 7.1, 
-                                     "Benralizumab", 0.54)
-```
-
+The list `snomed_asthma_mabs_list` contains the SNOMED codes for the medicines we are investigating.
 
 ```{r}
 # Define vector with selected SNOMED codes for Asthma Medicines
@@ -78,7 +78,16 @@ snomed_asthma_mabs_list <- c("18671311000001102",
 
 ## Data
 
+Before we can analyse trends and variation in the use of asthma biologics we need to prepare our dataset. 
+This analysis uses three differen sources of data.
+
+
 ### NHS Trusts
+
+- The NHS Digital "GP mapping file" which provides STP and region names mapped to STP and region ODS codes, published [here](https://digital.nhs.uk/data-and-information/publications/statistical/patients-registered-at-a-gp-practice/september-2020).
+
+- The NHS Digital "Etr" file that maps trust organisation codes to trust names, STP ODS codes and region ODS codes, published [here](https://digital.nhs.uk/services/organisation-data-service/data-downloads/other-nhs-organisations).
+
 
 ```{r, cache=TRUE}
 # Load ETR data
@@ -114,10 +123,22 @@ df_etr %>%
 
 ### SCMD
 
+- The Secondary Care Medicines Dataset (SCMD) published by the NHS BSA, see [here](https://opendata.nhsbsa.net/dataset/d5d7cd63-5373-4a0e-ae22-7f1a198e305d).
+
 ```{r, cache=TRUE}
 # Secondary Care Medicines Data
 # Connect to database, filter, and collect data.
 # Get SCMD dataset
+# Check negative quantities, seems to be a small (0.7%) problem in the data
+# dplyr::tbl(conn_ebm_scmd, "scmd") %>% 
+#   filter(between(year_month, "2019-01-01", "2019-12-31")) %>% 
+#   # arrange(desc(year_month))
+#   filter(total_quanity_in_vmp_unit > 0) %>% 
+#   count()
+#   group_by(vmp_snomed_code) %>% 
+#   summarise(n = n(),
+#             sum = sum(total_quanity_in_vmp_unit < 0))
+
 db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
 
 # Create dataframe for table
@@ -126,6 +147,9 @@ db_scmd_asthma <- db_scmd %>%
 
 df_scmd_asthma <- dplyr::collect(db_scmd_asthma)
 
+# df_scmd_asthma %>% skimr::skim()
+
+# Tidy tidy tidy data
 df_scmd_asthma_names <- df_scmd_asthma %>% 
   dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
   # some data cleaning as scmd uses some ods codes that are not up to date
@@ -180,12 +204,7 @@ df_tab_sparkline <- df_tab_sparkline %>%
   left_join(trust_names_lookup, by = c("ods_code")) %>% 
   left_join(vmp_snomed_names_lookup, by = c("vmp_snomed_code"))
 
-```
-
-
-
-```{r, cache=TRUE}
-
+# Create table
 df_tab_sparkline %>% 
   select(ods_name, vmp_product_name,vmp_snomed_code, count_sparkline, total_quantity, -ods_code, -stp_code) %>% 
   reactable(filterable = TRUE,
@@ -225,8 +244,7 @@ df_tab_sparkline %>%
 
 ### dm+d
 
-Dictionary of Medicines and Devices
-
+Information from the dm+d (Dictionary of Medicines and Devices) on the strength and vmp quantity of each asthma biologic at VMP level, using data hosted on the DataLab BigQuery server.
 
 ```{r, cache=TRUE}
 db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
@@ -237,12 +255,21 @@ df_dmd_info <- db_dmd_info %>%
 
 ```
 
+We use information on the daily defined dose (DDD) of each asthma biologic, so that the volume of each VMP can be compared directly once converted to DDDs. The WHO publish DDDs online:
+
+- [Omalizumab DDD](https://www.whocc.no/atc_ddd_index/?code=R03DX05) = 16mg 
+- [Mepolizumab DDD](https://www.whocc.no/atc_ddd_index/?code=R03DX09) = 3.6mg
+- [Reslizumab DDD](https://www.whocc.no/atc_ddd_index/?code=R03DX08) = 7.1mg
+- [Benralizumab DDD](https://www.whocc.no/atc_ddd_index/?code=R03DX10) = 0.54mg 
+
 ```{r}
-# df_scmd_asthma_names %>% 
-#   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
-#   select(-vmp_product_name, -ods_name, -form_descr, -unit_dose_descr, -bnf_presentation) %>% 
-#   select(total_quantity, udfs, strnt_dnmtr_val, strnt_nmrtr_val) %>% 
-#   filter(is.na(strnt_dnmtr_val))
+# Define tibble with mg_per_ddd for join later
+# Is there a way this step could be automated?
+lookup_mg_per_ddd <- tibble::tribble(~vtmnm, ~mg_per_ddd,
+                                     "Omalizumab", 16, 
+                                     "Mepolizumab", 3.6, 
+                                     "Reslizumab", 7.1, 
+                                     "Benralizumab", 0.54)
 
 df_scmd_asthma_mg <- df_scmd_asthma_names %>% 
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
@@ -291,8 +318,13 @@ df_scmd_asthma_mg %>%
 
 ## Convert volume
 
+The final data cleaning step is to convert the volume from VMP quantity (as provided in the SCMD dataset) to volume in DDDs.
 
-
+- SCMD volumes data is provided in vmp quantity - this means different things for different products. e.g. 100mg powder = 1 vmp quantity but 100mg/20ml solution for injection = 20 vmp quantity, even though both VMPS have the same strength of ingredient.
+- To translate volume in VMP quantity to volume in DDDs we need to go through a few steps:
+  - First, translate volume in VMP quantity to volumes in singles of the product (i.e. number of vials)
+  - Then translate volume in singles of product to volume in strength of ingredient (i.e. number of mgs of active ingredient)
+  - Finally translate volume in strength of ingredient to volume in DDDs, using the DDD information published by the WHO
 
 ```{r}
 
@@ -300,9 +332,9 @@ df_scmd_asthma_ddd <- df_scmd_asthma_mg %>%
   mutate(volume_singles = total_quantity / udfs,
          volume_mg_strength = volume_singles * if_else(is.na(strnt_dnmtr_val), 
                                                        true = strnt_nmrtr_val, 
-                                                       false = strnt_nmrtr_val * (udfs / strnt_dnmtr_val)),
+                                                       false = strnt_nmrtr_val * 
+                                                               (udfs / strnt_dnmtr_val)),
          volume_ddd = volume_mg_strength / mg_per_ddd)
-
 
 ```
 
