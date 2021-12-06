@@ -26,7 +26,6 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```{r setup, include=FALSE}
 # Load utils for this project
 source(here::here("scripts/connect_bigquery.R"))
-
 source(here::here("scripts/sql_queries.R"))
 # DBI::dbListTables(conn_ebm_scmd)
 
@@ -43,6 +42,7 @@ library(dbplyr)
 library(sparkline)
 library(tsibble)
 library(lubridate)
+library(tippy)
 ```
 
 # Background
@@ -205,9 +205,6 @@ df_tab_sparkline <- df_tab_sparkline %>%
   left_join(trust_names_lookup, by = c("ods_code")) %>% 
   left_join(vmp_snomed_names_lookup, by = c("vmp_snomed_code")) %>% 
   mutate(count_box = count_sparkline)
-library(htmltools)
-library(tippy)
-library(reactable)
 
 # See the ?tippy documentation to learn how to customize tooltips
 with_tooltip <- function(value, tooltip, ...) {
@@ -473,9 +470,11 @@ temp_ggplot <- df_scmd_asthma_ddd_map %>%
   geom_bar(aes(y = volume_ddd,
                fill = vtmnm,
                text = paste0("<b>Region:</b> ", comm_region_name, "<br>",
-                             "<b>Volume:</b> ", round(total, 0), "<br>",
-                             "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
-                             "<b>Medication:</b> ", vtmnm)), 
+                             "<b>Total volume in ddd:</b> ", round(total, 0), "<br>",
+                             # "<b>Medication:</b> ", vtmnm, "<br>",
+                             "<b>", vtmnm , " volume in ddd (%):</b> ", round(volume_ddd, 0), " (", scales::percent(prop_use, accuracy = 0.1), ")"
+                             )
+               ), 
            stat='identity',
            # position = position_dodge()
            ) +
@@ -517,9 +516,15 @@ temp_ggplot <- df_scmd_asthma_ddd_map_temp %>%
   geom_bar(aes(y = volume_ddd,
                fill = vtmnm,
                text = paste0("<b>STP:</b> ", stp_name, "<br>",
-                             "<b>Volume:</b> ", round(total, 0), "<br>",
-                             "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
-                             "<b>Medication:</b> ", vtmnm)), 
+                             "<b>Total volume in ddd:</b> ", round(total, 0), "<br>",
+                             # "<b>Medication:</b> ", vtmnm, "<br>",
+                             "<b>", vtmnm , " volume in ddd:</b> ", round(volume_ddd, 0), " (", scales::percent(prop_use, accuracy = 0.1), ")"
+               )
+               ),
+               # text = paste0("<b>STP:</b> ", stp_name, "<br>",
+               #               "<b>Volume:</b> ", round(total, 0), "<br>",
+               #               "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
+               #               "<b>Medication:</b> ", vtmnm)), 
            stat='identity',
            # position = position_dodge()
            ) +
