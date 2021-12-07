@@ -228,16 +228,17 @@ df_tab_sparkline %>%
                                        cell = function(value, index) {
                                          sparkline(df_tab_sparkline$count_sparkline[[index]])
                                        }),
-              count_box = colDef(name = "Boxplot",
-                                 header = with_tooltip("Boxplot", "Boxplot of monthly quantity for entries with more than 10 data points."),
-                                 minWidth = 40,
-                                 cell = function(value, index) {
-                                   if (sum(df_tab_sparkline$count_box[[index]] > 0) > 10) {
-                                     
-                                     sparkline(df_tab_sparkline$count_box[[index]],
-                                               type = "box")
-                                   }
-                                 }),
+              # count_box = colDef(name = "Boxplot",
+              #                    header = with_tooltip("Boxplot", "Boxplot of monthly quantity for entries with more than 10 data points."),
+              #                    minWidth = 40,
+              #                    cell = function(value, index) {
+              #                      if (sum(df_tab_sparkline$count_box[[index]] > 0) > 10) {
+              #                        
+              #                        sparkline(df_tab_sparkline$count_box[[index]],
+              #                                  type = "box")
+              #                      }
+              #                    }),
+              count_box = reactable::colDef(show = FALSE),
               total_quantity = reactable::colDef(name = "Quantity",
                                                  # header = with_tooltip("Total quantity", "total_quantity"),
                                                  minWidth = 50,
