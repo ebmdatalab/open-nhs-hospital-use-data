@@ -24,17 +24,23 @@ library(reactable)
 library(crosstalk)
 
 source(here::here("scripts/connect_bigquery.R"))
-source(here::here("scripts/sql_queries.R"))
+source(here::here("scripts/sql_query_dmd.R"))
+source(here::here("scripts/sql_query_scmd.R"))
 ```
 
 # Description of individual datasets
 
 ## SCMD
 
-- ADD DESCRIPTION (MILAN)
+- The following table shows the first 100 entries of the SCMD dataset from BigQuery
+- the following SQL query is used to get the data:
+
+```{r code = readLines(here('scripts/sql_query_scmd.R')), class.source = 'fold-show'}
+
+```
+
 
 ```{r}
-
 # BIG database stuff read from csv instead
 # I'm not adding this to github, so needs to be run once to set up
 # db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
@@ -48,6 +54,15 @@ source(here::here("scripts/sql_queries.R"))
 df_scmd <- read_csv(here("data/scmd.csv"),
                     col_types = cols(vmp_snomed_code = col_character()))
 
+ 
+reactable(head(df_scmd, 100),
+          style = list(fontSize = "12px"),
+          highlight = TRUE,
+          filterable = TRUE)
+```
+
+
+```{r}
 # create lookup table to join vmp names to codes
 df_scmd_lookup <- df_scmd %>% 
   select(vmp_snomed_code, vmp_product_name) %>% 
@@ -73,13 +88,19 @@ df_scmd_distinct <- df_scmd %>%
 
 - ADD DESCRIPTION (MILAN)
 
+### dm+d info
 
-```{r cache=TRUE, include=FALSE}
+
+```{r cache=TRUE}
 db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
 ```
 
+```{r code = readLines(here('scripts/sql_query_dmd.R')), class.source = 'fold-show'}
 
-```{r cache=TRUE, include=FALSE}
+```
+
+
+```{r cache=TRUE}
 db_dmd_info_distinct <- db_dmd_info %>% 
   select(vmp_snomed_code, udfs, vtmid, form_cd, strnt_dnmtr_val, strnt_nmrtr_val, strnt_dnmtr_val, strnt_dnmtr_descr, bnf_code) %>% 
   distinct()
@@ -88,8 +109,27 @@ df_dmd_info_distinct <- db_dmd_info_distinct %>%
   collect()
 
 df_dmd_info_nmrt <- df_dmd_info_distinct %>% 
-  drop_na(strnt_nmrtr_val)
+  drop_na(strnt_nmrtr_val) %>% 
+  left_join(df_scmd_lookup) %>% 
+  dplyr::relocate(vmp_product_name, vmp_snomed_code) %>% 
+  arrange(vmp_snomed_code) %>% 
+  mutate(vmp_product_name = fct_explicit_na(vmp_product_name)) 
+  
+
+
+reactable(df_dmd_info_nmrt,
+          columns = list(
+            udfs = reactable::colDef(show = FALSE),
+            vtmid = reactable::colDef(show = FALSE),
+            form_cd = reactable::colDef(show = FALSE),
+            bnf_code = reactable::colDef(show = FALSE)
+            ),
+          style = list(fontSize = "12px"),
+          highlight = TRUE,
+          filterable = TRUE)
 ```
+
+### ddd
 
 ```{r}
 
@@ -100,9 +140,9 @@ df_ddd <- read_csv(here("data/ddd_week492021.csv"),
   rename(vmp_snomed_code = vpid)
 
 reactable(df_ddd,
-                 style = list(fontSize = "12px"),
-                 highlight = TRUE,
-                 filterable = TRUE)
+          style = list(fontSize = "12px"),
+          highlight = TRUE,
+          filterable = TRUE)
 ```
 
 # Combined dataset
@@ -158,9 +198,7 @@ bscols(widths = c(3, 9),
                  style = list(fontSize = "12px"),
                  highlight = TRUE,
                  filterable = TRUE,
-                 defaultSorted = list(count = "desc"))
-)
-
+                 defaultSorted = list(count = "desc"))) 
 
 ```
 
