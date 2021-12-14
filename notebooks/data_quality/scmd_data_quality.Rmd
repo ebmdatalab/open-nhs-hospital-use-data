@@ -1,0 +1,152 @@
+---
+title: "Data quality in the Secondary Care Prescription Dataset (SCMD)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(skimr)
+library(bigrquery)
+library(DBI)
+library(dbplyr)
+library(here)
+library(reactable)
+
+source(here::here("scripts/connect_bigquery.R"))
+source(here::here("scripts/sql_queries.R"))
+```
+
+# Individual datasets
+
+## SCMD
+
+```{r}
+
+# BIG database stuff read from csv instead
+# I'm not adding this to github, so needs to be run once to set up
+# db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
+# Collect data here
+# df_scmd <- db_scmd %>% 
+#   collect()
+# Write csv do disk
+# write_csv(df_scmd, here("data/scmd.csv"))
+
+# Once the commented code above is run, we can use the local csv file
+df_scmd <- read_csv(here("data/scmd.csv"),
+                    col_types = cols(vmp_snomed_code = col_character()))
+
+# create lookup table to join vmp names to codes
+df_scmd_lookup <- df_scmd %>% 
+  select(vmp_snomed_code, vmp_product_name) %>% 
+  distinct()
+
+# get date range for tables or in text use
+scmd_date_range <- range(df_scmd$year_month)
+n_ods_codes <- length(unique(df_scmd$ods_code))
+n_snomed_codes <- length(unique(df_scmd$vmp_snomed_code))
+sum_quantity_positive <- sum(df_scmd$total_quantity[which(df_scmd$total_quantity > 0)])
+sum_quantity_negative <- sum(df_scmd$total_quantity[which(df_scmd$total_quantity < 0)])
+
+# calculate total count for each product
+df_scmd_distinct <- df_scmd %>% 
+  group_by(vmp_snomed_code) %>% 
+  summarise(count = sum(total_quantity, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  arrange(desc(count)) %>% 
+  left_join(df_scmd_lookup)
+```
+
+<!-- ## dm+d -->
+
+```{r cache=TRUE, include=FALSE}
+db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
+```
+
+
+```{r cache=TRUE, include=FALSE}
+db_dmd_info_distinct <- db_dmd_info %>% 
+  select(vmp_snomed_code, udfs, vtmid, form_cd, strnt_dnmtr_val, strnt_nmrtr_val, strnt_dnmtr_val, strnt_dnmtr_descr, bnf_code) %>% 
+  distinct()
+
+df_dmd_info_distinct <- db_dmd_info_distinct %>% 
+  collect()
+
+df_dmd_info_nmrt <- df_dmd_info_distinct %>% 
+  drop_na(strnt_nmrtr_val)
+```
+
+
+
+```{r cache=TRUE}
+df_scmd_distinct_snomed <- df_scmd %>% 
+  select(vmp_snomed_code) %>% 
+  distinct()
+
+df_scmd_distinct_snomed
+```
+
+## ddd
+
+```{r}
+
+# get ddd data and make var names consistent
+df_ddd <- read_csv(here("data/ddd_week492021.csv"), 
+                   col_types = cols(VPID = col_character())) %>% 
+  janitor::clean_names() %>% 
+  rename(vmp_snomed_code = vpid)
+```
+
+
+
+
+
+```{r}
+df_ddd_avail <- df_ddd %>% 
+  mutate(ddd_avail = factor(!is.na(ddd)),
+         bnf_avail = factor(!is.na(bnf))) %>% 
+  select(vmp_snomed_code, ddd_avail)
+```
+
+
+```{r}
+df_scmd_tab <- df_scmd_distinct %>% 
+  left_join(df_ddd_avail) %>% 
+  mutate(ddd_avail = fct_explicit_na(ddd_avail)) %>% 
+  select(vmp_product_name, vmp_snomed_code, count, ddd_avail)
+```
+
+
+```{r}
+
+library(crosstalk)
+
+# cars <- MASS::Cars93[1:20, c("Manufacturer", "Model", "Type", "Price")]
+df_scmd_tab_shared <- SharedData$new(df_scmd_tab)
+
+bscols(widths = c(3, 9),
+       list(
+         # filter_checkbox("type", "Type", data, ~Type),
+         # filter_slider("price", "Price", data, ~Price, width = "100%"),
+         filter_select("ddd_avail", "ddd_avail", df_scmd_tab_shared, ~ddd_avail)
+       ),
+       reactable(df_scmd_tab_shared,
+                 columns = list(
+                   vmp_product_name = colDef(name = "Name"),
+                   vmp_snomed_code = colDef(name = "Code"),
+                   count = colDef(name = "Total count"),
+                   ddd_avail = colDef(name = "ddd available")
+                 ),
+                 columnGroups = list(
+                   colGroup(name = "SNOMED", 
+                            columns = c("vmp_product_name", "vmp_snomed_code"))
+                 ),
+                 style = list(fontSize = "12px"),
+                 highlight = TRUE,
+                 filterable = TRUE)
+)
+
+
+```
+
