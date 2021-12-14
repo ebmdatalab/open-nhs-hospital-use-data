@@ -1,11 +1,19 @@
 ---
 title: "Data quality in the Secondary Care Prescription Dataset (SCMD)"
-output: html_document
+output:
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup-rmd, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
 
+
+```{r setup-r, include=FALSE}
 library(tidyverse)
 library(skimr)
 library(bigrquery)
@@ -13,12 +21,13 @@ library(DBI)
 library(dbplyr)
 library(here)
 library(reactable)
+library(crosstalk)
 
 source(here::here("scripts/connect_bigquery.R"))
 source(here::here("scripts/sql_queries.R"))
 ```
 
-# Individual datasets
+# Description of individual datasets
 
 ## SCMD
 
@@ -58,7 +67,7 @@ df_scmd_distinct <- df_scmd %>%
   left_join(df_scmd_lookup)
 ```
 
-<!-- ## dm+d -->
+## NHSBSA dm+d
 
 ```{r cache=TRUE, include=FALSE}
 db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
@@ -77,18 +86,6 @@ df_dmd_info_nmrt <- df_dmd_info_distinct %>%
   drop_na(strnt_nmrtr_val)
 ```
 
-
-
-```{r cache=TRUE}
-df_scmd_distinct_snomed <- df_scmd %>% 
-  select(vmp_snomed_code) %>% 
-  distinct()
-
-df_scmd_distinct_snomed
-```
-
-## ddd
-
 ```{r}
 
 # get ddd data and make var names consistent
@@ -98,9 +95,7 @@ df_ddd <- read_csv(here("data/ddd_week492021.csv"),
   rename(vmp_snomed_code = vpid)
 ```
 
-
-
-
+# Combined dataset
 
 ```{r}
 df_ddd_avail <- df_ddd %>% 
@@ -114,29 +109,35 @@ df_ddd_avail <- df_ddd %>%
 df_scmd_tab <- df_scmd_distinct %>% 
   left_join(df_ddd_avail) %>% 
   mutate(ddd_avail = fct_explicit_na(ddd_avail)) %>% 
-  select(vmp_product_name, vmp_snomed_code, count, ddd_avail)
+  select(vmp_product_name, vmp_snomed_code, count, ddd_avail) %>% 
+  mutate(positive_count = factor(count >= 0, levels = c(F, T),
+                                 labels = c("Negative", "Positive")))
 ```
 
 
 ```{r}
 
-library(crosstalk)
-
-# cars <- MASS::Cars93[1:20, c("Manufacturer", "Model", "Type", "Price")]
 df_scmd_tab_shared <- SharedData$new(df_scmd_tab)
 
 bscols(widths = c(3, 9),
        list(
-         # filter_checkbox("type", "Type", data, ~Type),
-         # filter_slider("price", "Price", data, ~Price, width = "100%"),
-         filter_select("ddd_avail", "ddd_avail", df_scmd_tab_shared, ~ddd_avail)
-       ),
+         filter_checkbox("positive_count", "Count", 
+                         df_scmd_tab_shared, ~positive_count,
+                         inline = TRUE),
+         filter_select("ddd_avail", "Filter ddd availability", 
+                       df_scmd_tab_shared, ~ddd_avail)),
        reactable(df_scmd_tab_shared,
                  columns = list(
-                   vmp_product_name = colDef(name = "Name"),
-                   vmp_snomed_code = colDef(name = "Code"),
-                   count = colDef(name = "Total count"),
-                   ddd_avail = colDef(name = "ddd available")
+                   vmp_product_name = colDef(name = "Name",
+                                             minWidth = 100),
+                   vmp_snomed_code = colDef(name = "Code",
+                                             minWidth = 50),
+                   count = colDef(name = "Total count",
+                                             minWidth = 30,
+                                  format = colFormat(digits = 0)),
+                   ddd_avail = colDef(name = "ddd available",
+                                             minWidth = 30),
+                   positive_count = reactable::colDef(show = FALSE)
                  ),
                  columnGroups = list(
                    colGroup(name = "SNOMED", 
@@ -144,7 +145,8 @@ bscols(widths = c(3, 9),
                  ),
                  style = list(fontSize = "12px"),
                  highlight = TRUE,
-                 filterable = TRUE)
+                 filterable = TRUE,
+                 defaultSorted = list(count = "desc"))
 )
 
 
