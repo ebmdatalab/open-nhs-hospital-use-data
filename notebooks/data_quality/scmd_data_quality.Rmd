@@ -31,6 +31,8 @@ source(here::here("scripts/sql_queries.R"))
 
 ## SCMD
 
+- ADD DESCRIPTION (MILAN)
+
 ```{r}
 
 # BIG database stuff read from csv instead
@@ -69,6 +71,9 @@ df_scmd_distinct <- df_scmd %>%
 
 ## NHSBSA dm+d
 
+- ADD DESCRIPTION (MILAN)
+
+
 ```{r cache=TRUE, include=FALSE}
 db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
 ```
@@ -96,6 +101,9 @@ df_ddd <- read_csv(here("data/ddd_week492021.csv"),
 ```
 
 # Combined dataset
+
+- ADD DESCRIPTION (MILAN)
+
 
 ```{r}
 df_ddd_avail <- df_ddd %>% 

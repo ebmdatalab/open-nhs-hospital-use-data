@@ -3748,6 +3748,9 @@ div.tocify {
 <h1>Description of individual datasets</h1>
 <div id="scmd" class="section level2">
 <h2>SCMD</h2>
+<ul>
+<li>ADD DESCRIPTION (MILAN)</li>
+</ul>
 <pre class="r"><code># BIG database stuff read from csv instead
 # I&#39;m not adding this to github, so needs to be run once to set up
 # db_scmd &lt;- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
@@ -3783,6 +3786,9 @@ df_scmd_distinct &lt;- df_scmd %&gt;%
 </div>
 <div id="nhsbsa-dmd" class="section level2">
 <h2>NHSBSA dm+d</h2>
+<ul>
+<li>ADD DESCRIPTION (MILAN)</li>
+</ul>
 <pre class="r"><code># get ddd data and make var names consistent
 df_ddd &lt;- read_csv(here(&quot;data/ddd_week492021.csv&quot;), 
                    col_types = cols(VPID = col_character())) %&gt;% 
@@ -3792,6 +3798,9 @@ df_ddd &lt;- read_csv(here(&quot;data/ddd_week492021.csv&quot;),
 </div>
 <div id="combined-dataset" class="section level1">
 <h1>Combined dataset</h1>
+<ul>
+<li>ADD DESCRIPTION (MILAN)</li>
+</ul>
 <pre class="r"><code>df_ddd_avail &lt;- df_ddd %&gt;% 
   mutate(ddd_avail = factor(!is.na(ddd)),
          bnf_avail = factor(!is.na(bnf))) %&gt;% 
