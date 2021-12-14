@@ -98,12 +98,16 @@ df_ddd <- read_csv(here("data/ddd_week492021.csv"),
                    col_types = cols(VPID = col_character())) %>% 
   janitor::clean_names() %>% 
   rename(vmp_snomed_code = vpid)
+
+reactable(df_ddd,
+                 style = list(fontSize = "12px"),
+                 highlight = TRUE,
+                 filterable = TRUE)
 ```
 
 # Combined dataset
 
 - ADD DESCRIPTION (MILAN)
-
 
 ```{r}
 df_ddd_avail <- df_ddd %>% 
