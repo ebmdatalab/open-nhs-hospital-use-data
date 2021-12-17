@@ -1,0 +1,37 @@
+type,id,bnf_code,nm,ingredient,ddd
+amp,39652711000001109,,Casirivimab (REGN10933) 120mg/ml solution for infusion 11.1ml vials (University of Oxford),Casirivimab,
+amp,40063011000001100,,Casirivimab 120mg/ml solution for infusion 11.1ml vials (Roche Products Ltd),Casirivimab,
+amp,40025211000001101,,Casirivimab 120mg/ml solution for infusion 2.5ml vials (Roche Products Ltd),Casirivimab,
+amp,39653411000001107,,Imdevimab (REGN10987) 120mg/ml solution for infusion 11.1ml vials (University of Oxford),Imdevimab,
+amp,40063211000001105,,Imdevimab 120mg/ml solution for infusion 11.1ml vials (Roche Products Ltd),Imdevimab,
+amp,40025511000001103,,Imdevimab 120mg/ml solution for infusion 2.5ml vials (Roche Products Ltd),Imdevimab,
+amp,34735911000001107,1001030ADBBACAC,Kevzara 150mg/1.14ml solution for injection pre-filled pens (Sanofi Genzyme),Sarilumab,14.3
+amp,34735311000001106,1001030ADBBAAAA,Kevzara 150mg/1.14ml solution for injection pre-filled syringes (Sanofi Genzyme),Sarilumab,14.3
+amp,34736211000001109,1001030ADBBADAD,Kevzara 200mg/1.14ml solution for injection pre-filled pens (Sanofi Genzyme),Sarilumab,14.3
+amp,34735611000001101,1001030ADBBABAB,Kevzara 200mg/1.14ml solution for injection pre-filled syringes (Sanofi Genzyme),Sarilumab,14.3
+amp,38376411000001105,,Remdesivir 100mg powder for concentrate for solution for infusion vials (Gilead Sciences Ltd),Remdesivir,
+amp,38377011000001103,,Remdesivir 100mg/20ml concentrate for solution for infusion vials (Gilead Sciences Ltd),Remdesivir,
+amp,38376711000001104,,Remdesivir 150mg powder for concentrate for solution for infusion vials (Gilead Sciences Ltd),Remdesivir,
+amp,35410311000001106,1001030W0BBAEAE,RoActemra 162mg/0.9ml solution for injection pre-filled pens (Roche Products Ltd),Tocilizumab,20.0
+amp,24780811000001102,1001030W0BBADAD,RoActemra 162mg/0.9ml solution for injection pre-filled syringes (Roche Products Ltd),Tocilizumab,20.0
+amp,16099111000001105,1001030W0BBABAB,RoActemra 200mg/10ml concentrate for solution for infusion vials (Roche Products Ltd),Tocilizumab,20.0
+amp,16099711000001106,1001030W0BBACAC,RoActemra 400mg/20ml concentrate for solution for infusion vials (Roche Products Ltd),Tocilizumab,20.0
+amp,16099411000001100,1001030W0BBAAAA,RoActemra 80mg/4ml concentrate for solution for infusion vials (Roche Products Ltd),Tocilizumab,20.0
+amp,38737211000001107,,Veklury 100mg powder for concentrate for solution for infusion vials (Gilead Sciences Ltd),Remdesivir,
+amp,38747011000001103,,Veklury 100mg/20ml concentrate for solution for infusion vials (Gilead Sciences Ltd),Remdesivir,
+vmp,39657711000001106,,Casirivimab 120mg/ml solution for infusion 11.1ml vials,Casirivimab,
+vmp,40035711000001105,,Casirivimab 120mg/ml solution for infusion 2.5ml vials,Casirivimab,
+vmp,39658211000001100,,Imdevimab 120mg/ml solution for infusion 11.1ml vials,Imdevimab,
+vmp,40035811000001102,,Imdevimab 120mg/ml solution for infusion 2.5ml vials,Imdevimab,
+vmp,38377211000001108,,Remdesivir 100mg powder for solution for infusion vials,Remdesivir,
+vmp,38377311000001100,,Remdesivir 100mg/20ml solution for infusion vials,Remdesivir,
+vmp,38377411000001107,,Remdesivir 150mg powder for solution for infusion vials,Remdesivir,
+vmp,34742511000001107,1001030ADAAACAC,Sarilumab 150mg/1.14ml solution for injection pre-filled disposable devices,Sarilumab,14.3
+vmp,34742611000001106,1001030ADAAAAAA,Sarilumab 150mg/1.14ml solution for injection pre-filled syringes,Sarilumab,14.3
+vmp,34742711000001102,1001030ADAAADAD,Sarilumab 200mg/1.14ml solution for injection pre-filled disposable devices,Sarilumab,14.3
+vmp,34742811000001105,1001030ADAAABAB,Sarilumab 200mg/1.14ml solution for injection pre-filled syringes,Sarilumab,14.3
+vmp,35431611000001103,1001030W0AAAEAE,Tocilizumab 162mg/0.9ml solution for injection pre-filled disposable devices,Tocilizumab,20.0
+vmp,24856911000001102,1001030W0AAADAD,Tocilizumab 162mg/0.9ml solution for injection pre-filled syringes,Tocilizumab,20.0
+vmp,16101911000001101,1001030W0AAABAB,Tocilizumab 200mg/10ml solution for infusion vials,Tocilizumab,20.0
+vmp,16102011000001108,1001030W0AAACAC,Tocilizumab 400mg/20ml solution for infusion vials,Tocilizumab,20.0
+vmp,16102111000001109,1001030W0AAAAAA,Tocilizumab 80mg/4ml solution for infusion vials,Tocilizumab,20.0
