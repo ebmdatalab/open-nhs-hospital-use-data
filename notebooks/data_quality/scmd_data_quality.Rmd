@@ -32,12 +32,14 @@ source(here::here("scripts/sql_query_scmd.R"))
 
 ## SCMD
 
-- The following table shows the first 100 entries of the SCMD dataset from BigQuery
-- the following SQL query is used to get the data:
+- The SQL query below is used to get the SCMD data from Google BigQuery
+- Individual analyses need to filter for specific `vmp_snomed_code`s in a subsequent query
 
 ```{r code = readLines(here('scripts/sql_query_scmd.R')), class.source = 'fold-show'}
 
 ```
+
+### Overview of the data
 
 
 ```{r}
@@ -54,15 +56,6 @@ source(here::here("scripts/sql_query_scmd.R"))
 df_scmd <- read_csv(here("data/scmd.csv"),
                     col_types = cols(vmp_snomed_code = col_character()))
 
- 
-reactable(head(df_scmd, 100),
-          style = list(fontSize = "12px"),
-          highlight = TRUE,
-          filterable = TRUE)
-```
-
-
-```{r}
 # create lookup table to join vmp names to codes
 df_scmd_lookup <- df_scmd %>% 
   select(vmp_snomed_code, vmp_product_name) %>% 
@@ -83,6 +76,59 @@ df_scmd_distinct <- df_scmd %>%
   arrange(desc(count)) %>% 
   left_join(df_scmd_lookup)
 ```
+
+
+- The date range in this notebooks is from `r scmd_date_range[[1]]` to `r scmd_date_range[[2]]`
+- The SCMD dataset has *n* = `r n_ods_codes` unique ODS codes and *n* = `r n_snomed_codes` unique SNOMED codes
+- The sum of all positive quantities is: `r scales::comma(sum_quantity_positive)`
+- The sum of all negative quantities is: `r scales::comma(sum_quantity_negative)`
+
+- The table below shows the first 100 entries of the SCMD dataset (arranged by `vmp_snomed_code`) from BigQuery 
+
+```{r}
+
+reactable(head(df_scmd, 100),
+          style = list(fontSize = "12px"),
+          highlight = TRUE,
+          filterable = TRUE)
+```
+
+
+
+
+
+### Frequency of hospitals with data per month
+
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. Number of hospitals contributing monthly data."}
+temp_ggplot <- df_scmd %>% 
+  select(year_month, ods_code) %>% 
+  distinct() %>% 
+  group_by(year_month) %>% 
+  count() %>% 
+  ggplot(aes(x = year_month, 
+             y = n)) +
+  geom_line(size = 1, alpha = 0.5) +
+  geom_point() +
+  scale_colour_viridis_d() +
+  scale_x_date(date_breaks = "4 month", 
+               date_labels =  "%b %y") +
+  labs(x = NULL, y = "Number of Hospitals",
+       colour = NULL) +
+  # geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
+             # color = "orange", 
+             # linetype = 2,
+             # lwd = .5, 
+             # alpha = .5) +
+  theme(text = element_text(size = 12))
+
+# temp_ggplot
+
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE)
+```
+
+
 
 ## NHSBSA dm+d
 
@@ -147,7 +193,8 @@ reactable(df_ddd,
 
 # Combined dataset
 
-- ADD DESCRIPTION (MILAN)
+- The table below shows the total count (*'Total count'*) of each product (*'SNOMED Name and Code'*) and whether we have information about ddd (*'ddd available'*)
+- You can filter the table by positive or negative count and availability of ddd (`TRUE` = "ddd info available"; `FALSE` = "product listed in dm+d dataset but no ddd info not available"; `(Missing)` = "product NOT listed in dm+d dataset, therefore no ddd info not available")
 
 ```{r}
 df_ddd_avail <- df_ddd %>% 
