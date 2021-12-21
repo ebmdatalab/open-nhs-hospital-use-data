@@ -67,7 +67,7 @@ The file `med_covid_meds.csv` contains the SNOMED codes for the medicines we are
 
 ```{r}
 # Define vector with selected SNOMED codes for COVID Treatments
-codelist = read.csv("./data/meds_covid_meds.csv")
+codelist = read.csv(here("data/meds_covid_meds.csv"))
 codes = codelist$id
 codes = paste(codes) # convert to strings (they are stored as strings in SCMD table)
 
@@ -526,7 +526,7 @@ temp_ggplot <- df_scmd_covid_ddd_map_temp %>%
            # position = position_dodge()
            ) +
   scale_fill_viridis_d() +
-  labs(subtitle = paste0("From: ", min(df_scmd_asthma_ddd_map$year_month), " to ", max(df_scmd_asthma_ddd_map$year_month)),
+  labs(subtitle = paste0("From: ", min(df_scmd_covid_ddd_map$year_month), " to ", max(df_scmd_covid_ddd_map$year_month)),
        x = NULL,
        y = "Defined Daily Dose",
        fill = NULL) +
@@ -564,33 +564,9 @@ reactable(data_tab,
           columns = list(
             stp_name = colDef(name = "STP", 
                               minWidth = 300),
-            prop_use_Benralizumab = colDef(name = "Benralizumab", 
+            prop_use_Tocilizumab = colDef(name = "Tocilizumab", 
                                            format = colFormat(percent = TRUE, digits = 1),
                                            minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
-            prop_use_Mepolizumab = colDef(name = "Mepolizumab", 
-                                          format = colFormat(percent = TRUE, digits = 1),
-                                          minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
-            prop_use_Omalizumab = colDef(name = "Omalizumab", 
-                                         format = colFormat(percent = TRUE, digits = 1),
-                                         minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
-            prop_use_Reslizumab = colDef(name = "Reslizumab", 
-                                         format = colFormat(percent = TRUE, digits = 1),
-                                         minWidth = 100,
                                            style = function(value) {
                                              normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
                                              color <- green_pal(normalized)
