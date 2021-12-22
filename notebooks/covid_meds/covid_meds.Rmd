@@ -67,9 +67,13 @@ The file `med_covid_meds.csv` contains the SNOMED codes for the medicines we are
 
 ```{r}
 # Define vector with selected SNOMED codes for COVID Treatments
-codelist = read.csv("./data/meds_covid_meds.csv")
+codelist = read_csv(here("data/meds_covid_meds.csv"),
+                    # convert to strings (they are stored as strings in SCMD table)
+                    col_types = cols(id = col_character()))
+
+# changed col type in read_csv function above 
+# (read_csv works slightly different to read.csv)
 codes = codelist$id
-codes = paste(codes) # convert to strings (they are stored as strings in SCMD table)
 
 #codes <- toString(codelist$id)
 ```
@@ -290,7 +294,7 @@ ddds <- select(codelist, c('nm', 'ddd'))
 
 df_scmd_covid_mg <- df_scmd_covid_names %>% 
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
-  left_join(ddds, by = c("vmp_product_name"="nm")) 
+  left_join(ddds, by = c("vmp_product_name" = "nm")) 
 ```
 
 
@@ -298,7 +302,7 @@ df_scmd_covid_mg <- df_scmd_covid_names %>%
 df_scmd_covid_mg %>% 
   select(vmp_snomed_code, vtmnm, form_descr, udfs, udfs_descr,
          strnt_nmrtr_val, strnt_nmrtr_uom, strnt_dnmtr_val,strnt_dnmtr_descr, 
-  ddd) %>% 
+         ddd) %>% 
   distinct() %>% 
     reactable(filterable = TRUE,
               columns = list(
@@ -500,9 +504,9 @@ df_scmd_covid_ddd_map_temp <- df_scmd_covid_ddd_map %>%
   group_by(stp_name, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>%
   group_by(stp_name) %>%
-  mutate(prop_use = volume_ddd / sum(volume_ddd),
+  mutate(prop_use = volume_ddd / sum(volume_ddd, na.rm = TRUE),
          pos = cumsum(volume_ddd) - volume_ddd/2,
-         total = sum(volume_ddd)) %>%
+         total = sum(volume_ddd, na.rm = TRUE)) %>%
   ungroup() %>% 
   mutate(rank = dense_rank(-total),
          stp_name = fct_reorder(stp_name, -rank))
@@ -526,7 +530,7 @@ temp_ggplot <- df_scmd_covid_ddd_map_temp %>%
            # position = position_dodge()
            ) +
   scale_fill_viridis_d() +
-  labs(subtitle = paste0("From: ", min(df_scmd_asthma_ddd_map$year_month), " to ", max(df_scmd_asthma_ddd_map$year_month)),
+  labs(subtitle = paste0("From: ", min(df_scmd_covid_ddd_map$year_month), " to ", max(df_scmd_covid_ddd_map$year_month)),
        x = NULL,
        y = "Defined Daily Dose",
        fill = NULL) +
@@ -549,6 +553,7 @@ green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValu
 
 df_scmd_covid_ddd_map_temp_temp <- df_scmd_covid_ddd_map_temp %>% 
   mutate(prop_use = round(prop_use, 3)) %>% 
+  replace_na(list(volume_ddd = 0, prop_use = 0)) %>% 
   pivot_wider(id_cols = c(stp_name, total, rank),
               names_from = vtmnm, 
               values_from = c(volume_ddd, prop_use), 
@@ -564,43 +569,35 @@ reactable(data_tab,
           columns = list(
             stp_name = colDef(name = "STP", 
                               minWidth = 300),
-            prop_use_Benralizumab = colDef(name = "Benralizumab", 
+            prop_use_Remdesivir = colDef(name = "Remdesivir", 
                                            format = colFormat(percent = TRUE, digits = 1),
                                            minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
-            prop_use_Mepolizumab = colDef(name = "Mepolizumab", 
+                                          style = function(value) {
+                                            normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
+                                            color <- green_pal(normalized)
+                                            list(background = color)
+                                          }),
+            prop_use_Sarilumab = colDef(name = "Sarilumab", 
                                           format = colFormat(percent = TRUE, digits = 1),
                                           minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
-            prop_use_Omalizumab = colDef(name = "Omalizumab", 
-                                         format = colFormat(percent = TRUE, digits = 1),
-                                         minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
-            prop_use_Reslizumab = colDef(name = "Reslizumab", 
-                                         format = colFormat(percent = TRUE, digits = 1),
-                                         minWidth = 100,
-                                           style = function(value) {
-                                             normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-                                             color <- green_pal(normalized)
-                                             list(background = color)
-                                           }),
+                                          style = function(value) {
+                                            normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
+                                            color <- green_pal(normalized)
+                                            list(background = color)
+                                          }),
+            prop_use_Tocilizumab = colDef(name = "Tocilizumab", 
+                                          format = colFormat(percent = TRUE, digits = 1),
+                                          minWidth = 100,
+                                          style = function(value) {
+                                            normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
+                                            color <- green_pal(normalized)
+                                            list(background = color)
+                                          }),
             total = colDef(name = "Total (ddd)", 
                            minWidth = 65,
                            format = colFormat(digits = 0)),
             prop_scale = reactable::colDef(show = FALSE)
-            ),
+          ),
           style = list(fontSize = "12px"),
           highlight = TRUE)
 
