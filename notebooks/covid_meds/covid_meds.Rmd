@@ -288,13 +288,21 @@ We use information on the daily defined dose (DDD) of each asthma biologic, so t
 
 ```{r}
 # Define tibble with mg_per_ddd for join later
-ddds <- select(codelist, c('nm', 'ddd'))
-#lookup_mg_per_ddd <- tibble::tribble(~vtmnm, ~mg_per_ddd,
+ddds <- select(codelist, c('nm', 'ddd')) %>% 
+        drop_na('ddd')
+
+# get additional DDDs sourced elsewhere
+add_ddds <- read_csv(here("data/meds_covid_meds_additional_ddds.csv"),
+                    # convert to strings (they are stored as strings in SCMD table)
+                    col_types = cols(id = col_character()))
+
+add_ddds <- select(add_ddds, c('nm', 'ddd'))
+ddds <- rbind(ddds, add_ddds)
 
 
 df_scmd_covid_mg <- df_scmd_covid_names %>% 
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
-  left_join(ddds, by = c("vmp_product_name" = "nm")) 
+  left_join(ddds, by = c("vmp_product_name" = "nm"))  
 ```
 
 
