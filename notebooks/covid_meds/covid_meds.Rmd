@@ -105,12 +105,21 @@ df_etr_historic <- df_etr_historic %>%
   dplyr::filter(!ods_code %in% df_etr_intersect)
 df_etr <- rbind(df_etr, df_etr_historic)
 
+
 # Load stp to regions data
 stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
   group_by(STP_CODE, STP_NAME) %>%
   summarise(COMM_REGION_NAME = first(COMM_REGION_NAME),
             COMM_REGION_CODE = first(COMM_REGION_CODE)) %>%
   janitor::clean_names()
+
+# check which STPs are in lookup table
+stp_count <- df_etr %>% 
+  group_by(stp_code) %>%
+  summarise(n = n(),
+            ods_code = first(ods_code),
+            ods_name = first(ods_name))
+stp_count <- left_join(stp_count, stp_to_region_map, on=c("stp_code"))
 
 ```
 
@@ -167,19 +176,29 @@ df_scmd_names <- db_scmd %>%
   # some data cleaning as scmd uses some ods codes that are not up to date
   mutate(stp_code = as.character(stp_code),
          stp_code = case_when(
-           ods_code == "RQ6" ~ "QYG",
-           ods_code %in% c("RNL", "RE9", "RLN") ~ "QHM",
-           ods_code %in% c("RM2", "RW3") ~ "QOP",
-           ods_code == "RGQ" ~ "QJG",
-           ods_code == "RJF" ~ "QJ2",
-           ods_code == "RR1" ~ "QHL",
-           ods_code == "RA3" ~ "QUY",
+           ods_code == "RQ6" ~ "QYG", # cheshire + merseyside
+           ods_code %in% c("RNL", "RE9", "RLN") ~ "QHM", # cumbria
+           ods_code %in% c("RM2", "RW3") ~ "QOP", # Mcr
+           ods_code == "RGQ" ~ "QJG", # Suffolk and North East Essex
+           ods_code == "RJF" ~ "QJ2", # Derbyshire
+           ods_code == "RR1" ~ "QHL", # Birmingham
+           ods_code == "R1J" ~ "QR1", # gloucestershire (trust present in data but wrong/old code)
+           ods_code == "R1E" ~ "QNC", # Staffs
+           ods_code == "TAD" ~ "QWO", # W Yorks
+           ods_code == "TAJ" ~ "QUA", # Black country
            TRUE ~ stp_code
          ))
 
 check_missing <- select(df_scmd_names,c("ods_code", "ods_name", "stp_code")) %>%
   distinct(.keep_all = TRUE)
 check_missing <- check_missing[order(check_missing[["ods_name"]]),]
+
+# check which STPs are in data
+scmd_stp_count <- df_scmd_names %>% 
+  group_by(stp_code) %>%
+  summarise(n = n(),
+            ods_code = first(ods_code),
+            ods_name = first(ods_name))
 ```
 
 
