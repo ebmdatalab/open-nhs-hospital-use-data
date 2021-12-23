@@ -26,8 +26,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```{r setup, include=FALSE}
 # Load utils for this project
 source(here::here("scripts/connect_bigquery.R"))
-source(here::here("scripts/sql_query_dmd.R"))
 source(here::here("scripts/sql_query_scmd.R"))
+source(here::here("scripts/sql_query_dmd.R"))
+
 # DBI::dbListTables(conn_ebm_scmd)
 
 # Load R packages
