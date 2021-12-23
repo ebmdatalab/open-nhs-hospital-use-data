@@ -75,7 +75,6 @@ codelist = read_csv(here("data/meds_covid_meds.csv"),
 # (read_csv works slightly different to read.csv)
 codes = codelist$id
 
-#codes <- toString(codelist$id)
 ```
 
 ## Data
@@ -93,7 +92,18 @@ This analysis uses three different sources of data.
 
 ```{r, cache=TRUE}
 # Load ETR data
-df_etr <- readr::read_csv(here::here("data/etr_tidy.csv")) 
+df_etr <- readr::read_csv(here::here("data/etr_tidy.csv")) %>%
+  select(c("ods_code", "ods_name", "region_code", "stp_code")) 
+
+# load older ETR data and find any additional codes here not in current list
+df_etr_historic <- readr::read_csv(here::here("data/etr.csv"), col_names = FALSE) %>%
+  select(1:4) 
+colnames(df_etr_historic) <- c("ods_code", "ods_name", "region_code", "stp_code")
+ 
+df_etr_intersect <- intersect(df_etr$ods_code, df_etr_historic$ods_code)
+df_etr_historic <- df_etr_historic %>% 
+  dplyr::filter(!ods_code %in% df_etr_intersect)
+df_etr <- rbind(df_etr, df_etr_historic)
 
 # Load stp to regions data
 stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
@@ -144,15 +154,15 @@ df_etr %>%
 db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
 
 # Create dataframe for table
-db_scmd_covid <- db_scmd %>% 
+db_scmd <- db_scmd %>% 
   dplyr::filter(vmp_snomed_code %in% codes)
 
-db_scmd_covid <- dplyr::collect(db_scmd_covid)
+db_scmd <- dplyr::collect(db_scmd)
 
-# df_scmd_covid %>% skimr::skim()
+# df_scmd %>% skimr::skim()
 
 # Tidy tidy tidy data
-df_scmd_covid_names <- db_scmd_covid %>% 
+df_scmd_names <- db_scmd %>% 
   dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
   # some data cleaning as scmd uses some ods codes that are not up to date
   mutate(stp_code = as.character(stp_code),
@@ -167,15 +177,15 @@ df_scmd_covid_names <- db_scmd_covid %>%
            TRUE ~ stp_code
          ))
 
-check_missing <- select(df_scmd_covid_names,c("ods_code", "ods_name"))
-check_missing <- check_missing %>% distinct(.keep_all = TRUE)
+check_missing <- select(df_scmd_names,c("ods_code", "ods_name", "stp_code")) %>%
+  distinct(.keep_all = TRUE)
 check_missing <- check_missing[order(check_missing[["ods_name"]]),]
 ```
 
 
 ```{r}
 # Fill explicit missing and create dataset for sparkline in table
-df_tab_sparkline <- df_scmd_covid_names %>% 
+df_tab_sparkline <- df_scmd_names %>% 
   select(-c(vmp_product_name, ods_name, stp_code, stp_code, ods_name)) %>% 
   arrange(ods_code, vmp_snomed_code, year_month) %>% 
   as_tsibble(key = c(ods_code, vmp_snomed_code), index = year_month) %>% 
@@ -195,12 +205,12 @@ df_tab_sparkline <- df_scmd_covid_names %>%
 
 # Create lookup datasets for joining
 # SNOMED
-vmp_snomed_names_lookup <- df_scmd_covid_names %>% 
+vmp_snomed_names_lookup <- df_scmd_names %>% 
   select(vmp_snomed_code, vmp_product_name) %>% 
   dplyr::distinct()
 
 # Trust
-trust_names_lookup <- df_scmd_covid_names %>% 
+trust_names_lookup <- df_scmd_names %>% 
   select(ods_code, ods_name, stp_code) %>% 
   dplyr::distinct()
 
@@ -300,14 +310,14 @@ add_ddds <- select(add_ddds, c('nm', 'ddd'))
 ddds <- rbind(ddds, add_ddds)
 
 
-df_scmd_covid_mg <- df_scmd_covid_names %>% 
+df_scmd_mg <- df_scmd_names %>% 
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
   left_join(ddds, by = c("vmp_product_name" = "nm"))  
 ```
 
 
 ```{r}
-df_scmd_covid_mg %>% 
+df_scmd_mg %>% 
   select(vmp_snomed_code, vtmnm, form_descr, udfs, udfs_descr,
          strnt_nmrtr_val, strnt_nmrtr_uom, strnt_dnmtr_val,strnt_dnmtr_descr, 
          ddd) %>% 
@@ -360,7 +370,7 @@ The final data cleaning step is to convert the volume from VMP quantity (as prov
 
 ```{r}
 
-df_scmd_covid_ddd <- df_scmd_covid_mg %>% 
+df_scmd_ddd <- df_scmd_mg %>% 
   mutate(volume_singles = total_quantity / udfs,
          volume_mg_strength = volume_singles * if_else(is.na(strnt_dnmtr_val), 
                                                        true = strnt_nmrtr_val, 
@@ -382,7 +392,7 @@ df_scmd_covid_ddd <- df_scmd_covid_mg %>%
 
 ```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of asthma biologics over time."}
 
-temp_ggplot <- df_scmd_covid_ddd %>%
+temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>% 
   ggplot(aes(x = year_month, 
@@ -416,7 +426,7 @@ plotly::ggplotly(temp_ggplot,
 ### Regional prescribing
 
 ```{r}
-df_scmd_covid_ddd_map <- df_scmd_covid_ddd %>% 
+df_scmd_ddd_map <- df_scmd_ddd %>% 
   left_join(stp_to_region_map, by = "stp_code")
 ```
 
@@ -424,7 +434,7 @@ df_scmd_covid_ddd_map <- df_scmd_covid_ddd %>%
 
 ```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of asthma biologics over time."}
 
-temp_ggplot <- df_scmd_covid_ddd_map %>%
+temp_ggplot <- df_scmd_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
@@ -464,7 +474,7 @@ plotly::ggplotly(temp_ggplot,
 ### Regional prescribing
 
 ```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of asthma biologics."}
-temp_ggplot <- df_scmd_covid_ddd_map %>% 
+temp_ggplot <- df_scmd_ddd_map %>% 
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
   group_by(comm_region_name, vtmnm) %>%
@@ -488,7 +498,7 @@ temp_ggplot <- df_scmd_covid_ddd_map %>%
            # position = position_dodge()
            ) +
   scale_fill_viridis_d() +
-  labs(subtitle = paste0("From: ", min(df_scmd_covid_ddd_map$year_month), " to ", max(df_scmd_covid_ddd_map$year_month)),
+  labs(subtitle = paste0("From: ", min(df_scmd_ddd_map$year_month), " to ", max(df_scmd_ddd_map$year_month)),
        x = NULL,
        y = "Defined Daily Dose",
        fill = NULL) +
@@ -505,7 +515,7 @@ plotly::ggplotly(temp_ggplot,
 ### STPs
 
 ```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of asthma biologics for 20 STPs with the largest volume across all selected medications."}
-df_scmd_covid_ddd_map_temp <- df_scmd_covid_ddd_map %>% 
+df_scmd_ddd_map_temp <- df_scmd_ddd_map %>% 
   filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
   select(year_month, ods_code, vtmnm, volume_ddd, stp_name) %>% 
   mutate(stp_name = fct_explicit_na(stp_name)) %>% 
@@ -519,7 +529,7 @@ df_scmd_covid_ddd_map_temp <- df_scmd_covid_ddd_map %>%
   mutate(rank = dense_rank(-total),
          stp_name = fct_reorder(stp_name, -rank))
 
-temp_ggplot <- df_scmd_covid_ddd_map_temp %>% 
+temp_ggplot <- df_scmd_ddd_map_temp %>% 
   filter(rank <= 20) %>% 
   ggplot(aes(stp_name)) +
   geom_bar(aes(y = volume_ddd,
@@ -538,7 +548,7 @@ temp_ggplot <- df_scmd_covid_ddd_map_temp %>%
            # position = position_dodge()
            ) +
   scale_fill_viridis_d() +
-  labs(subtitle = paste0("From: ", min(df_scmd_covid_ddd_map$year_month), " to ", max(df_scmd_covid_ddd_map$year_month)),
+  labs(subtitle = paste0("From: ", min(df_scmd_ddd_map$year_month), " to ", max(df_scmd_ddd_map$year_month)),
        x = NULL,
        y = "Defined Daily Dose",
        fill = NULL) +
@@ -559,7 +569,7 @@ layout(legend = list(orientation = "h", x = -0.5, y =-.15))
 ```{r}
 green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
 
-df_scmd_covid_ddd_map_temp_temp <- df_scmd_covid_ddd_map_temp %>% 
+df_scmd_ddd_map_temp_temp <- df_scmd_ddd_map_temp %>% 
   mutate(prop_use = round(prop_use, 3)) %>% 
   replace_na(list(volume_ddd = 0, prop_use = 0)) %>% 
   pivot_wider(id_cols = c(stp_name, total, rank),
@@ -568,8 +578,8 @@ df_scmd_covid_ddd_map_temp_temp <- df_scmd_covid_ddd_map_temp %>%
               values_fill = 0) %>% 
   select(stp_name, starts_with("prop"), total)
 
-data_tab <- df_scmd_covid_ddd_map_temp_temp %>% 
-  mutate(prop_scale = seq(from = 0, to = 1, length = nrow(df_scmd_covid_ddd_map_temp_temp)))
+data_tab <- df_scmd_ddd_map_temp_temp %>% 
+  mutate(prop_scale = seq(from = 0, to = 1, length = nrow(df_scmd_ddd_map_temp_temp)))
 
 reactable(data_tab, 
           filterable = TRUE,
