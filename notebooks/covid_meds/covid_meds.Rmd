@@ -382,7 +382,7 @@ df_scmd_ddd <- df_scmd_mg %>%
 
 ### National prescribing
 
-```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of asthma biologics over time."}
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of COVID treatments over time."}
 
 temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, vtmnm) %>%
@@ -421,7 +421,7 @@ df_scmd_ddd_map <- df_scmd_ddd %>%
   left_join(stp_to_region_map, by = "stp_code")
 ```
 
-```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of asthma biologics over time."}
+```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of COVID treatments over time."}
 
 temp_ggplot <- df_scmd_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
@@ -462,7 +462,7 @@ plotly::ggplotly(temp_ggplot,
 
 ### Regional prescribing
 
-```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of asthma biologics."}
+```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of COVID treatments."}
 temp_ggplot <- df_scmd_ddd_map %>% 
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
@@ -503,7 +503,7 @@ plotly::ggplotly(temp_ggplot,
 
 ### STPs
 
-```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of asthma biologics for 20 STPs with the largest volume across all selected medications."}
+```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of COVID treatments for 20 STPs with the largest volume across all selected medications."}
 df_scmd_ddd_map_temp <- df_scmd_ddd_map %>% 
   filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
   select(year_month, ods_code, vtmnm, volume_ddd, stp_name) %>% 
