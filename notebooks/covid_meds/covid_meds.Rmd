@@ -22,7 +22,6 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-
 ```{r setup, include=FALSE}
 # Load utils for this project
 source(here::here("scripts/connect_bigquery.R"))
@@ -49,7 +48,6 @@ library(tippy)
 
 # Background
 
-
 Our team delivers [OpenPrescribing.net](https://openprescribing.net/), a publicly funded and openly accessible explorer for NHS primary care prescribing supported by prescribing data openly published by the NHS Business Services Authority. 
 
 We were concerned that the NHS did not share hospital medicines data in a similar manner to primary care and that it should be shared [see @Goldacre2020]. 
@@ -64,6 +62,7 @@ If you have any feedback or insight The DataLab team can be contacted at ebmdata
 ## Medicines codelist
 
 The file `med_covid_meds.csv` contains the SNOMED codes for the medicines we are investigating.
+More information about each SNOMED code included in this analysis is shown in the methods section below (see dm+d Table).
 
 ```{r}
 # Define vector with selected SNOMED codes for COVID Treatments
@@ -74,7 +73,6 @@ codelist = read_csv(here("data/meds_covid_meds.csv"),
 # changed col type in read_csv function above 
 # (read_csv works slightly different to read.csv)
 codes = codelist$id
-
 ```
 
 ## Data
@@ -82,13 +80,11 @@ codes = codelist$id
 Before we can analyse trends and variation in the use of asthma biologics we need to prepare our dataset. 
 This analysis uses three different sources of data.
 
-
 ### NHS Trusts
 
 - The NHS Digital "GP mapping file" which provides STP and region names mapped to STP and region ODS codes, published [here](https://digital.nhs.uk/data-and-information/publications/statistical/patients-registered-at-a-gp-practice/september-2020).
 
 - The NHS Digital "Etr" file that maps trust organisation codes to trust names, STP ODS codes and region ODS codes, published [here](https://digital.nhs.uk/services/organisation-data-service/data-downloads/other-nhs-organisations).
-
 
 ```{r, cache=TRUE}
 # Load ETR data
@@ -96,15 +92,18 @@ df_etr <- readr::read_csv(here::here("data/etr_tidy.csv")) %>%
   select(c("ods_code", "ods_name", "region_code", "stp_code")) 
 
 # load older ETR data and find any additional codes here not in current list
-df_etr_historic <- readr::read_csv(here::here("data/etr.csv"), col_names = FALSE) %>%
+df_etr_historic <- readr::read_csv(here::here("data/etr.csv"), 
+                                   col_names = FALSE) %>%
   select(1:4) 
+
 colnames(df_etr_historic) <- c("ods_code", "ods_name", "region_code", "stp_code")
  
 df_etr_intersect <- intersect(df_etr$ods_code, df_etr_historic$ods_code)
+
 df_etr_historic <- df_etr_historic %>% 
   dplyr::filter(!ods_code %in% df_etr_intersect)
-df_etr <- rbind(df_etr, df_etr_historic)
 
+df_etr <- rbind(df_etr, df_etr_historic)
 
 # Load stp to regions data
 stp_to_region_map <- read_csv(here::here("data/gp-reg-pat-prac-map.csv")) %>%
@@ -119,14 +118,14 @@ stp_count <- df_etr %>%
   summarise(n = n(),
             ods_code = first(ods_code),
             ods_name = first(ods_name))
-stp_count <- left_join(stp_count, stp_to_region_map, on=c("stp_code"))
 
+stp_count <- left_join(stp_count, stp_to_region_map, by = "stp_code")
 ```
 
 ```{r tab-etr, cache=TRUE}
 # Sustainability and Transformation Partnerships (STPs) 
 df_etr %>% 
-  left_join(stp_to_region_map) %>% 
+  left_join(stp_to_region_map, by = "stp_code") %>% 
   select(ods_name, stp_name, comm_region_name) %>% 
   mutate(stp_name = fct_explicit_na(stp_name),
          comm_region_name = fct_explicit_na(comm_region_name)) %>%
@@ -136,8 +135,7 @@ df_etr %>%
                                       stp_name = reactable::colDef(name = "STP", 
                                                                    minWidth = 150),
                                       comm_region_name = reactable::colDef(name = "Region", 
-                                                                           minWidth = 70)
-                       ),
+                                                                           minWidth = 70)),
                        style = list(fontSize = "12px"),
                        highlight = TRUE)
 ```
@@ -191,7 +189,8 @@ df_scmd_names <- db_scmd %>%
 
 check_missing <- select(df_scmd_names,c("ods_code", "ods_name", "stp_code")) %>%
   distinct(.keep_all = TRUE)
-check_missing <- check_missing[order(check_missing[["ods_name"]]),]
+
+check_missing <- check_missing[order(check_missing[["ods_name"]]), ]
 
 # check which STPs are in data
 scmd_stp_count <- df_scmd_names %>% 
@@ -255,7 +254,6 @@ df_tab_sparkline %>%
             groupBy = c("ods_name"),
             columns = list(
               ods_name = reactable::colDef(name = "Trust", 
-                                           # header = with_tooltip("Trust", "ods_name"),
                                            minWidth = 200),
               count_sparkline = colDef(name = "Trend",
                                        header = with_tooltip("Trend", "Note that the y axis cannot be compared across different entries."),
@@ -263,25 +261,12 @@ df_tab_sparkline %>%
                                        cell = function(value, index) {
                                          sparkline(df_tab_sparkline$count_sparkline[[index]])
                                        }),
-              # count_box = colDef(name = "Boxplot",
-              #                    header = with_tooltip("Boxplot", "Boxplot of monthly quantity for entries with more than 10 data points."),
-              #                    minWidth = 40,
-              #                    cell = function(value, index) {
-              #                      if (sum(df_tab_sparkline$count_box[[index]] > 0) > 10) {
-              #                        
-              #                        sparkline(df_tab_sparkline$count_box[[index]],
-              #                                  type = "box")
-              #                      }
-              #                    }),
               count_box = reactable::colDef(show = FALSE),
               total_quantity = reactable::colDef(name = "Quantity",
-                                                 # header = with_tooltip("Total quantity", "total_quantity"),
                                                  minWidth = 50,
                                                  aggregate = "sum",
                                                  format = reactable::colFormat(digits = 0)),
               vmp_product_name = reactable::colDef(name = "Product", 
-                                                   # header = with_tooltip("Product", "total_quantity"),
-
                                                    minWidth = 150,
                                                    cell = function(value, index) {
                                                      vmp_snomed_code <- paste0("SNOMED: ", df_tab_sparkline$vmp_snomed_code[index])
@@ -309,11 +294,9 @@ db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
 df_dmd_info <- db_dmd_info %>% 
   filter(vmp_snomed_code %in% codes) %>% 
   collect()
-
 ```
 
 We use information on the daily defined dose (DDD) of each asthma biologic, so that the volume of each VMP can be compared directly once converted to DDDs. The WHO publish DDDs online.
-
 
 ```{r}
 # Define tibble with mg_per_ddd for join later
@@ -328,12 +311,10 @@ add_ddds <- read_csv(here("data/meds_covid_meds_additional_ddds.csv"),
 add_ddds <- select(add_ddds, c('nm', 'ddd'))
 ddds <- rbind(ddds, add_ddds)
 
-
 df_scmd_mg <- df_scmd_names %>% 
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) %>% 
   left_join(ddds, by = c("vmp_product_name" = "nm"))  
 ```
-
 
 ```{r}
 df_scmd_mg %>% 
@@ -371,10 +352,7 @@ df_scmd_mg %>%
                 colGroup(name = "Strength", columns = c("strnt_nmrtr_val", "strnt_dnmtr_val"))
               ),
               style = list(fontSize = "12px"),
-              highlight = TRUE
-    )
-
-
+              highlight = TRUE)
 ```
 
 ## Convert volume
@@ -388,7 +366,6 @@ The final data cleaning step is to convert the volume from VMP quantity (as prov
   - Finally translate volume in strength of ingredient to volume in DDDs, using the DDD information published by the WHO
 
 ```{r}
-
 df_scmd_ddd <- df_scmd_mg %>% 
   mutate(volume_singles = total_quantity / udfs,
          volume_mg_strength = volume_singles * if_else(is.na(strnt_dnmtr_val), 
@@ -396,12 +373,7 @@ df_scmd_ddd <- df_scmd_mg %>%
                                                        false = strnt_nmrtr_val * 
                                                                (udfs / strnt_dnmtr_val)),
          volume_ddd = volume_mg_strength / ddd)
-
 ```
-
-
-
-
 
 # Results
 
@@ -441,15 +413,12 @@ plotly::ggplotly(temp_ggplot,
   plotly::config(displayModeBar = FALSE)
 ```
 
-
 ### Regional prescribing
 
 ```{r}
 df_scmd_ddd_map <- df_scmd_ddd %>% 
   left_join(stp_to_region_map, by = "stp_code")
 ```
-
-
 
 ```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of asthma biologics over time."}
 
@@ -555,17 +524,8 @@ temp_ggplot <- df_scmd_ddd_map_temp %>%
                fill = vtmnm,
                text = paste0("<b>STP:</b> ", stp_name, "<br>",
                              "<b>Total volume in ddd:</b> ", round(total, 0), "<br>",
-                             # "<b>Medication:</b> ", vtmnm, "<br>",
-                             "<b>", vtmnm , " volume in ddd:</b> ", round(volume_ddd, 0), " (", scales::percent(prop_use, accuracy = 0.1), ")"
-               )
-               ),
-               # text = paste0("<b>STP:</b> ", stp_name, "<br>",
-               #               "<b>Volume:</b> ", round(total, 0), "<br>",
-               #               "<b>Proportion:</b> ", scales::percent(prop_use, accuracy = 0.1), "<br>",
-               #               "<b>Medication:</b> ", vtmnm)), 
-           stat='identity',
-           # position = position_dodge()
-           ) +
+                             "<b>", vtmnm , " volume in ddd:</b> ", round(volume_ddd, 0), " (", scales::percent(prop_use, accuracy = 0.1), ")")),
+           stat = 'identity') +
   scale_fill_viridis_d() +
   labs(subtitle = paste0("From: ", min(df_scmd_ddd_map$year_month), " to ", max(df_scmd_ddd_map$year_month)),
        x = NULL,
@@ -573,7 +533,7 @@ temp_ggplot <- df_scmd_ddd_map_temp %>%
        fill = NULL) +
   scale_y_continuous(labels = scales::comma) +
   theme(text = element_text(size = 12),
-        legend.position="bottom") +
+        legend.position = "bottom") +
   coord_flip()
 
 # temp_ggplot
@@ -583,9 +543,8 @@ plotly::ggplotly(temp_ggplot,
 layout(legend = list(orientation = "h", x = -0.5, y =-.15))
 ```
 
-
-
 ```{r}
+# Define colour palette for conditional formatting
 green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
 
 df_scmd_ddd_map_temp_temp <- df_scmd_ddd_map_temp %>% 
@@ -637,8 +596,6 @@ reactable(data_tab,
           ),
           style = list(fontSize = "12px"),
           highlight = TRUE)
-
 ```
-
 
 # References
