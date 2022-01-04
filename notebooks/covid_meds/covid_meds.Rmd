@@ -546,7 +546,17 @@ layout(legend = list(orientation = "h", x = -0.5, y =-.15))
 
 ```{r}
 # Create table, code here: "scripts/create_tables.R"
-create_med_use_table(df_scmd_ddd_map_temp)
+# the data is defined above and needs to contain the following columns:
+# - stp_name <fct>
+# - vtmnm <chr>
+# - volume_ddd <dbl>
+# - prop_use <dbl>
+# - pos <dbl>
+# - total <dbl>
+# - rank <int>
+
+create_med_use_table(data = df_scmd_ddd_map_temp)
+
 ```
 
 
