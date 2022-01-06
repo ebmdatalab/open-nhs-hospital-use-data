@@ -40,8 +40,7 @@ ingredient_list <- c('Sodium Oxybate',
                      'Pitolisant', 
                      'Solriamfetol', 
                      'Modafinol', 
-                     'Dexamfetamine', 
-                     'Methylphenidate')
+                     'Dexamfetamine')
 ```
 
 # Create SQL queries
@@ -80,18 +79,35 @@ cat(sql_wild_ingredients)
 
 # Show results
 
-- Using SQL codes with wildcards here
+- Using SQL codes with wildcards 
 
 ```{r, cache=TRUE}
 df_ingredients <- dplyr::tbl(conn_ebm_dmd, sql_wild_ingredients) %>% 
   collect()
 ```
 
+## ddd availability
+
+The table below shows the number of products (`n`) with available daily defined dose (`ddd_available`) information in our database.
+More information can be found in the table with detailed information at the end of this document.
+
+```{r}
+
+df_ingredients %>% 
+  group_by(ingredient) %>% 
+  count("ddd_available" = !is.na(ddd), name = "n") %>% 
+  reactable(filterable = TRUE,
+            style = list(fontSize = "12px"),
+            highlight = TRUE)
+```
+
+## Detailed information
 
 ```{r}
 
 df_ingredients %>% 
   reactable(filterable = TRUE,
+            groupBy = "ingredient",
             columns = list(
               type = reactable::colDef(minWidth = 30),
               id = reactable::colDef(minWidth = 60),
