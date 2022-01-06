@@ -543,8 +543,18 @@ plotly::ggplotly(temp_ggplot,
 temp_ggplot <- df_scmd_ddd_map %>% 
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
-  group_by(comm_region_name, vtmnm) %>%
+  # now group to vtmnm to allow filtering to top 10 drugs
+  group_by(vtmnm) %>%
+  drop_na(volume_ddd) %>%
+  mutate(total = sum(volume_ddd)) %>%
+  ungroup() %>% 
+  mutate(rank = dense_rank(-total),
+         new_vtm = if_else(rank > 7, true = "Other", 
+                                     false = vtmnm)) %>%
+  group_by(comm_region_name, new_vtm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>%
+  mutate(rank = dense_rank(-volume_ddd),
+         new_vtm = fct_reorder(new_vtm, -rank)) %>%
   group_by(comm_region_name) %>%
   mutate(prop_use = volume_ddd / sum(volume_ddd),
          pos = cumsum(volume_ddd) - volume_ddd/2,
@@ -553,11 +563,11 @@ temp_ggplot <- df_scmd_ddd_map %>%
   mutate(comm_region_name = fct_reorder(comm_region_name, total)) %>% 
   ggplot(aes(comm_region_name)) +
   geom_bar(aes(y = volume_ddd,
-               fill = vtmnm,
+               fill = new_vtm,
                text = paste0("<b>Region:</b> ", comm_region_name, "<br>",
                              "<b>Total volume in ddd:</b> ", round(total, 0), "<br>",
                              # "<b>Medication:</b> ", vtmnm, "<br>",
-                             "<b>", vtmnm , " volume in ddd (%):</b> ", round(volume_ddd, 0), " (", scales::percent(prop_use, accuracy = 0.1), ")"
+                             "<b>", new_vtm , " volume in ddd (%):</b> ", round(volume_ddd, 0), " (", scales::percent(prop_use, accuracy = 0.1), ")"
                              )
                ), 
            stat='identity',
