@@ -316,6 +316,11 @@ df_scmd_dmd <- df_scmd_names %>%
   left_join(df_dmd_info, by = c("vmp_snomed_code", "vmp_product_name")) 
 df_scmd_mg <- df_scmd_dmd %>%   
   left_join(ddds, by = c("vmp_product_name" = "nm"))  
+
+# also add other groupings
+groups <- select(codelist, c('nm', 'Route')) 
+df_scmd_mg <- df_scmd_mg %>%   
+  left_join(groups, by = c("vmp_product_name" = "nm")) 
 ```
 
 
@@ -442,6 +447,41 @@ plotly::ggplotly(temp_ggplot,
   plotly::config(displayModeBar = FALSE)
 ```
 
+### National prescribing by Route of Administration
+
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of antibiotics over time by Route."}
+
+temp_ggplot <- df_scmd_ddd %>%
+  group_by(year_month, Route) %>%
+  drop_na(volume_ddd) %>%
+  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  ggplot(aes(x = year_month, 
+             y = volume_ddd, 
+             colour = Route, 
+             group = Route)) +
+  geom_line(size = 1, alpha = 0.5) +
+  geom_point(aes(text = paste0("<b>Month:</b> ", 
+                               lubridate::month(year_month, label = TRUE), " ",
+                               lubridate::year(year_month), "<br>",
+                               "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
+                               "<b>Medication:</b> ", Route)), size = 2) +
+  scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
+  labs(x = NULL, y = "Defined Daily Dose",
+       colour = NULL) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
+             color = "orange", 
+             linetype = 2,
+             lwd = .5, 
+             alpha = .5) +
+  theme(text = element_text(size = 12))
+
+# temp_ggplot
+
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE)
+```
+
 ### Regional prescribing
 
 ```{r}
@@ -449,12 +489,21 @@ df_scmd_ddd_map <- df_scmd_ddd %>%
   left_join(stp_to_region_map, by = "stp_code")
 ```
 
+
 ```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of Antibiotics over time."}
 
 temp_ggplot <- df_scmd_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd)) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
+  # group to vtmnm to allow filtering to top 20 drugs
+  group_by(vtmnm) %>%
+  drop_na('volume_ddd') %>%
+  mutate(total = sum(volume_ddd)) %>%
+  ungroup() %>% 
+  mutate(rank = dense_rank(-total),
+         vtmnm = fct_reorder(vtmnm, rank)) %>%
+  filter(rank <= 4) %>% 
   ggplot(aes(x = year_month, y = volume_ddd, 
              colour = comm_region_name, group = comm_region_name)) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
