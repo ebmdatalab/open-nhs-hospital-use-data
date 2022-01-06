@@ -1,0 +1,113 @@
+---
+title: "Create Codelists"
+output:
+  html_document:
+    code_folding: hide
+    toc: true
+    toc_depth: 3
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+# Load pkgs and funs
+
+```{r, class.source = 'fold-show'}
+# R packages
+library(reactable)
+library(tidyverse)
+library(here)
+library(dbplyr)
+library(readr)
+library(bigrquery)
+library(DBI)
+
+# Helper fun connecting to bigquery
+source(here("scripts/connect_bigquery.R"))
+
+# Helper function to write SQL queries
+source(here("scripts/create_ingredient_lookup_sql.R"))
+
+```
+
+# Define ingredients
+
+```{r, class.source = 'fold-show'}
+# Define product list for lookup
+ingredient_list <- c('Sodium Oxybate', 
+                     'Pitolisant', 
+                     'Solriamfetol', 
+                     'Modafinol', 
+                     'Dexamfetamine', 
+                     'Methylphenidate')
+```
+
+# Create SQL queries
+
+```{r, class.source = 'fold-show'}
+# Without wildcards
+sql_exact_ingredients <- create_ingredient_lookup_sql(ingredient_list, 
+                                                       wildcards = FALSE,
+                                                       return = "sql")
+
+# With wildcards
+sql_wild_ingredients <- create_ingredient_lookup_sql(ingredient_list, 
+                                                       wildcards = TRUE,
+                                                       return = "sql")
+```
+
+The code of the function `create_ingredients_lookup_sql()` is available in the chunk below:
+
+```{r code = readLines(here('scripts/create_ingredient_lookup_sql.R'))}
+
+```
+
+# Show SQL query
+
+## Exact match
+
+```{r, class.source = 'fold-show'}
+cat(sql_exact_ingredients)
+```
+
+## Wildcards
+
+```{r, class.source = 'fold-show'}
+cat(sql_wild_ingredients)
+```
+
+# Show results
+
+- Using SQL codes with wildcards here
+
+```{r, cache=TRUE}
+df_ingredients <- dplyr::tbl(conn_ebm_dmd, sql_wild_ingredients) %>% 
+  collect()
+```
+
+
+```{r}
+
+df_ingredients %>% 
+  reactable(filterable = TRUE,
+            columns = list(
+              type = reactable::colDef(minWidth = 30),
+              id = reactable::colDef(minWidth = 60),
+              bnf_code = reactable::colDef(minWidth = 100),
+              nm = reactable::colDef(minWidth = 200),
+              ingredient = reactable::colDef(minWidth = 100),
+              ddd = reactable::colDef(minWidth = 30)
+            ),
+            style = list(fontSize = "12px"),
+            highlight = TRUE
+)
+```
+
+# Write .csv
+
+```{r}
+# write_csv(df_ingredients, file = )
+```
+
