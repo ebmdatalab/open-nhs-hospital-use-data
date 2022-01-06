@@ -124,6 +124,7 @@ df_ingredients %>%
 # Write .csv
 
 ```{r}
-# write_csv(df_ingredients, file = )
+# Uncomment this line and add correct file name 
+# write_csv(df_ingredients, file = "data/ingredient_list_meds.csv")
 ```
 
