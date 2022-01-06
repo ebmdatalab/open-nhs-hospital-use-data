@@ -539,7 +539,7 @@ plotly::ggplotly(temp_ggplot,
 
 ### Regional prescribing
 
-```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of Antibiotics."}
+```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of top 7 Antibiotics."}
 temp_ggplot <- df_scmd_ddd_map %>% 
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
@@ -562,7 +562,7 @@ temp_ggplot <- df_scmd_ddd_map %>%
   ungroup() %>% 
   mutate(comm_region_name = fct_reorder(comm_region_name, total)) %>% 
   ggplot(aes(comm_region_name)) +
-  geom_bar(aes(y = volume_ddd,
+  geom_bar(aes(y = volume_ddd/10^9,
                fill = new_vtm,
                text = paste0("<b>Region:</b> ", comm_region_name, "<br>",
                              "<b>Total volume in ddd:</b> ", round(total, 0), "<br>",
@@ -576,7 +576,7 @@ temp_ggplot <- df_scmd_ddd_map %>%
   scale_fill_viridis_d() +
   labs(subtitle = paste0("From: ", min(df_scmd_ddd_map$year_month), " to ", max(df_scmd_ddd_map$year_month)),
        x = NULL,
-       y = "Defined Daily Dose",
+       y = "Defined Daily Dose (billions)",
        fill = NULL) +
   scale_y_continuous(labels = scales::comma) +
   theme(text = element_text(size = 12)) +
