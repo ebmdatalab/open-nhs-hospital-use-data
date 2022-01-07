@@ -3,7 +3,7 @@ create_med_use_table <- function(data, field) {
   # Select variable names (just a quick check that the correct variables are in data)
   # This needs to be tested better
   data <- data %>% 
-    select(stp_name, field, volume_ddd, prop_use, pos, total, rank)
+    select(stp_name, all_of(field), volume_ddd, prop_use, pos, total, rank)
   
   # Define data for table ----
   data_temp <- data %>% 
