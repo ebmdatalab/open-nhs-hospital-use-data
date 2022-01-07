@@ -692,7 +692,7 @@ layout(legend = list(orientation = "h", x = -0.5, y =-.15))
 # - total <dbl>
 # - rank <int>
 
-create_med_use_table(data = df_scmd_ddd_map_temp)
+create_med_use_table(data = df_scmd_ddd_map_temp, field = "new_vtm")
 
 ```
 
