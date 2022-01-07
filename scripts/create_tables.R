@@ -51,7 +51,7 @@ create_med_use_table <- function(data, field) {
   col_def_list_prop_all <- rep(col_def_list_prop_1, length(prop_use_var_list))
   names(col_def_list_prop_all) <- prop_use_var_list
   
-  # Regex to extract the product name only from the column name
+  # Extract the product name only from the column name
   prop_use_var_list_products <- stringr::str_remove(string = prop_use_var_list, 
                                                     pattern = "prop_use_")
   
