@@ -54,7 +54,7 @@ Our team delivers [OpenPrescribing.net](https://openprescribing.net/), a publicl
 We were concerned that the NHS did not share hospital medicines data in a similar manner to primary care and that it should be shared [see @Goldacre2020]. 
 
 In September 2020 NHS BSA published hospital medicines data for the first time. 
-We have prepared the following notebook for investigating the use of COVID treatments in English hospitals. 
+We have prepared the following notebook for investigating the use of rheumatology treatments in English hospitals. 
 
 If you have any feedback or insight The DataLab team can be contacted at ebmdatalab@phc.ox.ac.uk.
 
@@ -62,17 +62,16 @@ If you have any feedback or insight The DataLab team can be contacted at ebmdata
 
 ## Medicines codelist
 
-The file `med_covid_meds.csv` contains the SNOMED codes for the medicines we are investigating.
+The file `data/meds_rheumatology_meds.csv` contains the SNOMED codes for the medicines we are investigating.
 More information about each SNOMED code included in this analysis is shown in the methods section below (see dm+d Table).
 
 ```{r}
-# Define vector with selected SNOMED codes for COVID Treatments
+# Define vector with selected SNOMED codes for rheumatology Treatments
 codelist <- read_csv(here("data/meds_rheumatology_meds.csv"),
                     # convert to strings (they are stored as strings in SCMD table)
                     col_types = cols(id = col_character()))
 
 # changed col type in read_csv function above 
-# (read_csv works slightly different to read.csv)
 codes <-  codelist$id
 ```
 
@@ -149,28 +148,16 @@ df_etr %>%
 # Secondary Care Medicines Data
 # Connect to database, filter, and collect data.
 # Get SCMD dataset
-# Check negative quantities, seems to be a small (0.7%) problem in the data
-# dplyr::tbl(conn_ebm_scmd, "scmd") %>% 
-#   filter(between(year_month, "2019-01-01", "2019-12-31")) %>% 
-#   # arrange(desc(year_month))
-#   filter(total_quanity_in_vmp_unit > 0) %>% 
-#   count()
-#   group_by(vmp_snomed_code) %>% 
-#   summarise(n = n(),
-#             sum = sum(total_quanity_in_vmp_unit < 0))
-
 db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
 
 # Create dataframe for table
 db_scmd <- db_scmd %>% 
   dplyr::filter(vmp_snomed_code %in% codes)
 
-db_scmd <- dplyr::collect(db_scmd)
-
-# df_scmd %>% skimr::skim()
+df_scmd <- dplyr::collect(db_scmd)
 
 # Tidy tidy tidy data
-df_scmd_names <- db_scmd %>% 
+df_scmd_names <- df_scmd %>% 
   dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
   # some data cleaning as scmd uses some ods codes that are not up to date
   mutate(stp_code = as.character(stp_code),
@@ -376,7 +363,7 @@ df_scmd_ddd <- df_scmd_mg %>%
 
 ### National prescribing
 
-```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of COVID treatments over time."}
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of rheumatology treatments over time."}
 
 temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, vtmnm) %>%
@@ -415,7 +402,7 @@ df_scmd_ddd_map <- df_scmd_ddd %>%
   left_join(stp_to_region_map, by = "stp_code")
 ```
 
-```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of COVID treatments over time."}
+```{r, fig.width=10, fig.height=12, fig.cap="Figure. Regional prescribing of rheumatology treatments over time."}
 
 temp_ggplot <- df_scmd_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
@@ -441,8 +428,8 @@ temp_ggplot <- df_scmd_ddd_map %>%
   labs(x = NULL, 
        y = "Defined Daily Dose",
        colour = NULL) +
-  facet_wrap(~vtmnm, ncol = 1) +
-  theme(text = element_text(size = 12)) 
+  facet_wrap(~vtmnm, ncol = 3) +
+  theme(text = element_text(size = 9)) 
   
 # temp_ggplot
 
@@ -456,7 +443,7 @@ plotly::ggplotly(temp_ggplot,
 
 ### Regional prescribing
 
-```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of COVID treatments."}
+```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of rheumatology treatments."}
 temp_ggplot <- df_scmd_ddd_map %>% 
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
@@ -497,7 +484,7 @@ plotly::ggplotly(temp_ggplot,
 
 ### STPs
 
-```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of COVID treatments for 20 STPs with the largest volume across all selected medications."}
+```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of rheumatology treatments for 20 STPs with the largest volume across all selected medications."}
 df_scmd_ddd_map_temp <- df_scmd_ddd_map %>% 
   filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
   select(year_month, ods_code, vtmnm, volume_ddd, stp_name) %>% 
