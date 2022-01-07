@@ -1,4 +1,4 @@
-type,id,bnf_code,nm,ingredient,route,ddd,DDD_UOMCD
+type,id,bnf_code,nm,ingredient,route,ddd,ddd_uomcd
 amp,3631711000001102,1310012K0BJAAAR,Acea 0.75% gel (Ferndale Pharmaceuticals Ltd),Metronidazole,Cutaneous,,
 amp,3631711000001102,1310012K0BJAAAR,Acea 0.75% gel (Ferndale Pharmaceuticals Ltd),Metronidazole,Vaginal,,
 amp,4548811000001106,0501030V0BBAAAA,Achromycin 250mg capsules (Wyeth Pharmaceuticals),Tetracycline hydrochloride,Oral,1.0,258682000.0
