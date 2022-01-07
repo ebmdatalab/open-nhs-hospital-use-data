@@ -185,6 +185,8 @@ df_scmd_names <- db_scmd %>%
            ods_code == "R1E" ~ "QNC", # Staffs
            ods_code == "TAD" ~ "QWO", # W Yorks
            ods_code == "TAJ" ~ "QUA", # Black country
+           ods_code == "TAH" ~ "QF7", # South Yorkshire & Bassetlow
+           ods_code == "TAF" ~ "QMJ", # North Central London
            TRUE ~ stp_code
          ))
 
