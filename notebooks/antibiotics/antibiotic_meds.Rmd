@@ -62,7 +62,7 @@ If you have any feedback or insight The DataLab team can be contacted at ebmdata
 
 ## Medicines codelist
 
-The file `antibac_codelist.csv` contains the SNOMED codes for the medicines we are investigating. It also contains relevant groupings and DDDs (where they exist).
+We will load the csv containing the SNOMED codes for the medicines we are investigating. It also contains relevant groupings and DDDs (where they exist).
 More information about each SNOMED code included in this analysis is shown in the methods section below (see dm+d Table).
 
 ```{r}
@@ -318,7 +318,7 @@ df_scmd_mg <- df_scmd_dmd %>%
   left_join(ddds, by = c("vmp_product_name" = "nm"))  
 
 # also add other groupings
-groups <- select(codelist, c('nm', 'Route')) 
+groups <- select(codelist, c('nm', 'Route', 'paragraph')) 
 df_scmd_mg <- df_scmd_mg %>%   
   left_join(groups, by = c("vmp_product_name" = "nm")) 
 ```
@@ -326,7 +326,7 @@ df_scmd_mg <- df_scmd_mg %>%
 
 ```{r}
 df_scmd_mg %>% 
-  select(vmp_snomed_code, vtmnm, form_descr, udfs, udfs_descr,
+  select(vmp_snomed_code, paragraph, vtmnm, form_descr, udfs, udfs_descr,
          strnt_nmrtr_val, strnt_nmrtr_uom, strnt_dnmtr_val,strnt_dnmtr_descr, 
          ddd) %>% 
   distinct() %>% 
@@ -334,6 +334,8 @@ df_scmd_mg %>%
               columns = list(
                 vmp_snomed_code = reactable::colDef(name = "SNOMED", 
                                                     minWidth = 100),
+                paragraph = reactable::colDef(name = "Paragraph", 
+                                          minWidth = 100),
                 vtmnm = reactable::colDef(name = "Name", 
                                           minWidth = 100),
                 form_descr = reactable::colDef(name = "Form", 
@@ -395,9 +397,8 @@ df_scmd_ddd <- df_scmd_mg %>%
   filter(vtmnm == 'Colistin' & year_month >= 
            as.Date("2020-04-01") & year_month <= as.Date("2020-08-01")
          & volume_ddd) %>%
-  drop_na(volume_ddd) %>% 
   group_by(year_month) %>%
-  summarise(volume_ddd = sum(volume_ddd)) 
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) 
 
 ```
 
@@ -411,17 +412,16 @@ df_scmd_ddd <- df_scmd_mg %>%
 
 temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, vtmnm) %>%
-  drop_na(volume_ddd) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
   # now group to vtmnm to allow filtering to top 20 drugs
   group_by(vtmnm) %>%
-  mutate(total = sum(volume_ddd)) %>%
+  mutate(total = sum(volume_ddd, na.rm = TRUE)) %>%
   ungroup() %>% 
   mutate(rank = dense_rank(-total),
          vtmnm = fct_reorder(vtmnm, -rank)) %>%
   filter(rank <= 20) %>% 
   ggplot(aes(x = year_month, 
-             y = volume_ddd, 
+             y = volume_ddd/10^9, 
              colour = vtmnm, 
              group = vtmnm)) +
   geom_line(size = 1, alpha = 0.5) +
@@ -431,7 +431,47 @@ temp_ggplot <- df_scmd_ddd %>%
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", vtmnm)), size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
-  labs(x = NULL, y = "Defined Daily Dose",
+  labs(x = NULL, y = "Defined Daily Dose (billions)",
+       colour = NULL) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
+             color = "orange", 
+             linetype = 2,
+             lwd = .5, 
+             alpha = .5) +
+  theme(text = element_text(size = 12))
+
+# temp_ggplot
+
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE)
+```
+
+### National prescribing by BNF Paragraph
+
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of antibiotics over time by BNF paragraph"}
+
+temp_ggplot <- df_scmd_ddd %>%
+  group_by(year_month, paragraph) %>%
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
+  # now group to para to allow sorting
+  group_by(paragraph) %>%
+  mutate(total = sum(volume_ddd, na.rm = TRUE)) %>%
+  ungroup() %>% 
+  mutate(rank = dense_rank(-total),
+         paragraph = fct_reorder(paragraph, rank)) %>%
+  ggplot(aes(x = year_month, 
+             y = volume_ddd/10^9, 
+             colour = paragraph, 
+             group = paragraph)) +
+  geom_line(size = 1, alpha = 0.5) +
+  geom_point(aes(text = paste0("<b>Month:</b> ", 
+                               lubridate::month(year_month, label = TRUE), " ",
+                               lubridate::year(year_month), "<br>",
+                               "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
+                               "<b>Medication:</b> ", paragraph)), size = 2) +
+  scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
+  labs(x = NULL, y = "Defined Daily Dose (billions)",
        colour = NULL) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
@@ -453,8 +493,7 @@ plotly::ggplotly(temp_ggplot,
 
 temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, Route) %>%
-  drop_na(volume_ddd) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
   ggplot(aes(x = year_month, 
              y = volume_ddd, 
              colour = Route, 
@@ -490,21 +529,20 @@ df_scmd_ddd_map <- df_scmd_ddd %>%
 ```
 
 
-```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of Antibiotics over time."}
+```{r, fig.width=8, fig.height=8, fig.cap="Figure. Regional prescribing of Antibiotics over time, by BNF paragraph."}
 
 temp_ggplot <- df_scmd_ddd_map %>%
-  group_by(comm_region_name, year_month, vtmnm) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  group_by(comm_region_name, year_month, paragraph) %>%
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
-  # group to vtmnm to allow filtering to top 20 drugs
-  group_by(vtmnm) %>%
-  drop_na('volume_ddd') %>%
-  mutate(total = sum(volume_ddd)) %>%
+  # group to paragraph to allow sorting/filtering
+  group_by(paragraph) %>%
+  mutate(total = sum(volume_ddd, na.rm = TRUE)) %>%
   ungroup() %>% 
   mutate(rank = dense_rank(-total),
-         vtmnm = fct_reorder(vtmnm, rank)) %>%
-  filter(rank <= 4) %>% 
-  ggplot(aes(x = year_month, y = volume_ddd, 
+         paragraph = fct_reorder(paragraph, rank)) %>%
+  filter(rank <= 5) %>% 
+  ggplot(aes(x = year_month, y = volume_ddd/10^6, 
              colour = comm_region_name, group = comm_region_name)) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
@@ -517,14 +555,14 @@ temp_ggplot <- df_scmd_ddd_map %>%
                                lubridate::year(year_month), "<br>",
                                "<b>Region:</b> ", comm_region_name, "<br>",
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
-                               "<b>Medication:</b> ", vtmnm)), 
+                               "<b>Medication:</b> ", paragraph)), 
              size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +
   scale_colour_viridis_d(end = 1) +
   labs(x = NULL, 
-       y = "Defined Daily Dose",
+       y = "Defined Daily Dose (millions)",
        colour = NULL) +
-  facet_wrap(~vtmnm, ncol = 1) +
+  facet_wrap(~paragraph, ncol = 1) +
   theme(text = element_text(size = 12)) 
   
 # temp_ggplot
@@ -545,14 +583,13 @@ temp_ggplot <- df_scmd_ddd_map %>%
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
   # now group to vtmnm to allow filtering to top N drugs
   group_by(vtmnm) %>%
-  drop_na(volume_ddd) %>%
-  mutate(total = sum(volume_ddd)) %>%
+  mutate(total = sum(volume_ddd, na.rm = TRUE)) %>%
   ungroup() %>% 
   mutate(rank = dense_rank(-total),
          new_vtm = if_else(rank > 7, true = "Other", 
                                      false = vtmnm)) %>%
   group_by(comm_region_name, new_vtm) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>%
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>%
   mutate(rank = dense_rank(-volume_ddd),
          new_vtm = fct_reorder(new_vtm, -rank)) %>%
   group_by(comm_region_name) %>%
