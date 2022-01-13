@@ -73,7 +73,14 @@ codelist = read_csv(here("data/antibac_codelist.csv"),
 
 # changed col type in read_csv function above 
 # (read_csv works slightly different to read.csv)
-codes = codelist$id
+codes = codelist$id %>%
+  unique()
+
+#codes_coamox = codelist %>%
+#  filter(ingredient == "Amoxicillin sodium") 
+
+ingredients_allowed = codelist$ingredient %>%
+  unique()
 ```
 
 ## Data
@@ -204,6 +211,7 @@ scmd_stp_count <- df_scmd_names %>%
 ```
 
 
+
 ```{r}
 # Fill explicit missing and create dataset for sparkline in table
 df_tab_sparkline <- df_scmd_names %>% 
@@ -297,14 +305,37 @@ db_dmd_info <- dplyr::tbl(conn_ebm_scmd, sql_query_dmd_info)
 df_dmd_info <- db_dmd_info %>% 
   filter(vmp_snomed_code %in% codes) %>% 
   collect()
+
+dmd_check <- df_dmd_info %>%
+  group_by(vmp_product_name) %>%
+  mutate(ings = length(unique(strnt_nmrtr_val))) %>%
+  ungroup() %>%
+  filter(ings>1)
+
+#write.csv(dmd_check,here("data/dmd_check.csv"))
+
+# filter to ingredients that are antibiotics
+df_dmd_info <- subset(df_dmd_info, ing_nm %in% ingredients_allowed) 
+
+dmd_check2 <- df_dmd_info %>%
+  group_by(vmp_product_name) %>%
+  mutate(ings = length(unique(strnt_nmrtr_val))) %>%
+  ungroup() %>%
+  filter(ings>1)
+
+#write.csv(dmd_check2,here("data/dmd_check2.csv"))
+
+  
 ```
 
 We use information on the daily defined dose (DDD) of each drug, so that the volume of each VMP can be compared directly once converted to DDDs. The WHO publish DDDs online.
 
 ```{r}
 # Define tibble with mg_per_ddd for join later
+# note these ddds are from NHSD where there is only one value per vmp, hence we can ignore ingredients here (just need to drop duplicates)
 ddds <- select(codelist, c('nm', 'ddd', 'ddd_uomcd')) %>% 
-        drop_na('ddd')
+        drop_na('ddd') %>%
+        unique()
 
 # # get additional DDDs sourced elsewhere
 # add_ddds <- read_csv(here("data/meds_covid_meds_additional_ddds.csv"),
@@ -319,10 +350,24 @@ df_scmd_dmd <- df_scmd_names %>%
 df_scmd_mg <- df_scmd_dmd %>%   
   left_join(ddds, by = c("vmp_product_name" = "nm"))  
 
-# also add other groupings
-groups <- select(codelist, c('nm', 'Route', 'paragraph')) 
+# also add other groupings for each vmp
+groups <- select(codelist, c('nm', 'Route', 'paragraph')) %>%
+  unique()
 df_scmd_mg <- df_scmd_mg %>%   
   left_join(groups, by = c("vmp_product_name" = "nm")) 
+```
+
+
+```{r} 
+# look for anomalies
+ test <- df_scmd_names %>%
+#  filter(vtmnm == 'Colistin' & year_month >= 
+#           as.Date("2020-04-01") & year_month <= as.Date("2020-08-01")
+#         & volume_ddd) %>%
+  filter(substr(vmp_product_name, 1, 6) == 'Co-amo') %>%
+  group_by(year_month) %>%
+  summarise(total_quantity = sum(total_quantity, na.rm = TRUE)) 
+
 ```
 
 
@@ -389,6 +434,8 @@ df_scmd_ddd <- df_scmd_mg %>%
                    true = ddd*strnt_nmrtr_val, 
                    false = ddd)
                               )
+
+#write.csv(df_scmd_ddd,here("data/df_scmd_ddd.csv"))
 ```
 
 
@@ -396,11 +443,12 @@ df_scmd_ddd <- df_scmd_mg %>%
 ```{r} 
 # look for anomalies
  test <- df_scmd_ddd %>%
-  filter(vtmnm == 'Colistin' & year_month >= 
-           as.Date("2020-04-01") & year_month <= as.Date("2020-08-01")
-         & volume_ddd) %>%
-  group_by(year_month) %>%
-  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) 
+#  filter(vtmnm == 'Colistin' & year_month >= 
+#           as.Date("2020-04-01") & year_month <= as.Date("2020-08-01")
+#         & volume_ddd) %>%
+  filter(substr(vtmnm, 1, 6) == 'Co-amo') %>%
+  group_by(vtmnm, year_month) %>%
+  summarise(volume_ddd = sum(total_quantity, na.rm = TRUE)) 
 
 ```
 
@@ -423,7 +471,7 @@ temp_ggplot <- df_scmd_ddd %>%
          vtmnm = fct_reorder(vtmnm, -rank)) %>%
   filter(rank <= 20) %>% 
   ggplot(aes(x = year_month, 
-             y = volume_ddd/10^9, 
+             y = volume_ddd/10^6, 
              colour = vtmnm, 
              group = vtmnm)) +
   geom_line(size = 1, alpha = 0.5) +
@@ -433,7 +481,7 @@ temp_ggplot <- df_scmd_ddd %>%
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", vtmnm)), size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
-  labs(x = NULL, y = "Defined Daily Dose (billions)",
+  labs(x = NULL, y = "Defined Daily Dose (millions)",
        colour = NULL) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
