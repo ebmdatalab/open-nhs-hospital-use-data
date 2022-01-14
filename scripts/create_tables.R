@@ -11,7 +11,7 @@ create_med_use_table <- function(data, field) {
     replace_na(list(volume_ddd = 0, 
                     prop_use = 0)) %>% 
     pivot_wider(id_cols = c(stp_name, total, rank),
-                names_from = field, 
+                names_from = all_of(field), 
                 values_from = c(volume_ddd, prop_use), 
                 values_fill = 0) %>% 
     select(stp_name, starts_with("prop"), total)
