@@ -169,15 +169,15 @@ df_etr %>%
 db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
 
 # Create dataframe for table
-db_scmd <- db_scmd %>% 
+df_scmd <- db_scmd %>% 
   dplyr::filter(vmp_snomed_code %in% codes)
 
-db_scmd <- dplyr::collect(db_scmd)
+df_scmd <- dplyr::collect(df_scmd)
 
 # df_scmd %>% skimr::skim()
 
 # Tidy tidy tidy data
-df_scmd_names <- db_scmd %>% 
+df_scmd_names <- df_scmd %>% 
   dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
   # some data cleaning as scmd uses some ods codes that are not up to date
   mutate(stp_code = as.character(stp_code),
@@ -214,23 +214,23 @@ scmd_stp_count <- df_scmd_names %>%
 
 ```{r}
 # Fill explicit missing and create dataset for sparkline in table
-df_tab_sparkline <- df_scmd_names %>% 
-  select(-c(vmp_product_name, ods_name, stp_code, stp_code, ods_name)) %>% 
-  arrange(ods_code, vmp_snomed_code, year_month) %>% 
-  as_tsibble(key = c(ods_code, vmp_snomed_code), index = year_month) %>% 
-  fill_gaps(total_quantity = 0, .full = TRUE) %>% 
-  tidyr::fill(.direction = "down") %>% 
-  as_tibble() %>% 
-  mutate(year_month = floor_date(year_month, unit = "month")) %>% 
-  group_by(year_month, ods_code, vmp_snomed_code) %>% 
-  arrange(ods_code, vmp_snomed_code, year_month) %>% 
-  mutate(total_quantity = sum(total_quantity)) %>%
-  arrange(ods_code, vmp_snomed_code, year_month) %>% 
-  distinct() %>% 
-  group_by(ods_code, vmp_snomed_code) %>%
-  dplyr::summarise(count_sparkline = list(total_quantity)) %>% 
-  group_by(ods_code, vmp_snomed_code) %>% 
-  dplyr::mutate(total_quantity = sum(unlist(count_sparkline)))
+# df_tab_sparkline <- df_scmd_names %>% 
+#   select(-c(vmp_product_name, ods_name, stp_code, stp_code, ods_name)) %>% 
+#   arrange(ods_code, vmp_snomed_code, year_month) %>% 
+#   as_tsibble(key = c(ods_code, vmp_snomed_code), index = year_month) %>% 
+#   fill_gaps(total_quantity = 0, .full = TRUE) %>% 
+#   tidyr::fill(.direction = "down") %>% 
+#   as_tibble() %>% 
+#   mutate(year_month = floor_date(year_month, unit = "month")) %>% 
+#   group_by(year_month, ods_code, vmp_snomed_code) %>% 
+#   arrange(ods_code, vmp_snomed_code, year_month) %>% 
+#   mutate(total_quantity = sum(total_quantity)) %>%
+#   arrange(ods_code, vmp_snomed_code, year_month) %>% 
+#   distinct() %>% 
+#   group_by(ods_code, vmp_snomed_code) %>%
+#   dplyr::summarise(count_sparkline = list(total_quantity)) %>% 
+#   group_by(ods_code, vmp_snomed_code) %>% 
+#   dplyr::mutate(total_quantity = sum(unlist(count_sparkline)))
 
 # Create lookup datasets for joining
 # SNOMED
@@ -351,7 +351,7 @@ df_scmd_mg <- df_scmd_dmd %>%
   left_join(ddds, by = c("vmp_product_name" = "nm"))  
 
 # also add other groupings for each vmp
-groups <- select(codelist, c('nm', 'Route', 'paragraph')) %>%
+groups <- select(codelist, c('nm', 'Route', 'paragraph', 'category')) %>%
   unique()
 df_scmd_mg <- df_scmd_mg %>%   
   left_join(groups, by = c("vmp_product_name" = "nm")) 
@@ -511,7 +511,7 @@ temp_ggplot <- df_scmd_ddd %>%
   mutate(rank = dense_rank(-total),
          paragraph = fct_reorder(paragraph, rank)) %>%
   ggplot(aes(x = year_month, 
-             y = volume_ddd/10^9, 
+             y = volume_ddd/10^6, 
              colour = paragraph, 
              group = paragraph)) +
   geom_line(size = 1, alpha = 0.5) +
@@ -521,7 +521,41 @@ temp_ggplot <- df_scmd_ddd %>%
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", paragraph)), size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
-  labs(x = NULL, y = "Defined Daily Dose (billions)",
+  labs(x = NULL, y = "Defined Daily Dose (millions)",
+       colour = NULL) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
+             color = "orange", 
+             linetype = 2,
+             lwd = .5, 
+             alpha = .5) +
+  theme(text = element_text(size = 12))
+
+# temp_ggplot
+
+plotly::ggplotly(temp_ggplot,
+                 tooltip = "text") %>%
+  plotly::config(displayModeBar = FALSE)
+```
+
+### National prescribing by WHO Category
+
+```{r, fig.width=7.2, fig.height=3, cache=TRUE, fig.cap="Figure. National prescribing of antibiotics over time by WHO Category"}
+
+temp_ggplot <- df_scmd_ddd %>%
+  group_by(year_month, category) %>%
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
+  ggplot(aes(x = year_month, 
+             y = volume_ddd/10^6, 
+             colour = category, 
+             group = category)) +
+  geom_line(size = 1, alpha = 0.5) +
+  geom_point(aes(text = paste0("<b>Month:</b> ", 
+                               lubridate::month(year_month, label = TRUE), " ",
+                               lubridate::year(year_month), "<br>",
+                               "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
+                               "<b>Medication:</b> ", category)), size = 2) +
+  scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
+  labs(x = NULL, y = "Defined Daily Dose (millions)",
        colour = NULL) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
@@ -545,7 +579,7 @@ temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, Route) %>%
   summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
   ggplot(aes(x = year_month, 
-             y = volume_ddd, 
+             y = volume_ddd/10^6, 
              colour = Route, 
              group = Route)) +
   geom_line(size = 1, alpha = 0.5) +
@@ -555,7 +589,7 @@ temp_ggplot <- df_scmd_ddd %>%
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", Route)), size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
-  labs(x = NULL, y = "Defined Daily Dose",
+  labs(x = NULL, y = "Defined Daily Dose (millions)",
        colour = NULL) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
