@@ -23,7 +23,7 @@ create_med_use_table <- function(data, field) {
                             length = nrow(data_temp)))
   
   # Define colour palette for conditional formatting ---
-  green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
+  # green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
   
   # Extract list of column names from data for defining conditional formatting
   # Here we extract all variable names starting with "prop_use"
@@ -31,17 +31,17 @@ create_med_use_table <- function(data, field) {
   
   # Define generic function for conditional formatting
   # Note, this only works when the data that is used for the table is names "data_tab"
-  col_style_fun <- function(value) {
-    normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-    color <- green_pal(normalized)
-    list(background = color)
-  }
+  # col_style_fun <- function(value) {
+  #   normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
+  #   color <- green_pal(normalized)
+  #   list(background = color)
+  # }
   
   # Create list with default column formatting for one column
   # Add a placeholder for the name of each column, this will be replaced with the
   # correct names in a for loop later
   col_def_list_prop_1 <- list(reactable::colDef(name = "NAME_PLACEHOLDER",
-                                                style = col_style_fun,
+                                                # style = col_style_fun,
                                                 minWidth = 100,
                                                 format = colFormat(percent = TRUE, 
                                                                    digits = 1)))
