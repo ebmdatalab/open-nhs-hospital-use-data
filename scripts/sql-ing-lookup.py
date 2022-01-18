@@ -45,9 +45,9 @@ def scmd_ingredient_query(ingredient_list, str_to_lower = True, wildcards = "bot
     # For loop writing WHERE and OR statements 
     for index, ingredient_position in enumerate(ingredient_list):
         if index <= 0:
-            sql_query_where = f"WHERE {sql_str_lower_01}ing.nm{sql_str_lower_02} LIKE LOWER({ingredient_list[0]})"
+            sql_query_where = f"WHERE {sql_str_lower_01}ing.nm{sql_str_lower_02} LIKE {ingredient_list[0]}"
         elif index > 0:
-            sql_query_or.append(f"   OR {sql_str_lower_01}ing.nm{sql_str_lower_02} LIKE LOWER({ingredient_list[index]})")
+            sql_query_or.append(f"   OR {sql_str_lower_01}ing.nm{sql_str_lower_02} LIKE {ingredient_list[index]}")
 
     # Join all OR statemtns together
     sql_query_or_str = "\n".join(sql_query_or)
