@@ -17,11 +17,11 @@ def scmd_ingredient_query(ingredients, str_to_lower=True, wildcards=None):
                        "LEFT JOIN dmd.ddd on vmp.id = ddd.vpid\n")
 
     # Convert ingredients to lower and define objects for generating SQL query
-    if str_to_lower == True:
+    if str_to_lower:
         ingredients = [ingredient.lower() for ingredient in ingredients]
         sql_str_lower_01 = "LOWER("
         sql_str_lower_02 = ")"
-    elif str_to_lower == False:
+    else:
         sql_str_lower_01 = ""
         sql_str_lower_02 = ""
 
@@ -32,12 +32,12 @@ def scmd_ingredient_query(ingredients, str_to_lower=True, wildcards=None):
         ingredients = [f"{ingredient}%" for ingredient in ingredients]
     elif wildcards == "both":
         ingredients = [f"%{ingredient}%" for ingredient in ingredients]
+    elif wildcards == None:
+        ingredients = ingredients 
     else:
-        raise ValueError(
-            'Second argument "wildcards" should be one of: "prefix", "suffix", "both", or None')
+        raise ValueError('Second argument "wildcards" should be one of: "prefix", "suffix", "both", or None')
 
-    # Define empty objects for loop
-    sql_query_where = []
+    # Define empty list object for loop
     sql_query_or = list()
 
     # For loop writing WHERE and OR statements
@@ -58,10 +58,11 @@ def scmd_ingredient_query(ingredients, str_to_lower=True, wildcards=None):
     return sql_query_return
 
 # %%
-
-
+# Define example drugs
 ingredients_study = ["Drug 1 DDD Drug", "Drug BBB", "ccc drug 5", "a-drug-11"]
 
+# %%
+# Generate SQL query
 sql_query_study = scmd_ingredient_query(ingredients=ingredients_study,
                                         str_to_lower=True,
                                         wildcards="both")
