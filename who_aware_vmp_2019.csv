@@ -1,0 +1,724 @@
+vmp,route,ing_nm_1,ing_nm_2,atc,category,class,listed_on_eml_2019
+12936711000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13372911000001104,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+16089611000001103,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+39704811000001109,,Tetracycline,,J01AA07,Access,Tetracyclines,False
+323491007,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+324303009,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+12934211000001104,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+16089711000001107,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+16174211000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+21658111000001102,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+27988011000001105,,Roxithromycin,,J01FA06,Watch,Macrolides,False
+35899911000001109,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+3550411000001106,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+13003811000001109,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+22390311000001100,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+23676411000001103,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+33158911000001106,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+323982001,,Cefpodoxime proxetil,,J01DD13,Watch,Third-generation cephalosporins,False
+332355000,,Erythromycin,,J01FA01,Watch,Macrolides,False
+407809004,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+35910511000001102,,Erythromycin,,J01FA01,Watch,Macrolides,False
+38726811000001109,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+323671007,,Piperacillin,tazobactam,J01CR05,Watch,Beta lactam - beta lactamase inhibitor (anti-pseudomonal),True
+323944009,,Cefradine,,J01DB09,Access,First-generation cephalosporins,False
+12301911000001109,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+12934811000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+35368711000001104,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+36564711000001108,,Erythromycin,,J01FA01,Watch,Macrolides,False
+330951005,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+9742311000001103,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+12940811000001109,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+22514411000001103,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+35084911000001108,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+39020911000001103,,Fusidic Acid,,J01XC01,Watch,Steroid antibacterials,False
+323567000,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+4516011000001106,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+12863011000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12936011000001104,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13455811000001106,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+18482711000001103,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+22455011000001109,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+37083711000001108,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+39694811000001102,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+3405211000001103,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+3788411000001100,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+7526011000001106,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+9220311000001107,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12934911000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13353311000001107,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+24535111000001106,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+31007811000001109,,Ceftolozane,tazobactam,J01DI54,Reserve,Fifth-generation cephalosporins,False
+36091911000001107,,Sulfamethoxazole,trimethoprim,J01EE01,Access,Trimethoprim - sulfonamide combinations,True
+39692111000001101,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+39710311000001106,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+324334008,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+324558006,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+19448711000001105,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+39735311000001105,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+408607002,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+9191711000001109,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+9217111000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10523211000001101,,Procaine benzylpenicillin,,J01CE09,Access,Penicillins ,True
+11378211000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12937211000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+21659511000001100,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+25194411000001109,26643006.0,Fosfomycin,,J01XX01,Watch ,Phosphonics,False
+35149911000001108,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+35934511000001102,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+36134611000001103,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+39692211000001107,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323825003,,Cefotaxime,,J01DD01,Watch,Third-generation cephalosporins,True
+8967411000001108,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+13373811000001101,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+15453111000001108,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+17463411000001109,,Aztreonam,,J01DF01,Reserve,Monobactams,False
+36051011000001102,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+38344911000001109,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+38726911000001104,,Delafloxacin,,J01MA23,Watch,Fluoroquinolones,False
+39702711000001106,,Pivmecillinam,,J01CA08,Access,Penicillins ,False
+39733511000001103,,Azithromycin,,J01FA10,Watch,Macrolides,True
+323496002,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+324076005,,Lymecycline,,J01AA04,Watch,Tetracyclines,False
+3405411000001104,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+7322211000001104,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+9218711000001101,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12019511000001104,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+324059006,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+9217711000001102,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+18519211000001105,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+38344611000001103,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+323852008,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+324523009,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+324559003,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+331851002,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+370375008,,Cefixime,,J01DD08,Watch,Third-generation cephalosporins,True
+12936411000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+27864611000001100,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+35166211000001101,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323416001,,Phenoxymethylpenicillin,,J01CE02,Access,Penicillins ,True
+330286001,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+12894211000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+22389711000001109,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+330352007,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+370763001,,Azithromycin,,J01FA10,Watch,Macrolides,True
+8973011000001101,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+10636911000001105,,Erythromycin,,J01FA01,Watch,Macrolides,False
+17463011000001100,,Aztreonam,,J01DF01,Reserve,Monobactams,False
+34819711000001101,,Chlortetracycline,,J01AA03,Watch,Tetracyclines,False
+34819711000001101,,Tetracycline,,J01AA07,Access,Tetracyclines,False
+39108511000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13374811000001103,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+15773911000001101,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+323792004,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+323961007,,Aztreonam,,J01DF01,Reserve,Monobactams,False
+324003001,,Cefprozil,,J01DC10,Watch,Second-generation cephalosporins,False
+324181004,,Erythromycin,,J01FA01,Watch,Macrolides,False
+324634001,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+4558311000001100,,Cefotaxime,,J01DD01,Watch,Third-generation cephalosporins,True
+12935211000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+39686211000001109,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+8823711000001108,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+19395211000001107,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+32749211000001108,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+37083411000001102,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+38244211000001108,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+39694611000001101,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+324070004,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+324602005,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+407831007,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+3861711000001101,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+7652011000001101,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12864211000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13372811000001109,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+33550711000001102,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+12864611000001104,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12935511000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+33631211000001106,,Cefazolin,,J01DB04,Access,First-generation cephalosporins,True
+35873211000001106,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+36087311000001101,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+769817000,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+4009711000001102,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+4009711000001102,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+9219111000001109,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+29951111000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+323855005,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+330973003,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+347272000,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12936511000001107,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+21711211000001104,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+22488711000001108,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+29951311000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+36038911000001106,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+36141011000001108,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+323793009,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+3557011000001101,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+8485211000001101,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+9215211000001101,,Phenoxymethylpenicillin,,J01CE02,Access,Penicillins ,True
+35051211000001109,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+134561001,,Linezolid,,J01XX08,Reserve,Oxazolidinones,True
+330440001,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+330950006,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+332826001,,Fusidic Acid,,J01XC01,Watch,Steroid antibacterials,False
+3557211000001106,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+8751411000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12020911000001107,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12864311000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12894311000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+38344811000001104,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+323584006,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+407790000,,Telithromycin,,J01FA15,Watch,Macrolides,False
+12934611000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+21110711000001106,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+36028511000001101,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+36031311000001103,,Netilmicin,,J01GB07,Watch,Aminoglycosides,False
+36035611000001106,47625008.0,Metronidazole,,J01XD01,Access,Imidazoles,True
+36050911000001105,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+323887008,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+324252006,,Azithromycin,,J01FA10,Watch,Macrolides,True
+9553611000001102,,Temocillin,,J01CA17,Watch,Carboxypenicillins,False
+12904711000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+39732111000001101,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+12905111000001104,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12937011000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13374911000001108,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+29827911000001102,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+36809911000001109,47625008.0,Fosfomycin,,J01XX01,Reserve,Phosphonics,True
+323396003,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+4977911000001105,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+8748511000001108,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+11381711000001105,,Spiramycin,,J01FA02,Watch,Macrolides,False
+12895111000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13352811000001106,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+32656811000001108,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+9216311000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+13353411000001100,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+24997511000001106,47625008.0,Fosfomycin,,J01XX01,Reserve,Phosphonics,True
+39700611000001103,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+39732511000001105,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+324233000,,Erythromycin,,J01FA01,Watch,Macrolides,False
+3557111000001100,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+4615111000001106,,Colistin,,J01XB01,Reserve,Polymyxins,True
+12863211000001104,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12863911000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12894611000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+21147111000001101,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+29668711000001101,,Azithromycin,,J01FA10,Watch,Macrolides,True
+35368511000001109,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+323572009,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+8485311000001109,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+35149811000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+323947002,,Cefradine,,J01DB09,Access,First-generation cephalosporins,False
+12021411000001108,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+12302011000001102,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+22102411000001102,,Ceftriaxone,,J01DD04,Watch,Third-generation cephalosporins,True
+36051111000001101,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+39601711000001109,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+323398002,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+323991002,,Ceftriaxone,,J01DD04,Watch,Third-generation cephalosporins,True
+330301005,,Chlortetracycline,,J01AA03,Watch,Tetracyclines,False
+12934711000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+23683311000001109,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+36062911000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+323935008,,Cefazolin,,J01DB04,Access,First-generation cephalosporins,True
+10153111000001102,,Benzathine benzylpenicillin,,J01CE08,Access,Penicillins ,True
+12863511000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+22751511000001108,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+35055311000001104,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+39687511000001109,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+324276003,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+4865011000001104,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+13375011000001108,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+18162111000001102,26643006.0,Fosfomycin,,J01XX01,Watch ,Phosphonics,False
+22489111000001100,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+34818411000001104,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+35897411000001105,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+36458411000001105,,Cefepime,,J01DE01,Watch,Fourth-generation cephalosporins,False
+323474008,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323570001,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+323829009,,Cefoxitin,,J01DC01,Watch,Second-generation cephalosporins,False
+324248006,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+10892911000001108,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+14253011000001103,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+19544811000001101,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+22097911000001104,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+32522511000001104,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+35915111000001103,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+323626004,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+324242007,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+4651611000001105,,Piperacillin,tazobactam,J01CR05,Watch,Beta lactam - beta lactamase inhibitor (anti-pseudomonal),True
+12089911000001108,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+35313211000001104,,Sulfamethoxazole,trimethoprim,J01EE01,Access,Trimethoprim - sulfonamide combinations,True
+36017511000001105,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+36017511000001105,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+36090611000001106,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+323738003,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+330414007,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+331141001,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+332351009,,Erythromycin,,J01FA01,Watch,Macrolides,False
+10892811000001103,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+13532711000001101,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+21386911000001101,,Ceftaroline fosamil,,J01DI02 ,Reserve,Fifth-generation cephalosporins,False
+21733111000001101,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+32748011000001108,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+36087211000001109,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+38082611000001103,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+39097511000001103,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+39718111000001106,,Linezolid,,J01XX08,Reserve,Oxazolidinones,True
+324344005,,Meropenem,,J01DH02,Watch,Carbapenems,True
+9141911000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12864011000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+36031111000001100,,Netilmicin,,J01GB07,Watch,Aminoglycosides,False
+39107211000001106,,Erythromycin,,J01FA01,Watch,Macrolides,False
+323811004,,Cefadroxil,,J01DB05,Access,First-generation cephalosporins,False
+323989005,,Ceftriaxone,,J01DD04,Watch,Third-generation cephalosporins,True
+324362001,,Sulfamethoxazole,trimethoprim,J01EE01,Access,Trimethoprim - sulfonamide combinations,True
+324570005,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+330295009,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+7651311000001107,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10228011000001109,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+11136811000001106,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+11381211000001103,,Spiramycin,,J01FA02,Watch,Macrolides,False
+13352711000001103,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+21276711000001101,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+23107411000001109,,Ceftriaxone,,J01DD04,Watch,Third-generation cephalosporins,True
+35048511000001100,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+323874002,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+324232005,,Erythromycin,,J01FA01,Watch,Macrolides,False
+330344009,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+331742001,,Fusidic Acid,,J01XC01,Watch,Steroid antibacterials,False
+22214211000001105,,Phenoxymethylpenicillin,,J01CE02,Access,Penicillins ,True
+29951211000001106,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+39405411000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+323732002,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+323816009,,Cefadroxil,,J01DB05,Access,First-generation cephalosporins,False
+443555006,,Telavancin,,J01XA03,Reserve,Glycopeptides,False
+3701511000001105,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+10532311000001101,,Spectinomycin,,J01XX04,Access,Aminocyclitols,True
+12904211000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+23673611000001106,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+39704711000001101,,Tetracycline,,J01AA07,Access,Tetracyclines,False
+323418000,,Phenoxymethylpenicillin,,J01CE02,Access,Penicillins ,True
+3682811000001105,,Chlortetracycline,,J01AA03,Watch,Tetracyclines,False
+12893811000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13003911000001104,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+13373511000001104,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+36458711000001104,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+323973007,,Cefixime,,J01DD08,Watch,Third-generation cephalosporins,True
+412555008,,Rifaximin,,A07AA11,Watch,Rifamycins,False
+12904811000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+10328711000001100,,Tigecycline,,J01AA12,Reserve,Glycylcyclines,False
+13007911000001108,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+20966711000001100,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+32750311000001106,,Pivmecillinam,,J01CA08,Access,Penicillins ,False
+39735911000001106,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+324357002,,Sulfamethoxazole,trimethoprim,J01EE01,Access,Trimethoprim - sulfonamide combinations,True
+4957911000001108,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+12863611000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12894511000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+16324411000001105,,Pristinamycin,,J01FG01,Watch,Streptogramins,False
+19373411000001100,,Azithromycin,,J01FA10,Watch,Macrolides,True
+22192511000001100,,Rifaximin,,A07AA11,Watch,Rifamycins,False
+36140911000001100,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+39405511000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+346672000,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+408015000,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+12020011000001108,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12864511000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+22683611000001109,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+31008911000001103,,Ceftobiprole medocaril,,J01DI01,Reserve,Fifth-generation cephalosporins,False
+36134711000001107,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+38521211000001101,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+323733007,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+4792411000001101,,Ertapenem,,J01DH03,Watch,Carbapenems,False
+12019611000001100,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+21511011000001108,,Piperacillin,tazobactam,J01CR05,Watch,Beta lactam - beta lactamase inhibitor (anti-pseudomonal),True
+22213811000001108,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+22491511000001109,47625008.0,Fosfomycin,,J01XX01,Reserve,Phosphonics,True
+23349111000001109,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+36441911000001108,,Linezolid,,J01XX08,Reserve,Oxazolidinones,True
+324479008,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+331771000,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+12020711000001105,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12935111000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+37914011000001102,,Meropenem,vaborbactam,J01DH52,Reserve,Carbapenems,True
+323812006,,Cefadroxil,,J01DB05,Access,First-generation cephalosporins,False
+421341000,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+703915009,,Tedizolid,,J01XX11,Reserve,Oxazolidinones,False
+9141111000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10796311000001109,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+13375211000001103,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+13532611000001105,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+323888003,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+324317000,,Fusidic Acid,,J01XC01,Watch,Steroid antibacterials,False
+9140311000001106,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12904411000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+24665911000001106,,Colistin,,J01XB01,Reserve,Polymyxins,True
+323571002,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+323573004,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+324095003,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+330953008,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+12090011000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12936111000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13353111000001105,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+34179911000001103,,Ceftazidime,avibactam,J01DD52,Reserve,Third-generation cephalosporins,True
+36134511000001102,,Cefradine,,J01DB09,Access,First-generation cephalosporins,False
+324277007,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+324333002,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+324333002,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+324512005,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+9140711000001105,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12020611000001101,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+28045911000001108,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+39735111000001108,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+324501005,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+370322009,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+4009911000001100,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+4009911000001100,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+10575011000001106,,Procaine benzylpenicillin,,J01CE09,Access,Penicillins ,True
+12905411000001109,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+12935611000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13372311000001100,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+13373011000001107,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+18496211000001105,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+34226911000001109,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+35111911000001104,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+36134111000001106,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+3546611000001108,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+3546611000001108,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+9219511000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12935011000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12935311000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13003711000001101,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+13372611000001105,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+13373411000001103,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+21230911000001100,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+39684111000001105,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+323948007,,Cefradine,,J01DB09,Access,First-generation cephalosporins,False
+324178009,,Erythromycin,,J01FA01,Watch,Macrolides,False
+9218311000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12904611000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12934311000001107,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13372511000001106,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+35915211000001109,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+36142611000001107,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+134748003,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+323853003,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+7322311000001107,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+9221111000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10455111000001100,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+12934511000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13373611000001100,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+36091411000001104,,Colistin,,J01XB01,Reserve,Polymyxins,True
+323936009,,Cefazolin,,J01DB04,Access,First-generation cephalosporins,True
+324215006,,Erythromycin,,J01FA01,Watch,Macrolides,False
+324343004,,Meropenem,,J01DH02,Watch,Carbapenems,True
+324359004,,Sulfamethoxazole,trimethoprim,J01EE01,Access,Trimethoprim - sulfonamide combinations,True
+324520007,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+12937111000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+8818711000001109,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+12936211000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+22041211000001105,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+30917211000001109,,Pefloxacin,,J01MA03,Watch,Fluoroquinolones,False
+36565811000001104,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+38727011000001100,,Delafloxacin,,J01MA23,Watch,Fluoroquinolones,False
+324431001,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+332347007,,Erythromycin,,J01FA01,Watch,Macrolides,False
+3550511000001105,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+3550511000001105,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+12895811000001101,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+12936311000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+34941111000001103,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+36565611000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+408140005,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+12020411000001104,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12935711000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+15453011000001107,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+36144011000001106,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+36458611000001108,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+39022311000001100,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+323485005,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323492000,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323872003,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+324572002,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+324612003,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+347132000,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+4396211000001103,,Imipenem,cilastatin,J01DH51,Watch,Carbapenems,False
+10140911000001105,,Daptomycin,,J01XX09,Reserve,Lipopeptides,False
+13353211000001104,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+36141511000001100,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+4557611000001106,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+12934011000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13008111000001106,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+21657211000001109,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+21717911000001100,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+29903511000001102,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+33516711000001107,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+35901911000001104,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+324000003,,Cefpirome,,J01DE02,Watch,Fourth-generation cephalosporins,False
+330917006,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+39732211000001107,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+324500006,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+330952003,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+7652511000001109,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10824311000001107,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+12020511000001100,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12021711000001102,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+13007811000001103,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+35919711000001100,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+331738004,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+443556007,,Telavancin,,J01XA03,Reserve,Glycopeptides,False
+9191611000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12904111000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+36030911000001109,,Netilmicin,,J01GB07,Watch,Aminoglycosides,False
+38521311000001109,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+39735211000001102,,Cefadroxil,,J01DB05,Access,First-generation cephalosporins,False
+9220711000001106,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10892711000001106,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12864111000001107,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13373211000001102,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+22098511000001105,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+34194211000001103,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+39405311000001105,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+332366007,,Erythromycin,,J01FA01,Watch,Macrolides,False
+8360611000001101,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+10961311000001108,,Daptomycin,,J01XX09,Reserve,Lipopeptides,False
+11034311000001100,,Azithromycin,,J01FA10,Watch,Macrolides,True
+12020211000001103,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12863811000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12936611000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+34377311000001104,,Dalbavancin,,J01XA04,Reserve,Glycopeptides,False
+35104511000001105,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+36030611000001103,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+39732711000001100,,Ampicillin,sulbactam,J01CR01,Access,Beta lactam - beta lactamase inhibitor,False
+324335009,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+445522003,,Rifaximin,,A07AA11,Watch,Rifamycins,False
+12863411000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+32876211000001101,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+12904911000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13372211000001108,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+13372411000001107,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+21407411000001104,,Tetracycline,,J01AA07,Access,Tetracyclines,False
+21718511000001106,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+32655011000001106,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+34617211000001105,47625008.0,Metronidazole,,J01XD01,Access,Imidazoles,True
+324337001,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+324337001,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+324480006,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+4615711000001107,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+8818611000001100,26643006.0,Vancomycin,,A07AA09,Watch ,Glycopeptides,True
+10150911000001107,,Benzathine benzylpenicillin,,J01CE08,Access,Penicillins ,True
+11397011000001102,,Spiramycin,,J01FA02,Watch,Macrolides,False
+12864411000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12894111000001109,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+21797311000001102,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+22085211000001101,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+35900311000001105,,Spiramycin,,J01FA02,Watch,Macrolides,False
+324511003,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+9141511000001107,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+13372711000001101,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+13374711000001106,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+24666511000001106,,Colistin,,J01XB01,Reserve,Polymyxins,True
+27800411000001108,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+38082711000001107,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+39107311000001103,,Erythromycin,,J01FA01,Watch,Macrolides,False
+323999000,,Cefpirome,,J01DE02,Watch,Fourth-generation cephalosporins,False
+13373711000001109,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+14801411000001105,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+16756911000001108,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+30956811000001100,,Colistin,,J01XB01,Reserve,Polymyxins,True
+35055911000001103,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+36031211000001106,,Netilmicin,,J01GB07,Watch,Aminoglycosides,False
+36458511000001109,,Cefepime,,J01DE01,Watch,Fourth-generation cephalosporins,False
+323880005,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+324234006,,Erythromycin,,J01FA01,Watch,Macrolides,False
+331849001,,Fusidic Acid,,J01XC01,Watch,Steroid antibacterials,False
+9215111000001107,,Phenoxymethylpenicillin,,J01CE02,Access,Penicillins ,True
+39735011000001107,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+3653911000001100,,Sulfamethoxazole,trimethoprim,J01EE01,Access,Trimethoprim - sulfonamide combinations,True
+12021611000001106,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+35369711000001108,,Cefpodoxime proxetil,,J01DD13,Watch,Third-generation cephalosporins,False
+38345011000001109,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+38345111000001105,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+323990001,,Ceftriaxone,,J01DD04,Watch,Third-generation cephalosporins,True
+324179001,,Erythromycin,,J01FA01,Watch,Macrolides,False
+324180003,,Erythromycin,,J01FA01,Watch,Macrolides,False
+332318000,,Tetracycline,,J01AA07,Access,Tetracyclines,False
+4145011000001103,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+35049111000001102,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+35150411000001108,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+35150411000001108,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+36134011000001105,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+323739006,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+324004007,,Cefprozil,,J01DC10,Watch,Second-generation cephalosporins,False
+324504002,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+375489004,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12021311000001101,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+13373311000001105,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+20455111000001104,,Gatifloxacin,,J01MA16,Watch,Fluoroquinolones,False
+22085911000001105,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+36064711000001106,,Erythromycin,,J01FA01,Watch,Macrolides,False
+39697411000001109,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+324354009,,Dalfopristin,quinupristin,J01FG02,Reserve,Streptogramins,False
+330916002,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+10823411000001103,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+12935411000001104,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+34769611000001109,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323737008,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+3864211000001105,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+12934411000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+18519011000001100,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+21258811000001107,26643006.0,Fosfomycin,,J01XX01,Watch ,Phosphonics,False
+39700811000001104,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+323420002,,Phenoxymethylpenicillin,,J01CE02,Access,Penicillins ,True
+4515811000001108,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+12904511000001107,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12905011000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12905211000001105,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+13375111000001109,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+14253311000001100,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+37083211000001101,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+38422511000001100,,Piperacillin,tazobactam,J01CR05,Watch,Beta lactam - beta lactamase inhibitor (anti-pseudomonal),True
+323962000,,Aztreonam,,J01DF01,Reserve,Monobactams,False
+3393611000001109,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+4389111000001100,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+4389111000001100,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+13353011000001109,,Rifabutin,,J04AB04,Watch,Rifamycins,False
+13374511000001101,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+30780311000001108,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+35919811000001108,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+38521511000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+38752711000001101,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+332350005,,Erythromycin,,J01FA01,Watch,Macrolides,False
+12864711000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+29734011000001109,,Tedizolid,,J01XX11,Reserve,Oxazolidinones,False
+36062811000001109,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+39700911000001109,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+3393711000001100,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+12021811000001105,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+12905311000001102,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+35934411000001101,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+36134411000001101,,Cefixime,,J01DD08,Watch,Third-generation cephalosporins,True
+36135411000001100,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+37083611000001104,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+323856006,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+8750011000001100,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12863711000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12904311000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13373111000001108,,Rifampicin,,J04AB02,Watch,Rifamycins,False
+35050611000001101,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+36017411000001106,,Polymyxin B,,J01XB02,Reserve,Polymyxins,True
+36017411000001106,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+323824004,,Cefotaxime,,J01DD01,Watch,Third-generation cephalosporins,True
+323970005,,Imipenem,cilastatin,J01DH51,Watch,Carbapenems,False
+324620001,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+407832000,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+9742411000001105,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+23108311000001101,,Levofloxacin,,J01MA12,Watch,Fluoroquinolones,False
+38521611000001104,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+38840011000001101,,Imipenem,cilastatin,J01DH51,Watch,Carbapenems,False
+323772006,,Ticarcillin,,J01CA13,Watch,Carboxypenicillins,False
+324430000,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+428353009,,Doripenem,,J01DH04,Watch,Carbapenems,False
+9742511000001109,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+10575411000001102,,Procaine benzylpenicillin,,J01CE09,Access,Penicillins ,True
+12937311000001103,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+22515011000001106,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+32936811000001108,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+35203311000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+39687011000001101,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+323493005,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+12020311000001106,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12862811000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+14614911000001109,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+34376711000001103,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+36040111000001105,,Linezolid,,J01XX08,Reserve,Oxazolidinones,True
+36134311000001108,,Cefalexin,,J01DB01,Access,First-generation cephalosporins,True
+324244008,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+330418005,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12935811000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12936811000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12937411000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13010711000001108,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+35899811000001104,,Amikacin,,J01GB06,Access,Aminoglycosides,True
+39732311000001104,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+323854009,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+323945005,,Cefradine,,J01DB09,Access,First-generation cephalosporins,False
+324158001,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+324238009,,Clarithromycin,,J01FA09,Watch,Macrolides,True
+332346003,,Erythromycin,,J01FA01,Watch,Macrolides,False
+9219911000001107,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+10153211000001108,,Benzathine benzylpenicillin,,J01CE08,Access,Penicillins ,True
+12934111000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+21658811000001109,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+35893011000001107,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+36031011000001101,,Netilmicin,,J01GB07,Watch,Aminoglycosides,False
+323568005,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+324005008,,Cefprozil,,J01DC10,Watch,Second-generation cephalosporins,False
+12020811000001102,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12894811000001102,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12933911000001106,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+30791311000001104,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+36063011000001107,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+38344711000001107,,Teicoplanin,,J01XA02,Watch,Glycopeptides,False
+39684511000001101,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+324621002,,Norfloxacin,,J01MA06,Watch,Fluoroquinolones,False
+331850001,,Neomycin,,J01GB05,Watch,Aminoglycosides,False
+4030211000001108,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+22097311000001100,,Benzylpenicillin,,J01CE01,Access,Penicillins ,True
+36134211000001100,,Cefaclor,,J01DC04,Watch,Second-generation cephalosporins,False
+39700711000001107,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+323673005,,Piperacillin,tazobactam,J01CR05,Watch,Beta lactam - beta lactamase inhibitor (anti-pseudomonal),True
+323849000,,Ceftazidime,,J01DD02,Watch,Third-generation cephalosporins,True
+324503008,,Streptomycin,,J01GA01,Watch,Aminoglycosides,False
+4457111000001107,,Cefamandole,,J01DC03,Watch,Second-generation cephalosporins,False
+12019911000001106,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12863111000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12864911000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13008011000001105,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+21277911000001101,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+32878711000001107,,Ofloxacin,,J01MA01,Watch,Fluoroquinolones,False
+34194011000001108,47625008.0,Metronidazole,,J01XD01,Access,Imidazoles,True
+35893111000001108,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+36564611000001104,,Doxycycline,,J01AA02,Access,Tetracyclines,True
+35902111000001107,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+36003311000001109,,Moxifloxacin,,J01MA14,Watch,Fluoroquinolones,False
+38521411000001102,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+39687811000001107,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+39700011000001105,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+4700911000001108,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+323830004,,Cefoxitin,,J01DC01,Watch,Second-generation cephalosporins,False
+330936001,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+332825002,,Fusidic Acid,,J01XC01,Watch,Steroid antibacterials,False
+4145111000001102,,Tobramycin,,J01GB01,Watch,Aminoglycosides,False
+12020111000001109,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+13004011000001101,,Oxytetracycline,,J01AA06,Watch,Tetracyclines,False
+13010811000001100,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+22491111000001100,47625008.0,Fosfomycin,,J01XX01,Reserve,Phosphonics,True
+35030211000001102,,Colistin,,J01XB01,Reserve,Polymyxins,True
+39021911000001105,,Amoxicillin,,J01CA04,Access,Penicillins ,True
+324253001,,Azithromycin,,J01FA10,Watch,Macrolides,True
+9552511000001108,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12862911000001101,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12863311000001107,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13008211000001100,26643006.0,Metronidazole,,P01AB01,Access,Imidazoles,True
+323484009,,Flucloxacillin,,J01CF05,Access,Penicillins ,False
+323960008,,Aztreonam,,J01DF01,Reserve,Monobactams,False
+12864811000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12936911000001100,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+13374611000001102,,Trimethoprim,,J01EA01,Access,Trimethoprim,False
+22104011000001100,,Cefuroxime,,J01DC02,Watch,Second-generation cephalosporins,True
+36565111000001106,26643006.0,Minocycline,,J01AA08,Watch ,Tetracyclines,False
+39021311000001109,,Amoxicillin,clavulanic Acid,J01CR02,Access,Beta lactam - beta lactamase inhibitor,True
+39707811000001100,,Colistin,,J01XB01,Reserve,Polymyxins,True
+324298007,,Chloramphenicol,,J01BA01,Access,Amphenicols,True
+8523611000001103,,Gentamicin,,J01GB03,Access,Aminoglycosides,True
+12019711000001109,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12019811000001101,,Ciprofloxacin,,J01MA02,Watch,Fluoroquinolones,True
+12894011000001108,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12894711000001105,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+12935911000001107,,Nitrofurantoin,,J01XE01,Access,Nitrofurantoin,True
+35054211000001106,47625008.0,Vancomycin,,J01XA01,Watch ,Glycopeptides,True
+36142711000001103,,Clindamycin,,J01FF01 ,Access,Lincosamides,True
+39732411000001106,,Amoxicillin,,J01CA04,Access,Penicillins ,True

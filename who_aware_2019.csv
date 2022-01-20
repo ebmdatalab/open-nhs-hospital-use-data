@@ -1,0 +1,181 @@
+antibiotic,class,atc,category,listed_on_eml_2019
+Rifaximin,Rifamycins,A07AA11,Watch,False
+Chlortetracycline,Tetracyclines,J01AA03,Watch,False
+Lymecycline,Tetracyclines,J01AA04,Watch,False
+Metacycline,Tetracyclines,J01AA05,Watch,False
+Oxytetracycline,Tetracyclines,J01AA06,Watch,False
+Carbenicillin,Carboxypenicillins,J01CA03,Watch,False
+Azlocillin,Penicillins ,J01CA09,Watch,False
+Mezlocillin,Penicillins ,J01CA10,Watch,False
+Piperacillin,Penicillins ,J01CA12,Watch,False
+Ticarcillin,Carboxypenicillins,J01CA13,Watch,False
+Sulbenicillin,Penicillins ,J01CA16,Watch,False
+Temocillin,Carboxypenicillins,J01CA17,Watch,False
+Pheneticillin,Penicillins ,J01CE05,Watch,False
+Piperacillin/tazobactam,Beta lactam - beta lactamase inhibitor (anti-pseudomonal),J01CR05,Watch,True
+Cefoxitin,Second-generation cephalosporins,J01DC01,Watch,False
+Cefuroxime,Second-generation cephalosporins,J01DC02,Watch,True
+Cefamandole,Second-generation cephalosporins,J01DC03,Watch,False
+Cefaclor,Second-generation cephalosporins,J01DC04,Watch,False
+Cefotetan,Second-generation cephalosporins,J01DC05,Watch,False
+Cefonicid,Second-generation cephalosporins,J01DC06,Watch,False
+Cefotiam,Second-generation cephalosporins,J01DC07,Watch,False
+Cefotiam hexetil,Second-generation cephalosporins,J01DC07,Watch,False
+Cefmetazole,Second-generation cephalosporins,J01DC09,Watch,False
+Cefprozil,Second-generation cephalosporins,J01DC10,Watch,False
+Ceforanide,Second-generation cephalosporins,J01DC11,Watch,False
+Cefminox,Second-generation cephalosporins,J01DC12,Watch,False
+Cefbuperazone,Second-generation cephalosporins,J01DC13,Watch,False
+Flomoxef,Second-generation cephalosporins,J01DC14,Watch,False
+Cefotaxime,Third-generation cephalosporins,J01DD01,Watch,True
+Ceftazidime,Third-generation cephalosporins,J01DD02,Watch,True
+Ceftriaxone,Third-generation cephalosporins,J01DD04,Watch,True
+Cefmenoxime,Third-generation cephalosporins,J01DD05,Watch,False
+Latamoxef,Third-generation cephalosporins,J01DD06,Watch,False
+Ceftizoxime,Third-generation cephalosporins,J01DD07,Watch,False
+Cefixime,Third-generation cephalosporins,J01DD08,Watch,True
+Cefodizime,Third-generation cephalosporins,J01DD09,Watch,False
+Cefetamet pivoxil,Third-generation cephalosporins,J01DD10,Watch,False
+Cefpiramide,Third-generation cephalosporins,J01DD11,Watch,False
+Cefoperazone,Third-generation cephalosporins,J01DD12,Watch,False
+Cefpodoxime proxetil,Third-generation cephalosporins,J01DD13,Watch,False
+Ceftibuten,Third-generation cephalosporins,J01DD14,Watch,False
+Cefdinir,Third-generation cephalosporins,J01DD15,Watch,False
+Cefditoren pivoxil,Third-generation cephalosporins,J01DD16,Watch,False
+Cefcapene pivoxil,Third-generation cephalosporins,J01DD17,Watch,False
+Cefteram pivoxil,Third-generation cephalosporins,J01DD18,Watch,False
+Cefepime,Fourth-generation cephalosporins,J01DE01,Watch,False
+Cefpirome,Fourth-generation cephalosporins,J01DE02,Watch,False
+Cefozopran,Fourth-generation cephalosporins,J01DE03,Watch,False
+Meropenem,Carbapenems,J01DH02,Watch,True
+Ertapenem,Carbapenems,J01DH03,Watch,False
+Doripenem,Carbapenems,J01DH04,Watch,False
+Biapenem,Carbapenems,J01DH05,Watch,False
+Tebipenem,Carbapenems,J01DH06,Watch,False
+Imipenem/cilastatin,Carbapenems,J01DH51,Watch,False
+Erythromycin,Macrolides,J01FA01,Watch,False
+Spiramycin,Macrolides,J01FA02,Watch,False
+Midecamycin,Macrolides,J01FA03,Watch,False
+Oleandomycin,Macrolides,J01FA05,Watch,False
+Roxithromycin,Macrolides,J01FA06,Watch,False
+Josamycin,Macrolides,J01FA07,Watch,False
+Clarithromycin,Macrolides,J01FA09,Watch,True
+Azithromycin,Macrolides,J01FA10,Watch,True
+Dirithromycin,Macrolides,J01FA13,Watch,False
+Telithromycin,Macrolides,J01FA15,Watch,False
+Lincomycin,Macrolides,J01FF02,Watch,False
+Pristinamycin,Streptogramins,J01FG01,Watch,False
+Streptomycin,Aminoglycosides,J01GA01,Watch,False
+Tobramycin,Aminoglycosides,J01GB01,Watch,False
+Kanamycin,Aminoglycosides,J01GB04,Watch,False
+Neomycin,Aminoglycosides,J01GB05,Watch,False
+Netilmicin,Aminoglycosides,J01GB07,Watch,False
+Sisomicin,Aminoglycosides,J01GB08,Watch,False
+Dibekacin,Aminoglycosides,J01GB09,Watch,False
+Ribostamycin,Aminoglycosides,J01GB10,Watch,False
+Isepamicin,Aminoglycosides,J01GB11,Watch,False
+Arbekacin,Aminoglycosides,J01GB12,Watch,False
+Ofloxacin,Fluoroquinolones,J01MA01,Watch,False
+Ciprofloxacin,Fluoroquinolones,J01MA02,Watch,True
+Pefloxacin,Fluoroquinolones,J01MA03,Watch,False
+Enoxacin,Fluoroquinolones,J01MA04,Watch,False
+Norfloxacin,Fluoroquinolones,J01MA06,Watch,False
+Lomefloxacin,Fluoroquinolones,J01MA07,Watch,False
+Fleroxacin,Fluoroquinolones,J01MA08,Watch,False
+Sparfloxacin,Fluoroquinolones,J01MA09,Watch,False
+Rufloxacin,Fluoroquinolones,J01MA10,Watch,False
+Levofloxacin,Fluoroquinolones,J01MA12,Watch,False
+Moxifloxacin,Fluoroquinolones,J01MA14,Watch,False
+Gemifloxacin,Fluoroquinolones,J01MA15,Watch,False
+Gatifloxacin,Fluoroquinolones,J01MA16,Watch,False
+Prulifloxacin,Fluoroquinolones,J01MA17,Watch,False
+Pazufloxacin,Fluoroquinolones,J01MA18,Watch,False
+Garenoxacin,Fluoroquinolones,J01MA19,Watch,False
+Sitafloxacin,Fluoroquinolones,J01MA21,Watch,False
+Tosufloxacin,Fluoroquinolones,J01MA22,Watch,False
+Delafloxacin,Fluoroquinolones,J01MA23,Watch,False
+Flumequine,Fluoroquinolones,J01MB07,Watch,False
+Spiramycin/metronidazole,Combination of antibiotics,J01RA04,Watch,False
+Teicoplanin,Glycopeptides,J01XA02,Watch,False
+Fusidic Acid,Steroid antibacterials,J01XC01,Watch,False
+Clofoctol,Phenol derivatives,J01XX03,Watch,False
+Rifampicin,Rifamycins,J04AB02,Watch,False
+Rifamycin,Rifamycins,J04AB03,Watch,False
+Rifabutin,Rifamycins,J04AB04,Watch,False
+Micronomicin,Aminoglycosides,to be assigned,Watch,False
+Cefoselis,Fourth-generation cephalosporins,to be assigned,Watch,False
+Panipenem,Carbapenems,to be assigned,Watch,False
+Doxycycline,Tetracyclines,J01AA02,Access,True
+Tetracycline,Tetracyclines,J01AA07,Access,False
+Chloramphenicol,Amphenicols,J01BA01,Access,True
+Thiamphenicol,Amphenicols,J01BA02,Access,False
+Pivampicillin,Penicillins ,J01CA02,Access,False
+Amoxicillin,Penicillins ,J01CA04,Access,True
+Bacampicillin,Penicillins ,J01CA06,Access,False
+Pivmecillinam,Penicillins ,J01CA08,Access,False
+Mecillinam,Penicillins ,J01CA11,Access,False
+Benzylpenicillin,Penicillins ,J01CE01,Access,True
+Phenoxymethylpenicillin,Penicillins ,J01CE02,Access,True
+Penamecillin,Penicillins ,J01CE06,Access,False
+Clometocillin,Penicillins ,J01CE07,Access,False
+Benzathine benzylpenicillin,Penicillins ,J01CE08,Access,True
+Procaine benzylpenicillin,Penicillins ,J01CE09,Access,True
+Dicloxacillin,Penicillins ,J01CF01,Access,False
+Cloxacillin,Penicillins ,J01CF02,Access,True
+Oxacillin,Penicillins ,J01CF04,Access,False
+Flucloxacillin,Penicillins ,J01CF05,Access,False
+Nafcillin,Penicillins ,J01CF06,Access,False
+Ampicillin/sulbactam,Beta lactam - beta lactamase inhibitor,J01CR01,Access,False
+Amoxicillin/clavulanic Acid,Beta lactam - beta lactamase inhibitor,J01CR02,Access,True
+Sultamicillin,Beta lactam - beta lactamase inhibitor,J01CR04,Access,False
+Cefalexin,First-generation cephalosporins,J01DB01,Access,True
+Cefalotin,First-generation cephalosporins,J01DB03,Access,False
+Cefazolin,First-generation cephalosporins,J01DB04,Access,True
+Cefadroxil,First-generation cephalosporins,J01DB05,Access,False
+Cefazedone,First-generation cephalosporins,J01DB06,Access,False
+Cefatrizine,First-generation cephalosporins,J01DB07,Access,False
+Cefapirin,First-generation cephalosporins,J01DB08,Access,False
+Cefradine,First-generation cephalosporins,J01DB09,Access,False
+Cefacetrile,First-generation cephalosporins,J01DB10,Access,False
+Cefroxadine,First-generation cephalosporins,J01DB11,Access,False
+Ceftezole,First-generation cephalosporins,J01DB12,Access,False
+Trimethoprim,Trimethoprim,J01EA01,Access,False
+Sulfamethizole/trimethoprim,Trimethoprim - sulfonamide combinations,J01EB02,Access,False
+Sulfamethoxazole/trimethoprim,Trimethoprim - sulfonamide combinations,J01EE01,Access,True
+Sulfadiazine/trimethoprim,Trimethoprim - sulfonamide combinations,J01EE02,Access,False
+Sulfametrole/trimethoprim,Trimethoprim - sulfonamide combinations,J01EE03,Access,False
+Sulfamoxole/trimethoprim,Trimethoprim - sulfonamide combinations,J01EE04,Access,False
+Gentamicin,Aminoglycosides,J01GB03,Access,True
+Amikacin,Aminoglycosides,J01GB06,Access,True
+Metronidazole (IV),Imidazoles,J01XD01,Access,True
+Nitrofurantoin,Nitrofurantoin,J01XE01,Access,True
+Spectinomycin,Aminocyclitols,J01XX04,Access,True
+Metronidazole (oral),Imidazoles,P01AB01,Access,True
+Clindamycin,Lincosamides,J01FF01 ,Access,True
+Ampicillin,Penicillins ,J01CA01 ,Access,True
+Vancomycin (oral),Glycopeptides,A07AA09,Watch ,True
+Minocycline (oral),Tetracyclines,J01AA08,Watch ,False
+Vancomycin (IV),Glycopeptides,J01XA01,Watch ,True
+Fosfomycin (oral),Phosphonics,J01XX01,Watch ,False
+Minocycline (IV),Tetracyclines,J01AA08,Reserve,False
+Tigecycline,Glycylcyclines,J01AA12,Reserve,False
+Eravacycline,Tetracyclines,J01AA13,Reserve,False
+Ceftazidime-avibactam,Third-generation cephalosporins,J01DD52,Reserve,True
+Aztreonam,Monobactams,J01DF01,Reserve,False
+Meropenem-vaborbactam,Carbapenems,J01DH52,Reserve,True
+Ceftobiprole medocaril,Fifth-generation cephalosporins,J01DI01,Reserve,False
+Faropenem,Penems,J01DI03,Reserve,False
+Ceftolozane-tazobactam,Fifth-generation cephalosporins,J01DI54,Reserve,False
+Dalfopristin-quinupristin,Streptogramins,J01FG02,Reserve,False
+Telavancin,Glycopeptides,J01XA03,Reserve,False
+Dalbavancin,Glycopeptides,J01XA04,Reserve,False
+Oritavancin,Glycopeptides,J01XA05,Reserve,False
+Colistin,Polymyxins,J01XB01,Reserve,True
+Polymyxin B,Polymyxins,J01XB02,Reserve,True
+Fosfomycin (IV),Phosphonics,J01XX01,Reserve,True
+Linezolid,Oxazolidinones,J01XX08,Reserve,True
+Daptomycin,Lipopeptides,J01XX09,Reserve,False
+Tedizolid,Oxazolidinones,J01XX11,Reserve,False
+Ceftaroline fosamil,Fifth-generation cephalosporins,J01DI02 ,Reserve,False
+Omadacycline,Tetracyclines,to be assigned,Reserve,False
+Plazomicin,Aminoglycosides,to be assigned,Reserve,True
