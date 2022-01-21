@@ -1,6 +1,12 @@
 type,id,bnf_code,nm,ingredient,ddd
 vmp,39657711000001106,,Casirivimab 120mg/ml solution for infusion 11.1ml vials,Casirivimab,
 vmp,40035711000001105,,Casirivimab 120mg/ml solution for infusion 2.5ml vials,Casirivimab,
+vmp,4052611000001105,0603020AAAAABAB,Dexamethasone (base) 3.3mg/1ml solution for injection ampoules,Dexamethasone sodium phosphate,1.5
+vmp,32071811000001109,0603020G0AACFCF,Dexamethasone 2mg soluble tablets sugar free,Dexamethasone sodium phosphate,1.5
+vmp,325356003,0603020G0AAADAD,Dexamethasone 2mg tablets,Dexamethasone,1.5
+vmp,11716011000001103,0603020G0AAA6A6,Dexamethasone 2mg/5ml oral solution,Dexamethasone,1.5
+vmp,37084211000001103,0603020G0AABXBX,Dexamethasone 2mg/5ml oral solution sugar free,Dexamethasone sodium phosphate,1.5
+vmp,11716111000001102,0603020G0AAA6A6,Dexamethasone 2mg/5ml oral suspension,Dexamethasone,1.5
 vmp,39658211000001100,,Imdevimab 120mg/ml solution for infusion 11.1ml vials,Imdevimab,
 vmp,40035811000001102,,Imdevimab 120mg/ml solution for infusion 2.5ml vials,Imdevimab,
 vmp,38377211000001108,,Remdesivir 100mg powder for solution for infusion vials,Remdesivir,
