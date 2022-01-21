@@ -1,0 +1,787 @@
+type,id,bnf_code,nm,ingredient,route,paragraph
+vmp,35899811000001104,0501040C0AAADAD,Amikacin 100mg/2ml solution for injection vials,Amikacin sulfate,Intramuscular,Aminoglycosides
+vmp,35899811000001104,0501040C0AAADAD,Amikacin 100mg/2ml solution for injection vials,Amikacin sulfate,Intravenous,Aminoglycosides
+vmp,35899911000001109,0501040C0AAAAAA,Amikacin 500mg/2ml solution for injection vials,Amikacin sulfate,Intramuscular,Aminoglycosides
+vmp,35899911000001109,0501040C0AAAAAA,Amikacin 500mg/2ml solution for injection vials,Amikacin sulfate,Intravenous,Aminoglycosides
+vmp,16603411000001107,0501090A0AAAAAA,Aminosalicylic acid gastro-resistant granules 4g sachets sugar free,Aminosalicylic acid,Oral,Others
+vmp,35368511000001109,0501013B0AAAIAI,Amoxicillin 125mg/1.25ml oral suspension paediatric,Amoxicillin trihydrate,Oral,Penicillins
+vmp,323732002,0501013B0AAAJAJ,Amoxicillin 125mg/5ml oral suspension,Amoxicillin trihydrate,Oral,Penicillins
+vmp,35901911000001104,0501013B0AAASAS,Amoxicillin 125mg/5ml oral suspension sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,38726811000001109,0501013B0AAAUAU,Amoxicillin 1g dispersible tablets sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,323739006,0501013C0AAAEAE,Amoxicillin 1g powder for solution for injection vials,Amoxicillin sodium,Intramuscular,Penicillins
+vmp,323739006,0501013C0AAAEAE,Amoxicillin 1g powder for solution for injection vials,Amoxicillin sodium,Intravenous,Penicillins
+vmp,39732311000001104,0501013B0AAAAAA,Amoxicillin 250mg capsules,Amoxicillin trihydrate,Oral,Penicillins
+vmp,323737008,0501013C0AAACAC,Amoxicillin 250mg powder for solution for injection vials,Amoxicillin sodium,Intramuscular,Penicillins
+vmp,323737008,0501013C0AAACAC,Amoxicillin 250mg powder for solution for injection vials,Amoxicillin sodium,Intravenous,Penicillins
+vmp,323733007,0501013B0AAAKAK,Amoxicillin 250mg/5ml oral suspension,Amoxicillin trihydrate,Oral,Penicillins
+vmp,39021911000001105,0501013B0AAATAT,Amoxicillin 250mg/5ml oral suspension sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,35902111000001107,0501013B0AAAHAH,Amoxicillin 3g oral powder sachets sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,39732411000001106,0501013B0AAABAB,Amoxicillin 500mg capsules,Amoxicillin trihydrate,Oral,Penicillins
+vmp,323738003,0501013C0AAADAD,Amoxicillin 500mg powder for solution for injection vials,Amoxicillin sodium,Intramuscular,Penicillins
+vmp,323738003,0501013C0AAADAD,Amoxicillin 500mg powder for solution for injection vials,Amoxicillin sodium,Intravenous,Penicillins
+vmp,769817000,0501013B0AAAVAV,Amoxicillin 500mg/5ml oral suspension sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,323572009,0501013E0AAAEAE,Ampicillin 125mg/5ml oral suspension,Ampicillin,Oral,Penicillins
+vmp,323570001,0501013E0AAAAAA,Ampicillin 250mg capsules,Ampicillin,Oral,Penicillins
+vmp,323573004,0501013E0AAAFAF,Ampicillin 250mg/5ml oral suspension,Ampicillin,Oral,Penicillins
+vmp,323571002,0501013E0AAABAB,Ampicillin 500mg capsules,Ampicillin,Oral,Penicillins
+vmp,323584006,0501013E0AAADAD,Ampicillin 500mg powder for solution for injection vials,Ampicillin sodium,Intramuscular,Penicillins
+vmp,323584006,0501013E0AAADAD,Ampicillin 500mg powder for solution for injection vials,Ampicillin sodium,Intrapleural,Penicillins
+vmp,323584006,0501013E0AAADAD,Ampicillin 500mg powder for solution for injection vials,Ampicillin sodium,Intraperitoneal,Penicillins
+vmp,323584006,0501013E0AAADAD,Ampicillin 500mg powder for solution for injection vials,Ampicillin sodium,Intravenous,Penicillins
+vmp,323584006,0501013E0AAADAD,Ampicillin 500mg powder for solution for injection vials,Ampicillin sodium,Intraarticular,Penicillins
+vmp,324253001,0501050A0AAABAB,Azithromycin 200mg/5ml oral suspension,Azithromycin,Oral,Macrolides
+vmp,29668711000001101,0501050A0AAAHAH,Azithromycin 200mg/5ml oral suspension sugar free,Azithromycin,Oral,Macrolides
+vmp,324252006,0501050A0AAAAAA,Azithromycin 250mg capsules,Azithromycin dihydrate,Oral,Macrolides
+vmp,11034311000001100,0501050A0AAAGAG,Azithromycin 250mg tablets,Azithromycin,Oral,Macrolides
+vmp,39733511000001103,0501050A0AAADAD,Azithromycin 500mg tablets,Azithromycin,Oral,Macrolides
+vmp,323961007,0501023A0AAABAB,Aztreonam 1g powder for solution for injection vials,Aztreonam,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323961007,0501023A0AAABAB,Aztreonam 1g powder for solution for injection vials,Aztreonam,Intravenous,Cephalosporins and other beta-lactams
+vmp,323962000,0501023A0AAAAAA,Aztreonam 2g powder for solution for injection vials,Aztreonam,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323962000,0501023A0AAAAAA,Aztreonam 2g powder for solution for injection vials,Aztreonam,Intravenous,Cephalosporins and other beta-lactams
+vmp,323960008,0501023A0AAACAC,Aztreonam 500mg powder for solution for injection vials,Aztreonam,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323960008,0501023A0AAACAC,Aztreonam 500mg powder for solution for injection vials,Aztreonam,Intravenous,Cephalosporins and other beta-lactams
+vmp,17463411000001109,0501023A0AAAFAF,Aztreonam 75mg powder and solvent for nebuliser solution vials with device,Aztreonam lysine,Inhalation,Cephalosporins and other beta-lactams
+vmp,24565811000001107,0501090V0AAAAAA,Bedaquiline 100mg tablets,Bedaquiline fumarate,Oral,Others
+vmp,323396003,0501011J0AAAFAF,Benzylpenicillin 1.2g powder for solution for injection vials,Benzylpenicillin sodium,Intravenous,Penicillins
+vmp,323398002,0501011J0AAABAB,Benzylpenicillin 600mg powder for solution for injection vials,Benzylpenicillin sodium,Intramuscular,Penicillins
+vmp,323398002,0501011J0AAABAB,Benzylpenicillin 600mg powder for solution for injection vials,Benzylpenicillin sodium,Intravenous,Penicillins
+vmp,324455006,0501090C0AAAAAA,Capreomycin 1g powder for solution for injection vials,Capreomycin sulfate,Intramuscular,Others
+vmp,323792004,0501021A0AAABAB,Cefaclor 125mg/5ml oral suspension,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,36134011000001105,0501021A0AAAJAJ,Cefaclor 125mg/5ml oral suspension sugar free,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,39735011000001107,0501021A0AAAAAA,Cefaclor 250mg capsules,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,323793009,0501021A0AAACAC,Cefaclor 250mg/5ml oral suspension,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,36134111000001106,0501021A0AAAKAK,Cefaclor 250mg/5ml oral suspension sugar free,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,36134211000001100,0501021A0AAAGAG,Cefaclor 375mg modified-release tablets,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,39735111000001108,0501021A0AAAEAE,Cefaclor 500mg capsules,Cefaclor monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,323811004,0501021B0AAABAB,Cefadroxil 125mg/5ml oral suspension,Cefadroxil monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,323812006,0501021B0AAACAC,Cefadroxil 250mg/5ml oral suspension,Cefadroxil monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,39735211000001102,0501021B0AAAAAA,Cefadroxil 500mg capsules,Cefadroxil monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,323816009,0501021B0AAADAD,Cefadroxil 500mg/5ml oral suspension,Cefadroxil monohydrate,Oral,Cephalosporins and other beta-lactams
+vmp,323887008,0501021L0AAACAC,Cefalexin 125mg/5ml oral suspension,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,4865011000001104,0501021L0AAANAN,Cefalexin 125mg/5ml oral suspension sugar free,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,39735311000001105,0501021L0AAAAAA,Cefalexin 250mg capsules,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,39684111000001105,0501021L0AAAGAG,Cefalexin 250mg tablets,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,323888003,0501021L0AAADAD,Cefalexin 250mg/5ml oral suspension,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,4515811000001108,0501021L0AAAPAP,Cefalexin 250mg/5ml oral suspension sugar free,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,39694811000001102,0501021L0AAABAB,Cefalexin 500mg capsules,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,39735911000001106,0501021L0AAAHAH,Cefalexin 500mg tablets,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,36134311000001108,0501021L0AAAEAE,Cefalexin 500mg/5ml oral suspension,Cefalexin,Oral,Cephalosporins and other beta-lactams
+vmp,4457111000001107,0501020T0AAABAB,Cefamandole 1g powder for solution for injection vials,Cefamandole nafate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,4457111000001107,0501020T0AAABAB,Cefamandole 1g powder for solution for injection vials,Cefamandole nafate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323936009,0501020V0AAABAB,Cefazolin 1g powder for solution for injection vials,Cefazolin sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323936009,0501020V0AAABAB,Cefazolin 1g powder for solution for injection vials,Cefazolin sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,33631211000001106,0501020V0AAADAD,Cefazolin 2g powder for solution for injection vials,Cefazolin sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323935008,0501020V0AAAAAA,Cefazolin 500mg powder for solution for injection vials,Cefazolin sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323935008,0501020V0AAAAAA,Cefazolin 500mg powder for solution for injection vials,Cefazolin sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,36458411000001105,0501020ADAAAAAA,Cefepime 1g powder for solution for injection vials,Cefepime dihydrochloride monohydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,36458411000001105,0501020ADAAAAAA,Cefepime 1g powder for solution for injection vials,Cefepime dihydrochloride monohydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,36458511000001109,0501020ADAAABAB,Cefepime 2g powder for solution for injection vials,Cefepime dihydrochloride monohydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,36458511000001109,0501020ADAAABAB,Cefepime 2g powder for solution for injection vials,Cefepime dihydrochloride monohydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,36134411000001101,0501021C0AAABAB,Cefixime 100mg/5ml oral suspension,Cefixime,Oral,Cephalosporins and other beta-lactams
+vmp,323973007,0501021C0AAAAAA,Cefixime 200mg tablets,Cefixime,Oral,Cephalosporins and other beta-lactams
+vmp,370375008,0501021C0AAACAC,Cefixime 400mg tablets,Cefixime,Oral,Cephalosporins and other beta-lactams
+vmp,323825003,0501021D0AAABAB,Cefotaxime 1g powder for solution for injection vials,Cefotaxime sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323825003,0501021D0AAABAB,Cefotaxime 1g powder for solution for injection vials,Cefotaxime sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,4558311000001100,0501021D0AAACAC,Cefotaxime 2g powder for solution for injection vials,Cefotaxime sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,4558311000001100,0501021D0AAACAC,Cefotaxime 2g powder for solution for injection vials,Cefotaxime sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323824004,0501021D0AAAAAA,Cefotaxime 500mg powder for solution for injection vials,Cefotaxime sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323824004,0501021D0AAAAAA,Cefotaxime 500mg powder for solution for injection vials,Cefotaxime sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323829009,0501021E0AAADAD,Cefoxitin 1g powder for solution for injection vials,Cefoxitin sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323829009,0501021E0AAADAD,Cefoxitin 1g powder for solution for injection vials,Cefoxitin sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323830004,0501021E0AAAEAE,Cefoxitin 2g powder for solution for injection vials,Cefoxitin sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323830004,0501021E0AAAEAE,Cefoxitin 2g powder for solution for injection vials,Cefoxitin sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323999000,050102020AAAAAA,Cefpirome 1g powder for solution for injection vials,Cefpirome sulfate,Intravenous,Cephalosporins and other beta-lactams
+vmp,324000003,050102020AAABAB,Cefpirome 2g powder for solution for injection vials,Cefpirome sulfate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323982001,0501021F0AAAAAA,Cefpodoxime 100mg tablets,Cefpodoxime proxetil,Oral,Cephalosporins and other beta-lactams
+vmp,35369711000001108,0501021F0AAABAB,Cefpodoxime 40mg/5ml oral suspension,Cefpodoxime proxetil,Oral,Cephalosporins and other beta-lactams
+vmp,324003001,0501020AAAAAAAA,Cefprozil 250mg tablets,Cefprozil,Oral,Cephalosporins and other beta-lactams
+vmp,324005008,0501020AAAAACAC,Cefprozil 250mg/5ml oral suspension,Cefprozil,Oral,Cephalosporins and other beta-lactams
+vmp,324004007,0501020AAAAABAB,Cefprozil 500mg tablets,Cefprozil,Oral,Cephalosporins and other beta-lactams
+vmp,323948007,0501021M0AAADAD,Cefradine 1g powder for solution for injection vials,Cefradine,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323948007,0501021M0AAADAD,Cefradine 1g powder for solution for injection vials,Cefradine,Intravenous,Cephalosporins and other beta-lactams
+vmp,323944009,0501021M0AAAAAA,Cefradine 250mg capsules,Cefradine,Oral,Cephalosporins and other beta-lactams
+vmp,36134511000001102,0501021M0AAAFAF,Cefradine 250mg/5ml oral solution,Cefradine,Oral,Cephalosporins and other beta-lactams
+vmp,323945005,0501021M0AAABAB,Cefradine 500mg capsules,Cefradine,Oral,Cephalosporins and other beta-lactams
+vmp,323947002,0501021M0AAACAC,Cefradine 500mg powder for solution for injection vials,Cefradine,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323947002,0501021M0AAACAC,Cefradine 500mg powder for solution for injection vials,Cefradine,Intravenous,Cephalosporins and other beta-lactams
+vmp,323854009,0501021H0AAABAB,Ceftazidime 1g powder for solution for injection vials,Ceftazidime pentahydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323854009,0501021H0AAABAB,Ceftazidime 1g powder for solution for injection vials,Ceftazidime pentahydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323852008,0501021H0AAADAD,Ceftazidime 250mg powder for solution for injection vials,Ceftazidime pentahydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323852008,0501021H0AAADAD,Ceftazidime 250mg powder for solution for injection vials,Ceftazidime pentahydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323855005,0501021H0AAACAC,Ceftazidime 2g powder for solution for injection vials,Ceftazidime pentahydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323855005,0501021H0AAACAC,Ceftazidime 2g powder for solution for injection vials,Ceftazidime pentahydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323849000,0501021H0AAAHAH,Ceftazidime 3g powder for solution for injection vials,Ceftazidime pentahydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323849000,0501021H0AAAHAH,Ceftazidime 3g powder for solution for injection vials,Ceftazidime pentahydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323853003,0501021H0AAAAAA,Ceftazidime 500mg powder for solution for injection vials,Ceftazidime pentahydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323853003,0501021H0AAAAAA,Ceftazidime 500mg powder for solution for injection vials,Ceftazidime pentahydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323990001,0501021G0AAACAC,Ceftriaxone 1g powder for solution for injection vials,Ceftriaxone sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323990001,0501021G0AAACAC,Ceftriaxone 1g powder for solution for injection vials,Ceftriaxone sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323989005,0501021G0AAABAB,Ceftriaxone 250mg powder for solution for injection vials,Ceftriaxone sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323989005,0501021G0AAABAB,Ceftriaxone 250mg powder for solution for injection vials,Ceftriaxone sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323991002,0501021G0AAADAD,Ceftriaxone 2g powder for solution for injection vials,Ceftriaxone sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323991002,0501021G0AAADAD,Ceftriaxone 2g powder for solution for injection vials,Ceftriaxone sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,4557611000001106,0501021J0AAACAC,Cefuroxime 1.5g powder for injection vials,Cefuroxime sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,4557611000001106,0501021J0AAACAC,Cefuroxime 1.5g powder for injection vials,Cefuroxime sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,323874002,0501021K0AAADAD,Cefuroxime 125mg granules sachets,Cefuroxime axetil,Oral,Cephalosporins and other beta-lactams
+vmp,39684511000001101,0501021K0AAAAAA,Cefuroxime 125mg tablets,Cefuroxime axetil,Oral,Cephalosporins and other beta-lactams
+vmp,323872003,0501021K0AAACAC,Cefuroxime 125mg/5ml oral suspension,Cefuroxime axetil,Oral,Cephalosporins and other beta-lactams
+vmp,323880005,0501021J0AAAAAA,Cefuroxime 250mg powder for injection vials,Cefuroxime sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323880005,0501021J0AAAAAA,Cefuroxime 250mg powder for injection vials,Cefuroxime sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,39694611000001101,0501021K0AAABAB,Cefuroxime 250mg tablets,Cefuroxime axetil,Oral,Cephalosporins and other beta-lactams
+vmp,36134711000001107,0501021J0AAABAB,Cefuroxime 750mg powder for injection vials,Cefuroxime sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,36134711000001107,0501021J0AAABAB,Cefuroxime 750mg powder for injection vials,Cefuroxime sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,324303009,0501070F0AAACAC,Chloramphenicol 1g powder for solution for injection vials,Chloramphenicol sodium succinate,Intramuscular,Others
+vmp,324303009,0501070F0AAACAC,Chloramphenicol 1g powder for solution for injection vials,Chloramphenicol sodium succinate,Intravenous,Others
+vmp,324298007,0501070F0AAAAAA,Chloramphenicol 250mg capsules,Chloramphenicol,Oral,Others
+vmp,39686211000001109,0501120L0AAAGAG,Ciprofloxacin 100mg tablets,Ciprofloxacin hydrochloride,Oral,Quinolones
+vmp,36140911000001100,0501120L0AAABAB,Ciprofloxacin 100mg/50ml solution for infusion bottles,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,10892711000001106,0501120L0AABQBQ,Ciprofloxacin 100mg/50ml solution for infusion vials,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,12019511000001104,0501120L0AAAPAP,Ciprofloxacin 100mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12019611000001100,0501120L0AAATAT,Ciprofloxacin 125mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12019711000001109,0501120L0AABIBI,Ciprofloxacin 150mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12019811000001101,0501120L0AABJBJ,Ciprofloxacin 165mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12019911000001106,0501120L0AAAXAX,Ciprofloxacin 170mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12020011000001108,0501120L0AABCBC,Ciprofloxacin 175mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,36141011000001108,0501120L0AABEBE,Ciprofloxacin 200mg/100ml infusion bags,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,8967411000001108,0501120L0AAADAD,Ciprofloxacin 200mg/100ml solution for infusion bottles,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,10892811000001103,0501120L0AABRBR,Ciprofloxacin 200mg/100ml solution for infusion vials,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,12020111000001109,0501120L0AABKBK,Ciprofloxacin 20mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,39687511000001109,0501120L0AAAAAA,Ciprofloxacin 250mg tablets,Ciprofloxacin hydrochloride,Oral,Quinolones
+vmp,324602005,0501120L0AABGBG,Ciprofloxacin 250mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12020211000001103,0501120L0AABBBB,Ciprofloxacin 375mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,36141511000001100,0501120L0AABFBF,Ciprofloxacin 400mg/200ml infusion bags,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,8973011000001101,0501120L0AAAYAY,Ciprofloxacin 400mg/200ml solution for infusion bottles,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,10892911000001108,0501120L0AABSBS,Ciprofloxacin 400mg/200ml solution for infusion vials,Ciprofloxacin lactate,Intravenous,Quinolones
+vmp,12020311000001106,0501120L0AAANAN,Ciprofloxacin 40mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12020411000001104,0501120L0AABHBH,Ciprofloxacin 45mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,39687811000001107,0501120L0AAAFAF,Ciprofloxacin 500mg tablets,Ciprofloxacin hydrochloride,Oral,Quinolones
+vmp,12020511000001100,0501120L0AAAQAQ,Ciprofloxacin 500mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12020611000001101,0501120L0AAAUAU,Ciprofloxacin 50mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12020711000001105,0501120L0AAAWAW,Ciprofloxacin 60mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,39687011000001101,0501120L0AAAJAJ,Ciprofloxacin 750mg tablets,Ciprofloxacin hydrochloride,Oral,Quinolones
+vmp,12020811000001102,0501120L0AAAVAV,Ciprofloxacin 75mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,12020911000001107,0501120L0AABDBD,Ciprofloxacin 80mg/5ml oral suspension,Ciprofloxacin,Oral,Quinolones
+vmp,4977911000001105,0501050B0AAAGAG,Clarithromycin 125mg granules sachets,Clarithromycin,Oral,Macrolides
+vmp,9742311000001103,0501050B0AAAKAK,Clarithromycin 125mg granules straws,Clarithromycin,Oral,Macrolides
+vmp,35368711000001104,0501050B0AAABAB,Clarithromycin 125mg/5ml oral suspension,Clarithromycin,Oral,Macrolides
+vmp,9742411000001105,0501050B0AAALAL,Clarithromycin 187.5mg granules straws,Clarithromycin,Oral,Macrolides
+vmp,324248006,0501050B0AAAFAF,Clarithromycin 250mg granules sachets,Clarithromycin,Oral,Macrolides
+vmp,9742511000001109,0501050B0AAAMAM,Clarithromycin 250mg granules straws,Clarithromycin,Oral,Macrolides
+vmp,324238009,0501050B0AAAAAA,Clarithromycin 250mg tablets,Clarithromycin,Oral,Macrolides
+vmp,37083211000001101,0501050B0AAAHAH,Clarithromycin 250mg/5ml oral suspension,Clarithromycin,Oral,Macrolides
+vmp,36142611000001107,0501050B0AAAEAE,Clarithromycin 500mg modified-release tablets,Clarithromycin,Oral,Macrolides
+vmp,324242007,0501050B0AAACAC,Clarithromycin 500mg powder for solution for infusion vials,Clarithromycin,Intravenous,Macrolides
+vmp,324244008,0501050B0AAADAD,Clarithromycin 500mg tablets,Clarithromycin,Oral,Macrolides
+vmp,36458611000001108,0501060D0AAATAT,Clindamycin 100mg/5ml oral suspension,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,12021311000001101,0501060D0AAAJAJ,Clindamycin 120mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,324277007,0501060D0AAABAB,Clindamycin 150mg capsules,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,12021411000001108,0501060D0AAAHAH,Clindamycin 150mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,34376711000001103,0501060D0AAAQAQ,Clindamycin 150mg/5ml oral suspension,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,34818411000001104,0501060D0AAARAR,Clindamycin 200mg/5ml oral suspension,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,12021611000001106,0501060D0AAAFAF,Clindamycin 20mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,21711211000001104,0501060D0AAAMAM,Clindamycin 300mg capsules,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,36087211000001109,0501060E0AAAAAA,Clindamycin 300mg/2ml solution for injection ampoules,Clindamycin phosphate,Intramuscular,Clindamycin and lincomycin
+vmp,36087211000001109,0501060E0AAAAAA,Clindamycin 300mg/2ml solution for injection ampoules,Clindamycin phosphate,Intravenous,Clindamycin and lincomycin
+vmp,12021711000001102,0501060D0AAAGAG,Clindamycin 300mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,12021811000001105,0501060D0AAAIAI,Clindamycin 400mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,32748011000001108,0501060D0AAAPAP,Clindamycin 450mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,36458711000001104,0501060D0AAASAS,Clindamycin 50mg/5ml oral suspension,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,36087311000001101,0501060E0AAABAB,Clindamycin 600mg/4ml solution for injection ampoules,Clindamycin phosphate,Intramuscular,Clindamycin and lincomycin
+vmp,36087311000001101,0501060E0AAABAB,Clindamycin 600mg/4ml solution for injection ampoules,Clindamycin phosphate,Intravenous,Clindamycin and lincomycin
+vmp,18519211000001105,0501060D0AAALAL,Clindamycin 60mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,324276003,0501060D0AAAAAA,Clindamycin 75mg capsules,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,27864611000001100,0501060D0AAAEAE,Clindamycin 75mg/5ml oral solution,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,8360611000001101,0501060D0AAANAN,Clindamycin 75mg/5ml oral suspension,Clindamycin hydrochloride,Oral,Clindamycin and lincomycin
+vmp,324509007,0501100C0AAAAAA,Clofazimine 100mg capsules,Clofazimine,Oral,Others
+vmp,376085005,0501100C0AAACAC,Clofazimine 50mg capsules,Clofazimine,Oral,Others
+vmp,323568005,0501013K0AAAFAF,Co-amoxiclav 1000mg/200mg powder for solution for injection vials,Amoxicillin sodium,Intravenous,Penicillins
+vmp,323568005,0501013K0AAAFAF,Co-amoxiclav 1000mg/200mg powder for solution for injection vials,Potassium clavulanate,Intravenous,Penicillins
+vmp,7322211000001104,0501013K0AAAHAH,Co-amoxiclav 125mg/31mg/5ml oral suspension,Amoxicillin trihydrate,Oral,Penicillins
+vmp,7322211000001104,0501013K0AAAHAH,Co-amoxiclav 125mg/31mg/5ml oral suspension,Potassium clavulanate,Oral,Penicillins
+vmp,36565811000001104,0501013K0AAADAD,Co-amoxiclav 125mg/31mg/5ml oral suspension sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,36565811000001104,0501013K0AAADAD,Co-amoxiclav 125mg/31mg/5ml oral suspension sugar free,Potassium clavulanate,Oral,Penicillins
+vmp,39021311000001109,0501013K0AAABAB,Co-amoxiclav 250mg/125mg dispersible tablets sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,39021311000001109,0501013K0AAABAB,Co-amoxiclav 250mg/125mg dispersible tablets sugar free,Potassium clavulanate,Oral,Penicillins
+vmp,39732111000001101,0501013K0AAAAAA,Co-amoxiclav 250mg/125mg tablets,Amoxicillin trihydrate,Oral,Penicillins
+vmp,39732111000001101,0501013K0AAAAAA,Co-amoxiclav 250mg/125mg tablets,Potassium clavulanate,Oral,Penicillins
+vmp,7322311000001107,0501013K0AAAIAI,Co-amoxiclav 250mg/62mg/5ml oral suspension,Amoxicillin trihydrate,Oral,Penicillins
+vmp,7322311000001107,0501013K0AAAIAI,Co-amoxiclav 250mg/62mg/5ml oral suspension,Potassium clavulanate,Oral,Penicillins
+vmp,37083611000001104,0501013K0AAAGAG,Co-amoxiclav 250mg/62mg/5ml oral suspension sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,37083611000001104,0501013K0AAAGAG,Co-amoxiclav 250mg/62mg/5ml oral suspension sugar free,Potassium clavulanate,Oral,Penicillins
+vmp,37083711000001108,0501013K0AAAKAK,Co-amoxiclav 400mg/57mg/5ml oral suspension sugar free,Amoxicillin trihydrate,Oral,Penicillins
+vmp,37083711000001108,0501013K0AAAKAK,Co-amoxiclav 400mg/57mg/5ml oral suspension sugar free,Potassium clavulanate,Oral,Penicillins
+vmp,323567000,0501013K0AAAEAE,Co-amoxiclav 500mg/100mg powder for solution for injection vials,Amoxicillin sodium,Intravenous,Penicillins
+vmp,323567000,0501013K0AAAEAE,Co-amoxiclav 500mg/100mg powder for solution for injection vials,Potassium clavulanate,Intravenous,Penicillins
+vmp,39732211000001107,0501013K0AAAJAJ,Co-amoxiclav 500mg/125mg tablets,Amoxicillin trihydrate,Oral,Penicillins
+vmp,39732211000001107,0501013K0AAAJAJ,Co-amoxiclav 500mg/125mg tablets,Potassium clavulanate,Oral,Penicillins
+vmp,39732511000001105,0501013K0AAANAN,Co-amoxiclav 875mg/125mg tablets,Amoxicillin trihydrate,Oral,Penicillins
+vmp,39732511000001105,0501013K0AAANAN,Co-amoxiclav 875mg/125mg tablets,Potassium clavulanate,Oral,Penicillins
+vmp,36090611000001106,0501013L0AAADAD,Co-fluampicil 125mg/125mg/5ml oral suspension,Flucloxacillin magnesium,Oral,Penicillins
+vmp,36090611000001106,0501013L0AAADAD,Co-fluampicil 125mg/125mg/5ml oral suspension,Ampicillin trihydrate,Oral,Penicillins
+vmp,39732711000001100,0501013L0AAAAAA,Co-fluampicil 250mg/250mg capsules,Flucloxacillin sodium,Oral,Penicillins
+vmp,39732711000001100,0501013L0AAAAAA,Co-fluampicil 250mg/250mg capsules,Ampicillin trihydrate,Oral,Penicillins
+vmp,323626004,0501013L0AAABAB,Co-fluampicil 250mg/250mg powder for solution for injection vials,Flucloxacillin sodium,Intramuscular,Penicillins
+vmp,323626004,0501013L0AAABAB,Co-fluampicil 250mg/250mg powder for solution for injection vials,Flucloxacillin sodium,Intravenous,Penicillins
+vmp,323626004,0501013L0AAABAB,Co-fluampicil 250mg/250mg powder for solution for injection vials,Ampicillin sodium,Intramuscular,Penicillins
+vmp,323626004,0501013L0AAABAB,Co-fluampicil 250mg/250mg powder for solution for injection vials,Ampicillin sodium,Intravenous,Penicillins
+vmp,324359004,0501080D0AAAJAJ,Co-trimoxazole 160mg/800mg tablets,Sulfamethoxazole,Oral,Sulfonamides and trimethoprim
+vmp,324359004,0501080D0AAAJAJ,Co-trimoxazole 160mg/800mg tablets,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,36091911000001107,0501080D0AAATAT,Co-trimoxazole 160mg/800mg/10ml solution for infusion ampoules,Sulfamethoxazole,Intravenous,Sulfonamides and trimethoprim
+vmp,36091911000001107,0501080D0AAATAT,Co-trimoxazole 160mg/800mg/10ml solution for infusion ampoules,Trimethoprim,Intravenous,Sulfonamides and trimethoprim
+vmp,35313211000001104,0501080D0AAACAC,Co-trimoxazole 40mg/200mg/5ml oral suspension sugar free,Sulfamethoxazole,Oral,Sulfonamides and trimethoprim
+vmp,35313211000001104,0501080D0AAACAC,Co-trimoxazole 40mg/200mg/5ml oral suspension sugar free,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,324357002,0501080D0AAAHAH,Co-trimoxazole 80mg/400mg tablets,Sulfamethoxazole,Oral,Sulfonamides and trimethoprim
+vmp,324357002,0501080D0AAAHAH,Co-trimoxazole 80mg/400mg tablets,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,324362001,0501080D0AAAEAE,Co-trimoxazole 80mg/400mg/5ml oral suspension,Sulfamethoxazole,Oral,Sulfonamides and trimethoprim
+vmp,324362001,0501080D0AAAEAE,Co-trimoxazole 80mg/400mg/5ml oral suspension,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,3653911000001100,0501080D0AAABAB,Co-trimoxazole 80mg/400mg/5ml solution for infusion ampoules,Sulfamethoxazole,Intravenous,Sulfonamides and trimethoprim
+vmp,3653911000001100,0501080D0AAABAB,Co-trimoxazole 80mg/400mg/5ml solution for infusion ampoules,Trimethoprim,Intravenous,Sulfonamides and trimethoprim
+vmp,22555311000001104,0501070I0AAAGAG,"Colistimethate 1,662,500unit inhalation powder capsules",Colistimethate sodium,Inhalation,Others
+vmp,4256011000001107,0501070I0AAADAD,Colistimethate 1million unit powder for nebuliser solution unit dose vials,Colistimethate sodium,Inhalation,Others
+vmp,324311004,0501070I0AAABAB,Colistimethate 1million unit powder for solution for injection vials,Colistimethate sodium,Intravenous,Others
+vmp,324311004,0501070I0AAABAB,Colistimethate 1million unit powder for solution for injection vials,Colistimethate sodium,Inhalation,Others
+vmp,32936911000001103,0501070I0AAAHAH,Colistimethate 2million unit powder for nebuliser solution unit dose vials,Colistimethate sodium,Inhalation,Others
+vmp,4638311000001106,0501070I0AAAEAE,Colistimethate 2million unit powder for solution for injection vials,Colistimethate sodium,Intravenous,Others
+vmp,4638311000001106,0501070I0AAAEAE,Colistimethate 2million unit powder for solution for injection vials,Colistimethate sodium,Inhalation,Others
+vmp,324310003,0501070I0AAAAAA,"Colistimethate 500,000unit powder for solution for injection vials",Colistimethate sodium,Intravenous,Others
+vmp,324310003,0501070I0AAAAAA,"Colistimethate 500,000unit powder for solution for injection vials",Colistimethate sodium,Inhalation,Others
+vmp,39707811000001100,0501070H0AAAEAE,Colistin 1.5million unit tablets,Colistin sulfate,Oral,Others
+vmp,36091411000001104,0501070H0AAADAD,"Colistin 250,000units/5ml oral solution",Colistin sulfate,Oral,Others
+vmp,324457003,0501090E0AAABAB,Cycloserine 250mg capsules,Cycloserine,Oral,Others
+vmp,34377311000001104,0501070AFAAAAAA,Dalbavancin 500mg powder for solution for infusion vials,Dalbavancin hydrochloride,Intravenous,Others
+vmp,324507009,0501100H0AAAHAH,Dapsone 100mg tablets,Dapsone,Oral,Others
+vmp,36903611000001107,0501100H0AAAPAP,Dapsone 20mg/5ml oral suspension,Dapsone,Oral,Others
+vmp,8430111000001106,0501100H0AAAMAM,Dapsone 40mg/5ml oral suspension,Dapsone,Oral,Others
+vmp,324506000,0501100H0AAAFAF,Dapsone 50mg tablets,Dapsone,Oral,Others
+vmp,8430011000001105,0501100H0AAALAL,Dapsone 50mg/5ml oral suspension,Dapsone,Oral,Others
+vmp,11712911000001103,0501100H0AAAKAK,Dapsone 5mg/5ml oral solution,Dapsone,Oral,Others
+vmp,11713011000001106,0501100H0AAAKAK,Dapsone 5mg/5ml oral suspension,Dapsone,Oral,Others
+vmp,34818711000001105,0501100H0AAANAN,Dapsone 75mg/5ml oral suspension,Dapsone,Oral,Others
+vmp,10140911000001105,0501070Y0AAAAAA,Daptomycin 350mg powder for solution for infusion vials,Daptomycin,Intravenous,Others
+vmp,10961311000001108,0501070Y0AAABAB,Daptomycin 500mg powder for solution for infusion vials,Daptomycin,Intravenous,Others
+vmp,27800311000001101,0501090W0AAAAAA,Delamanid 50mg tablets,Delamanid,Oral,Others
+vmp,324049005,0501030F0AAAAAA,Demeclocycline 150mg capsules,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,371595007,0501030F0AAAIAI,Demeclocycline 150mg tablets,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,11713311000001109,0501030F0AAAGAG,Demeclocycline 150mg/5ml oral solution,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,11713411000001102,0501030F0AAAGAG,Demeclocycline 150mg/5ml oral suspension,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,11713511000001103,0501030F0AAAFAF,Demeclocycline 300mg/5ml oral solution,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,11713611000001104,0501030F0AAAFAF,Demeclocycline 300mg/5ml oral suspension,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,11713711000001108,0501030F0AAAHAH,Demeclocycline 75mg/5ml oral solution,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,11713811000001100,0501030F0AAAHAH,Demeclocycline 75mg/5ml oral suspension,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,428353009,0501022C0AAAAAA,Doripenem 500mg powder for solution for infusion vials,Doripenem monohydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,324059006,0501030I0AAABAB,Doxycycline 100mg capsules,Doxycycline hyclate,Oral,Tetracyclines
+vmp,39710311000001106,0501030I0AAAEAE,Doxycycline 100mg dispersible tablets sugar free,Doxycycline monohydrate,Oral,Tetracyclines
+vmp,421341000,0501030I0AAALAL,Doxycycline 100mg tablets,Doxycycline hyclate,Oral,Tetracyclines
+vmp,32876211000001101,0501030I0AAAKAK,Doxycycline 100mg/5ml oral suspension,Doxycycline hyclate,Oral,Tetracyclines
+vmp,36564611000001104,0501030Z0AAAAAA,Doxycycline 40mg modified-release capsules,Doxycycline monohydrate,Oral,Tetracyclines
+vmp,324070004,0501030I0AAAAAA,Doxycycline 50mg capsules,Doxycycline hyclate,Oral,Tetracyclines
+vmp,8485211000001101,0501030I0AAAHAH,Doxycycline 50mg/5ml oral solution,Doxycycline hyclate,Oral,Tetracyclines
+vmp,8485311000001109,0501030I0AAAHAH,Doxycycline 50mg/5ml oral suspension,Doxycycline hyclate,Oral,Tetracyclines
+vmp,4792411000001101,0501022B0AAAAAA,Ertapenem 1g powder for solution for infusion vials,Ertapenem sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,324215006,0501050K0AAAAAA,Erythromycin 1g powder for solution for infusion vials,Erythromycin lactobionate,Intravenous,Macrolides
+vmp,36064711000001106,0501050C0AAAKAK,Erythromycin 250mg gastro-resistant capsules,Erythromycin,Oral,Macrolides
+vmp,324178009,0501050C0AAABAB,Erythromycin 250mg gastro-resistant tablets,Erythromycin,Oral,Macrolides
+vmp,324232005,0501050H0AAAAAA,Erythromycin ethyl succinate 125mg/5ml oral suspension,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,36564711000001108,0501050H0AAALAL,Erythromycin ethyl succinate 125mg/5ml oral suspension sugar free,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,324233000,0501050H0AAABAB,Erythromycin ethyl succinate 250mg/5ml oral suspension,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,39107311000001103,0501050H0AAAMAM,Erythromycin ethyl succinate 250mg/5ml oral suspension sugar free,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,324179001,0501050H0AAAEAE,Erythromycin ethyl succinate 500mg tablets,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,324234006,0501050H0AAACAC,Erythromycin ethyl succinate 500mg/5ml oral suspension,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,39107211000001106,0501050H0AAANAN,Erythromycin ethyl succinate 500mg/5ml oral suspension sugar free,Erythromycin ethyl succinate,Oral,Macrolides
+vmp,324180003,0501050N0AAAAAA,Erythromycin stearate 250mg tablets,Erythromycin stearate,Oral,Macrolides
+vmp,324181004,0501050N0AAABAB,Erythromycin stearate 500mg tablets,Erythromycin stearate,Oral,Macrolides
+vmp,324466004,0501090H0AAABAB,Ethambutol 100mg tablets,Ethambutol hydrochloride,Oral,Others
+vmp,12297511000001100,0501090H0AABDBD,Ethambutol 100mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,12297611000001101,0501090H0AABFBF,Ethambutol 125mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,12297711000001105,0501090H0AABCBC,Ethambutol 150mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,22456811000001106,0501090H0AABHBH,Ethambutol 150mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,8508611000001101,0501090H0AAAVAV,Ethambutol 200mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8508711000001105,0501090H0AAAVAV,Ethambutol 200mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,8508811000001102,0501090H0AABABA,Ethambutol 250mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8508911000001107,0501090H0AABABA,Ethambutol 250mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,12297811000001102,0501090H0AAAWAW,Ethambutol 25mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509011000001103,0501090H0AAAZAZ,Ethambutol 300mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509111000001102,0501090H0AAAZAZ,Ethambutol 300mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,12297911000001107,0501090H0AAAYAY,Ethambutol 350mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,12298011000001109,0501090H0AAATAT,Ethambutol 375mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,324467008,0501090H0AAACAC,Ethambutol 400mg tablets,Ethambutol hydrochloride,Oral,Others
+vmp,8509211000001108,0501090H0AAASAS,Ethambutol 400mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509411000001107,0501090H0AAASAS,Ethambutol 400mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,12298111000001105,0501090H0AABBBB,Ethambutol 450mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509511000001106,0501090H0AAARAR,Ethambutol 500mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509611000001105,0501090H0AAARAR,Ethambutol 500mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,12298211000001104,0501090H0AABGBG,Ethambutol 50mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509711000001101,0501090H0AAAXAX,Ethambutol 600mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,8509911000001104,0501090H0AAAXAX,Ethambutol 600mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,12298311000001107,0501090H0AABEBE,Ethambutol 700mg/5ml oral solution,Ethambutol hydrochloride,Oral,Others
+vmp,35574511000001108,0501090H0AABIBI,Ethambutol 700mg/5ml oral suspension,Ethambutol hydrochloride,Oral,Others
+vmp,373967008,0501090I0AAAAAA,Ethionamide 250mg tablets,Ethionamide,Oral,Others
+vmp,703666002,0501070ACAAAAAA,Fidaxomicin 200mg tablets,Fidaxomicin,Oral,Others
+vmp,323484009,0501012G0AAAFAF,Flucloxacillin 125mg/5ml oral solution,Flucloxacillin sodium,Oral,Penicillins
+vmp,16089611000001103,0501012G0AAAPAP,Flucloxacillin 125mg/5ml oral solution sugar free,Flucloxacillin sodium,Oral,Penicillins
+vmp,323496002,0501012H0AAAAAA,Flucloxacillin 125mg/5ml oral suspension,Flucloxacillin magnesium,Oral,Penicillins
+vmp,323493005,0501012G0AAAEAE,Flucloxacillin 1g powder for solution for injection vials,Flucloxacillin sodium,Intramuscular,Penicillins
+vmp,323493005,0501012G0AAAEAE,Flucloxacillin 1g powder for solution for injection vials,Flucloxacillin sodium,Intrapleural,Penicillins
+vmp,323493005,0501012G0AAAEAE,Flucloxacillin 1g powder for solution for injection vials,Flucloxacillin sodium,Intravenous,Penicillins
+vmp,323493005,0501012G0AAAEAE,Flucloxacillin 1g powder for solution for injection vials,Flucloxacillin sodium,Inhalation,Penicillins
+vmp,323493005,0501012G0AAAEAE,Flucloxacillin 1g powder for solution for injection vials,Flucloxacillin sodium,Intraarticular,Penicillins
+vmp,39692111000001101,0501012G0AAAAAA,Flucloxacillin 250mg capsules,Flucloxacillin sodium,Oral,Penicillins
+vmp,323491007,0501012G0AAACAC,Flucloxacillin 250mg powder for solution for injection vials,Flucloxacillin sodium,Intramuscular,Penicillins
+vmp,323491007,0501012G0AAACAC,Flucloxacillin 250mg powder for solution for injection vials,Flucloxacillin sodium,Intrapleural,Penicillins
+vmp,323491007,0501012G0AAACAC,Flucloxacillin 250mg powder for solution for injection vials,Flucloxacillin sodium,Intravenous,Penicillins
+vmp,323491007,0501012G0AAACAC,Flucloxacillin 250mg powder for solution for injection vials,Flucloxacillin sodium,Inhalation,Penicillins
+vmp,323491007,0501012G0AAACAC,Flucloxacillin 250mg powder for solution for injection vials,Flucloxacillin sodium,Intraarticular,Penicillins
+vmp,323485005,0501012G0AAAGAG,Flucloxacillin 250mg/5ml oral solution,Flucloxacillin sodium,Oral,Penicillins
+vmp,16089711000001107,0501012G0AAAQAQ,Flucloxacillin 250mg/5ml oral solution sugar free,Flucloxacillin sodium,Oral,Penicillins
+vmp,323474008,0501012H0AAABAB,Flucloxacillin 250mg/5ml oral suspension,Flucloxacillin magnesium,Oral,Penicillins
+vmp,34769611000001109,0501012G0AAARAR,Flucloxacillin 2g powder for solution for injection vials,Flucloxacillin sodium,Intravenous,Penicillins
+vmp,39692211000001107,0501012G0AAABAB,Flucloxacillin 500mg capsules,Flucloxacillin sodium,Oral,Penicillins
+vmp,323492000,0501012G0AAADAD,Flucloxacillin 500mg powder for solution for injection vials,Flucloxacillin sodium,Intramuscular,Penicillins
+vmp,323492000,0501012G0AAADAD,Flucloxacillin 500mg powder for solution for injection vials,Flucloxacillin sodium,Intrapleural,Penicillins
+vmp,323492000,0501012G0AAADAD,Flucloxacillin 500mg powder for solution for injection vials,Flucloxacillin sodium,Intravenous,Penicillins
+vmp,323492000,0501012G0AAADAD,Flucloxacillin 500mg powder for solution for injection vials,Flucloxacillin sodium,Inhalation,Penicillins
+vmp,323492000,0501012G0AAADAD,Flucloxacillin 500mg powder for solution for injection vials,Flucloxacillin sodium,Intraarticular,Penicillins
+vmp,18162111000001102,0501070AEAAADAD,Fosfomycin 3g granules sachets,Fosfomycin trometamol,Oral,Others
+vmp,21258811000001107,0501130S0AAAAAA,Fosfomycin 500mg capsules,Fosfomycin calcium,Oral,Urinary-tract infections
+vmp,324317000,0501070M0AAAAAA,Fusidic acid 250mg/5ml oral suspension,Fusidic acid,Oral,Others
+vmp,34819711000001101,0501030X0AAAAAA,Generic Deteclo 300mg tablets,Demeclocycline hydrochloride,Oral,Tetracyclines
+vmp,34819711000001101,0501030X0AAAAAA,Generic Deteclo 300mg tablets,Chlortetracycline hydrochloride,Oral,Tetracyclines
+vmp,34819711000001101,0501030X0AAAAAA,Generic Deteclo 300mg tablets,Tetracycline hydrochloride,Oral,Tetracyclines
+vmp,35445511000001100,0501120N0AAACAC,Generic Mictral granules 7g sachets,Nalidixic acid,Oral,Quinolones
+vmp,35445511000001100,0501120N0AAACAC,Generic Mictral granules 7g sachets,Citric acid,Oral,Quinolones
+vmp,35445511000001100,0501120N0AAACAC,Generic Mictral granules 7g sachets,Sodium citrate,Oral,Quinolones
+vmp,35445511000001100,0501120N0AAACAC,Generic Mictral granules 7g sachets,Sodium bicarbonate,Oral,Quinolones
+vmp,346672000,0501090S0AAACAC,Generic Rifater tablets,Isoniazid,Oral,Others
+vmp,346672000,0501090S0AAACAC,Generic Rifater tablets,Pyrazinamide,Oral,Others
+vmp,346672000,0501090S0AAACAC,Generic Rifater tablets,Rifampicin,Oral,Others
+vmp,21733111000001101,0501090S0BEAAA0,Generic Voractiv tablets,Ethambutol hydrochloride,Oral,Others
+vmp,21733111000001101,0501090S0BEAAA0,Generic Voractiv tablets,Isoniazid,Oral,Others
+vmp,21733111000001101,0501090S0BEAAA0,Generic Voractiv tablets,Pyrazinamide,Oral,Others
+vmp,21733111000001101,0501090S0BEAAA0,Generic Voractiv tablets,Rifampicin,Oral,Others
+vmp,29903511000001102,0501040H0AABBBB,Gentamicin 20mg/2ml solution for injection ampoules,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,36063011000001107,0501040H0AAAEAE,Gentamicin 20mg/2ml solution for injection vials,Gentamicin sulfate,Intramuscular,Aminoglycosides
+vmp,36063011000001107,0501040H0AAAEAE,Gentamicin 20mg/2ml solution for injection vials,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,29951111000001100,0501040H0AABDBD,Gentamicin 240mg/80ml infusion bags,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,27800411000001108,0501040H0AAAZAZ,Gentamicin 30mg/5ml oral suspension,Gentamicin sulfate,Oral,Aminoglycosides
+vmp,29827911000001102,0501040H0AABABA,Gentamicin 35mg/5ml oral suspension,Gentamicin sulfate,Oral,Aminoglycosides
+vmp,29951211000001106,0501040H0AABEBE,Gentamicin 360mg/120ml infusion bags,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,36050911000001105,0501040H0AAAQAQ,Gentamicin 40mg/1ml solution for injection ampoules,Gentamicin sulfate,Intramuscular,Aminoglycosides
+vmp,36050911000001105,0501040H0AAAQAQ,Gentamicin 40mg/1ml solution for injection ampoules,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,32749211000001108,0501040H0AABFBF,Gentamicin 45mg/5ml oral solution,Gentamicin sulfate,Oral,Aminoglycosides
+vmp,8523611000001103,0501040H0AAAWAW,Gentamicin 50mg/5ml oral solution,Gentamicin sulfate,Oral,Aminoglycosides
+vmp,4615711000001107,0501040H0AAAHAH,Gentamicin 5mg/1ml solution for injection ampoules,Gentamicin sulfate,Intrathecal,Aminoglycosides
+vmp,4615711000001107,0501040H0AAAHAH,Gentamicin 5mg/1ml solution for injection ampoules,Gentamicin sulfate,Intracerebroventricular,Aminoglycosides
+vmp,12089911000001108,0501040H0AAAXAX,Gentamicin 62.5mg/5ml oral solution,Gentamicin sulfate,Oral,Aminoglycosides
+vmp,12090011000001100,0501040H0AAAYAY,Gentamicin 75mg/5ml oral solution,Gentamicin sulfate,Oral,Aminoglycosides
+vmp,36051011000001102,0501040H0AAAAAA,Gentamicin 80mg/2ml solution for injection ampoules,Gentamicin sulfate,Intramuscular,Aminoglycosides
+vmp,36051011000001102,0501040H0AAAAAA,Gentamicin 80mg/2ml solution for injection ampoules,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,36051111000001101,0501040H0AAAMAM,Gentamicin 80mg/2ml solution for injection vials,Gentamicin sulfate,Intramuscular,Aminoglycosides
+vmp,36051111000001101,0501040H0AAAMAM,Gentamicin 80mg/2ml solution for injection vials,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,29951311000001103,0501040H0AABCBC,Gentamicin 80mg/80ml infusion bags,Gentamicin sulfate,Intravenous,Aminoglycosides
+vmp,4396211000001103,0501022D0AAAAAA,Imipenem 500mg / Cilastatin 500mg powder for solution for infusion vials,Cilastatin sodium,Intravenous,Cephalosporins and other beta-lactams
+vmp,4396211000001103,0501022D0AAAAAA,Imipenem 500mg / Cilastatin 500mg powder for solution for infusion vials,Imipenem monohydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,323970005,0501022D0AAACAC,Imipenem 500mg / Cilastatin 500mg powder for suspension for injection vials,Cilastatin sodium,Intramuscular,Cephalosporins and other beta-lactams
+vmp,323970005,0501022D0AAACAC,Imipenem 500mg / Cilastatin 500mg powder for suspension for injection vials,Imipenem monohydrate,Intramuscular,Cephalosporins and other beta-lactams
+vmp,324472004,0501090K0AAAIAI,Isoniazid 100mg tablets,Isoniazid,Oral,Others
+vmp,8562211000001104,0501090K0AABJBJ,Isoniazid 100mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8562311000001107,0501090K0AABJBJ,Isoniazid 100mg/5ml oral suspension,Isoniazid,Oral,Others
+vmp,12639711000001108,0501090K0AABQBQ,Isoniazid 110mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12639811000001100,0501090K0AACSCS,Isoniazid 119mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12639911000001105,0501090K0AABZBZ,Isoniazid 120mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640011000001104,0501090K0AACECE,Isoniazid 125mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640111000001103,0501090K0AABKBK,Isoniazid 130mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640211000001109,0501090K0AABPBP,Isoniazid 135mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640311000001101,0501090K0AACBCB,Isoniazid 140mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8562411000001100,0501090K0AABLBL,Isoniazid 150mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8562511000001101,0501090K0AABLBL,Isoniazid 150mg/5ml oral suspension,Isoniazid,Oral,Others
+vmp,12640411000001108,0501090K0AABNBN,Isoniazid 17.5mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640511000001107,0501090K0AACKCK,Isoniazid 170mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640611000001106,0501090K0AACGCG,Isoniazid 175mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640711000001102,0501090K0AABUBU,Isoniazid 180mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8580311000001105,0501090K0AABMBM,Isoniazid 200mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8580411000001103,0501090K0AABMBM,Isoniazid 200mg/5ml oral suspension,Isoniazid,Oral,Others
+vmp,12640811000001105,0501090K0AABSBS,Isoniazid 220mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12640911000001100,0501090K0AABWBW,Isoniazid 250mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641011000001108,0501090K0AACDCD,Isoniazid 25mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641111000001109,0501090K0AACFCF,Isoniazid 260mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641211000001103,0501090K0AACACA,Isoniazid 270mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641311000001106,0501090K0AACLCL,Isoniazid 27mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641411000001104,0501090K0AACRCR,Isoniazid 30.5mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641511000001100,0501090K0AABTBT,Isoniazid 300mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641611000001101,0501090K0AACQCQ,Isoniazid 30mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641711000001105,0501090K0AACMCM,Isoniazid 375mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641811000001102,0501090K0AACJCJ,Isoniazid 400mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12641911000001107,0501090K0AACPCP,Isoniazid 40mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12642011000001100,0501090K0AABYBY,Isoniazid 500mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,324471006,0501090K0AAAHAH,Isoniazid 50mg tablets,Isoniazid,Oral,Others
+vmp,36050011000001106,0501090K0AAADAD,Isoniazid 50mg/2ml solution for injection ampoules,Isoniazid,Intramuscular,Others
+vmp,36050011000001106,0501090K0AAADAD,Isoniazid 50mg/2ml solution for injection ampoules,Isoniazid,Intrapleural,Others
+vmp,36050011000001106,0501090K0AAADAD,Isoniazid 50mg/2ml solution for injection ampoules,Isoniazid,Intrathecal,Others
+vmp,36050011000001106,0501090K0AAADAD,Isoniazid 50mg/2ml solution for injection ampoules,Isoniazid,Intravenous,Others
+vmp,8562611000001102,0501090K0AACUCU,Isoniazid 50mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8562711000001106,0501090K0AABIBI,Isoniazid 50mg/5ml oral suspension,Isoniazid,Oral,Others
+vmp,12642111000001104,0501090K0AABXBX,Isoniazid 60mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8580511000001104,0501090K0AABVBV,Isoniazid 75mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,8580611000001100,0501090K0AABVBV,Isoniazid 75mg/5ml oral suspension,Isoniazid,Oral,Others
+vmp,12642211000001105,0501090K0AACCCC,Isoniazid 80mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12642311000001102,0501090K0AACTCT,Isoniazid 85mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,12642411000001109,0501090K0AABRBR,Isoniazid 87.5mg/5ml oral solution,Isoniazid,Oral,Others
+vmp,32522511000001104,0501120X0AAAFAF,Levofloxacin 100mg/ml nebuliser liquid ampoules,Levofloxacin hemihydrate,Inhalation,Quinolones
+vmp,39697411000001109,0501120X0AAABAB,Levofloxacin 250mg tablets,Levofloxacin hemihydrate,Oral,Quinolones
+vmp,324634001,0501120X0AAAAAA,Levofloxacin 500mg tablets,Levofloxacin hemihydrate,Oral,Quinolones
+vmp,19448711000001105,0501120X0AAADAD,Levofloxacin 500mg/100ml infusion bags,Levofloxacin hemihydrate,Intravenous,Quinolones
+vmp,23108311000001101,0501120X0AAAEAE,Levofloxacin 500mg/100ml solution for infusion bottles,Levofloxacin hemihydrate,Intravenous,Quinolones
+vmp,36038911000001106,0501120X0AAACAC,Levofloxacin 500mg/100ml solution for infusion vials,Levofloxacin hemihydrate,Intravenous,Quinolones
+vmp,39718111000001106,0501070W0AAABAB,Linezolid 100mg/5ml oral suspension,Linezolid,Oral,Others
+vmp,134561001,0501070W0AAAAAA,Linezolid 600mg tablets,Linezolid,Oral,Others
+vmp,36040111000001105,0501070W0AAACAC,Linezolid 600mg/300ml infusion bags,Linezolid,Intravenous,Others
+vmp,36441911000001108,0501070W0AAADAD,Linezolid 600mg/300ml solution for infusion bottles,Linezolid,Intravenous,Others
+vmp,324076005,0501030L0AAABAB,Lymecycline 408mg capsules,Lymecycline,Oral,Tetracyclines
+vmp,324344005,0501022A0AAABAB,Meropenem 1g powder for solution for injection vials,Meropenem trihydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,324343004,0501022A0AAAAAA,Meropenem 500mg powder for solution for injection vials,Meropenem trihydrate,Intravenous,Cephalosporins and other beta-lactams
+vmp,371616001,0501130H0AAAAAA,Methenamine hippurate 1g tablets,Methenamine hippurate,Oral,Urinary-tract infections
+vmp,34194011000001108,0501110C0AAADAD,Metronidazole 100mg/20ml solution for infusion ampoules,Metronidazole,Intravenous,"Metronidazole, tinidazole and ornidazole"
+vmp,13007811000001103,0501110C0AABLBL,Metronidazole 100mg/5ml oral solution,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,13007911000001108,0501110C0AABTBT,Metronidazole 100mg/5ml oral suspension,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,324518009,0501110C0AAAHAH,Metronidazole 1g suppositories,Metronidazole,Rectal,"Metronidazole, tinidazole and ornidazole"
+vmp,34607211000001108,0501110C0AABJBJ,Metronidazole 200mg suppositories,Metronidazole,Rectal,"Metronidazole, tinidazole and ornidazole"
+vmp,324511003,0501110C0AAAIAI,Metronidazole 200mg tablets,Metronidazole,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,13008011000001105,0501110C0AABQBQ,Metronidazole 200mg/5ml oral solution,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,324520007,0501110C0AAAEAE,Metronidazole 200mg/5ml oral suspension,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,324512005,0501110C0AAAJAJ,Metronidazole 400mg tablets,Metronidazole,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,324517004,0501110C0AAAGAG,Metronidazole 500mg suppositories,Metronidazole,Rectal,"Metronidazole, tinidazole and ornidazole"
+vmp,324523009,0501110C0AABHBH,Metronidazole 500mg tablets,Metronidazole,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,36035611000001106,0501110C0AABABA,Metronidazole 500mg/100ml infusion 100ml bags,Metronidazole,Intravenous,"Metronidazole, tinidazole and ornidazole"
+vmp,34617211000001105,0501110C0AAAKAK,Metronidazole 500mg/100ml solution for infusion bottles,Metronidazole,Intravenous,"Metronidazole, tinidazole and ornidazole"
+vmp,32655011000001106,0501110C0AABSBS,Metronidazole 500mg/5ml oral suspension,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,13008111000001106,0501110C0AABRBR,Metronidazole 50mg/5ml oral solution,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,13008211000001100,0501110C0AABUBU,Metronidazole 50mg/5ml oral suspension,Metronidazole benzoate,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,39700811000001104,0501030P0AAAEAE,Minocycline 100mg capsules,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,36565111000001106,0501030P0AAACAC,Minocycline 100mg modified-release capsules,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,39700911000001109,0501030P0AAABAB,Minocycline 100mg tablets,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,39700611000001103,0501030P0AAADAD,Minocycline 50mg capsules,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,39700711000001107,0501030P0AAAAAA,Minocycline 50mg tablets,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,13010711000001108,0501030P0AAAFAF,Minocycline 50mg/5ml oral solution,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,13010811000001100,0501030P0AAAFAF,Minocycline 50mg/5ml oral suspension,Minocycline hydrochloride,Oral,Tetracyclines
+vmp,408015000,0501120Y0AAAAAA,Moxifloxacin 400mg tablets,Moxifloxacin hydrochloride,Oral,Quinolones
+vmp,36028511000001101,0501120Y0AAACAC,Moxifloxacin 400mg/250ml infusion bags,Moxifloxacin hydrochloride,Intravenous,Quinolones
+vmp,16756911000001108,0501120Y0AAABAB,Moxifloxacin 400mg/250ml solution for infusion bottles,Moxifloxacin hydrochloride,Intravenous,Quinolones
+vmp,36003311000001109,0501120Y0AAADAD,Moxifloxacin 400mg/5ml oral solution,Moxifloxacin hydrochloride,Oral,Quinolones
+vmp,324579006,0501120N0AAAAAA,Nalidixic acid 300mg/5ml oral suspension,Nalidixic acid,Oral,Quinolones
+vmp,36028911000001108,0501120N0AAAFAF,Nalidixic acid 300mg/5ml oral suspension sugar free,Nalidixic acid,Oral,Quinolones
+vmp,324578003,0501120N0AAABAB,Nalidixic acid 500mg tablets,Nalidixic acid,Oral,Quinolones
+vmp,12301911000001109,0501040N0AAAJAJ,Neomycin 100mg/5ml oral solution,Neomycin sulfate,Oral,Aminoglycosides
+vmp,324158001,0501040N0AAADAD,Neomycin 500mg tablets,Neomycin sulfate,Oral,Aminoglycosides
+vmp,12302011000001102,0501040N0AAAIAI,Neomycin 500mg/5ml oral solution,Neomycin sulfate,Oral,Aminoglycosides
+vmp,36030911000001109,0501040R0AAACAC,Netilmicin 100mg/1ml solution for injection ampoules,Netilmicin sulfate,Intramuscular,Aminoglycosides
+vmp,36030911000001109,0501040R0AAACAC,Netilmicin 100mg/1ml solution for injection ampoules,Netilmicin sulfate,Intravenous,Aminoglycosides
+vmp,36031011000001101,0501040R0AAAEAE,Netilmicin 150mg/1.5ml solution for injection ampoules,Netilmicin sulfate,Intramuscular,Aminoglycosides
+vmp,36031011000001101,0501040R0AAAEAE,Netilmicin 150mg/1.5ml solution for injection ampoules,Netilmicin sulfate,Intravenous,Aminoglycosides
+vmp,36031111000001100,0501040R0AAAAAA,Netilmicin 15mg/1.5ml solution for injection ampoules,Netilmicin sulfate,Intramuscular,Aminoglycosides
+vmp,36031111000001100,0501040R0AAAAAA,Netilmicin 15mg/1.5ml solution for injection ampoules,Netilmicin sulfate,Intravenous,Aminoglycosides
+vmp,36031211000001106,0501040R0AAAFAF,Netilmicin 200mg/2ml solution for injection ampoules,Netilmicin sulfate,Intramuscular,Aminoglycosides
+vmp,36031211000001106,0501040R0AAAFAF,Netilmicin 200mg/2ml solution for injection ampoules,Netilmicin sulfate,Intravenous,Aminoglycosides
+vmp,36031311000001103,0501040R0AAABAB,Netilmicin 50mg/1ml solution for injection ampoules,Netilmicin sulfate,Intramuscular,Aminoglycosides
+vmp,36031311000001103,0501040R0AAABAB,Netilmicin 50mg/1ml solution for injection ampoules,Netilmicin sulfate,Intravenous,Aminoglycosides
+vmp,409156007,0501070ABAAABAB,Nitazoxanide 100mg/5ml oral suspension,Nitazoxanide,Oral,Others
+vmp,414851008,0501070ABAAAAAA,Nitazoxanide 500mg tablets,Nitazoxanide,Oral,Others
+vmp,324572002,0501130R0AAABAB,Nitrofurantoin 100mg capsules,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,39108511000001108,0501130R0AAAGAG,Nitrofurantoin 100mg modified-release capsules,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,324559003,0501130R0AAAEAE,Nitrofurantoin 100mg tablets,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12862811000001106,0501130R0AAAJAJ,Nitrofurantoin 100mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12862911000001101,0501130R0AAAJAJ,Nitrofurantoin 100mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863011000001109,0501130R0AAATAT,Nitrofurantoin 10mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863111000001105,0501130R0AAATAT,Nitrofurantoin 10mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863211000001104,0501130R0AACGCG,Nitrofurantoin 11mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863311000001107,0501130R0AACGCG,Nitrofurantoin 11mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863411000001100,0501130R0AABEBE,Nitrofurantoin 12.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863511000001101,0501130R0AABEBE,Nitrofurantoin 12.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863611000001102,0501130R0AABSBS,Nitrofurantoin 125mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863711000001106,0501130R0AABSBS,Nitrofurantoin 125mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863811000001103,0501130R0AAAUAU,Nitrofurantoin 12mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12863911000001108,0501130R0AAAUAU,Nitrofurantoin 12mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864011000001106,0501130R0AACECE,Nitrofurantoin 13.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864111000001107,0501130R0AACECE,Nitrofurantoin 13.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864211000001101,0501130R0AAASAS,Nitrofurantoin 13mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864311000001109,0501130R0AAASAS,Nitrofurantoin 13mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864411000001102,0501130R0AABWBW,Nitrofurantoin 14mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864511000001103,0501130R0AABWBW,Nitrofurantoin 14mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864611000001104,0501130R0AAALAL,Nitrofurantoin 15mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864711000001108,0501130R0AAALAL,Nitrofurantoin 15mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864811000001100,0501130R0AABJBJ,Nitrofurantoin 16mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12864911000001105,0501130R0AABJBJ,Nitrofurantoin 16mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12893811000001100,0501130R0AACICI,Nitrofurantoin 17.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894011000001108,0501130R0AACICI,Nitrofurantoin 17.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894111000001109,0501130R0AABIBI,Nitrofurantoin 17mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894211000001103,0501130R0AABIBI,Nitrofurantoin 17mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894311000001106,0501130R0AABQBQ,Nitrofurantoin 18.75mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894511000001100,0501130R0AABQBQ,Nitrofurantoin 18.75mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894611000001101,0501130R0AAAQAQ,Nitrofurantoin 18mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894711000001105,0501130R0AAAQAQ,Nitrofurantoin 18mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12895111000001108,0501130R0AACDCD,Nitrofurantoin 1mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12894811000001102,0501130R0AACDCD,Nitrofurantoin 1mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904811000001105,0501130R0AABDBD,Nitrofurantoin 2.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904111000001103,0501130R0AABDBD,Nitrofurantoin 2.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904211000001109,0501130R0AAAVAV,Nitrofurantoin 20mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904311000001101,0501130R0AAAVAV,Nitrofurantoin 20mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904411000001108,0501130R0AABGBG,Nitrofurantoin 22mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904511000001107,0501130R0AABGBG,Nitrofurantoin 22mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904611000001106,0501130R0AABYBY,Nitrofurantoin 24mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904711000001102,0501130R0AABYBY,Nitrofurantoin 24mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12904911000001100,0501130R0AAAMAM,Nitrofurantoin 25mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,375489004,0501130R0AAAMAM,Nitrofurantoin 25mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,36565611000001103,0501130R0AAACAC,Nitrofurantoin 25mg/5ml oral suspension sugar free,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12905011000001100,0501130R0AABCBC,Nitrofurantoin 2mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12905111000001104,0501130R0AABCBC,Nitrofurantoin 2mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12933911000001106,0501130R0AAAZAZ,Nitrofurantoin 30mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934011000001109,0501130R0AAAZAZ,Nitrofurantoin 30mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934111000001105,0501130R0AABUBU,Nitrofurantoin 32.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934211000001104,0501130R0AABUBU,Nitrofurantoin 32.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934311000001107,0501130R0AABPBP,Nitrofurantoin 35mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934411000001100,0501130R0AABPBP,Nitrofurantoin 35mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934511000001101,0501130R0AAAPAP,Nitrofurantoin 40mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934611000001102,0501130R0AAAPAP,Nitrofurantoin 40mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934711000001106,0501130R0AABXBX,Nitrofurantoin 45mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934811000001103,0501130R0AABXBX,Nitrofurantoin 45mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12934911000001108,0501130R0AABVBV,Nitrofurantoin 4mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935011000001108,0501130R0AABVBV,Nitrofurantoin 4mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935111000001109,0501130R0AABNBN,Nitrofurantoin 5.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935211000001103,0501130R0AABNBN,Nitrofurantoin 5.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,324570005,0501130R0AAAAAA,Nitrofurantoin 50mg capsules,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,324558006,0501130R0AAADAD,Nitrofurantoin 50mg tablets,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935311000001106,0501130R0AAANAN,Nitrofurantoin 50mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935411000001104,0501130R0AAANAN,Nitrofurantoin 50mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935511000001100,0501130R0AAARAR,Nitrofurantoin 5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935611000001101,0501130R0AAARAR,Nitrofurantoin 5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935711000001105,0501130R0AAAWAW,Nitrofurantoin 6.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935811000001102,0501130R0AAAWAW,Nitrofurantoin 6.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12935911000001107,0501130R0AABRBR,Nitrofurantoin 6mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936011000001104,0501130R0AABRBR,Nitrofurantoin 6mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936111000001103,0501130R0AAAXAX,Nitrofurantoin 7.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936211000001109,0501130R0AAAXAX,Nitrofurantoin 7.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936311000001101,0501130R0AACJCJ,Nitrofurantoin 7.8mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936411000001108,0501130R0AACJCJ,Nitrofurantoin 7.8mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936511000001107,0501130R0AABKBK,Nitrofurantoin 75mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936611000001106,0501130R0AABKBK,Nitrofurantoin 75mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936711000001102,0501130R0AABBBB,Nitrofurantoin 7mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936811000001105,0501130R0AABBBB,Nitrofurantoin 7mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12936911000001100,0501130R0AABLBL,Nitrofurantoin 8mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12937011000001101,0501130R0AABLBL,Nitrofurantoin 8mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12937111000001100,0501130R0AABTBT,Nitrofurantoin 9.5mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12937211000001106,0501130R0AABTBT,Nitrofurantoin 9.5mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12937311000001103,0501130R0AABABA,Nitrofurantoin 9mg/5ml oral solution,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,12937411000001105,0501130R0AABABA,Nitrofurantoin 9mg/5ml oral suspension,Nitrofurantoin,Oral,Urinary-tract infections
+vmp,324621002,0501120Q0AAAAAA,Norfloxacin 400mg tablets,Norfloxacin,Oral,Quinolones
+vmp,12905211000001105,0501120P0AAADAD,Ofloxacin 100mg/5ml oral solution,Ofloxacin,Oral,Quinolones
+vmp,12895811000001101,0501120P0AAADAD,Ofloxacin 100mg/5ml oral suspension,Ofloxacin,Oral,Quinolones
+vmp,324612003,0501120P0AAAAAA,Ofloxacin 200mg tablets,Ofloxacin,Oral,Quinolones
+vmp,38752711000001101,0501120P0AAACAC,Ofloxacin 200mg/100ml solution for infusion bottles,Ofloxacin hydrochloride,Intravenous,Quinolones
+vmp,12905311000001102,0501120P0AAAEAE,Ofloxacin 250mg/5ml oral solution,Ofloxacin,Oral,Quinolones
+vmp,12905411000001109,0501120P0AAAEAE,Ofloxacin 250mg/5ml oral suspension,Ofloxacin,Oral,Quinolones
+vmp,324620001,0501120P0AAABAB,Ofloxacin 400mg tablets,Ofloxacin,Oral,Quinolones
+vmp,13003711000001101,0501030T0AAATAT,Oxytetracycline 100mg/5ml oral suspension,Oxytetracycline dihydrate,Oral,Tetracyclines
+vmp,13003811000001109,0501030T0AAAPAP,Oxytetracycline 125mg/5ml oral suspension,Oxytetracycline dihydrate,Oral,Tetracyclines
+vmp,324095003,0501030T0AAAJAJ,Oxytetracycline 250mg tablets,Oxytetracycline dihydrate,Oral,Tetracyclines
+vmp,13003911000001104,0501030T0AAAQAQ,Oxytetracycline 250mg/5ml oral suspension,Oxytetracycline dihydrate,Oral,Tetracyclines
+vmp,13004011000001101,0501030T0AAARAR,Oxytetracycline 500mg/5ml oral suspension,Oxytetracycline dihydrate,Oral,Tetracyclines
+vmp,22214211000001105,0501011P0AAATAT,Phenoxymethylpenicillin 0.3% eye drops,Phenoxymethylpenicillin potassium,Ocular,Penicillins
+vmp,323418000,0501011P0AAADAD,Phenoxymethylpenicillin 125mg/5ml oral solution,Phenoxymethylpenicillin potassium,Oral,Penicillins
+vmp,9215111000001107,0501011P0AAARAR,Phenoxymethylpenicillin 125mg/5ml oral solution sugar free,Phenoxymethylpenicillin potassium,Oral,Penicillins
+vmp,323416001,0501011P0AAAJAJ,Phenoxymethylpenicillin 250mg tablets,Phenoxymethylpenicillin potassium,Oral,Penicillins
+vmp,323420002,0501011P0AAAFAF,Phenoxymethylpenicillin 250mg/5ml oral solution,Phenoxymethylpenicillin potassium,Oral,Penicillins
+vmp,9215211000001101,0501011P0AAASAS,Phenoxymethylpenicillin 250mg/5ml oral solution sugar free,Phenoxymethylpenicillin potassium,Oral,Penicillins
+vmp,323673005,0501014S0AAAAAA,Piperacillin 2g / Tazobactam 250mg powder for solution for infusion vials,Piperacillin sodium,Intravenous,Penicillins
+vmp,323673005,0501014S0AAAAAA,Piperacillin 2g / Tazobactam 250mg powder for solution for infusion vials,Tazobactam sodium,Intravenous,Penicillins
+vmp,4651611000001105,0501014S0AAACAC,Piperacillin 4g / Tazobactam 500mg powder and solvent for solution for injection vials,Piperacillin sodium,Intravenous,Penicillins
+vmp,4651611000001105,0501014S0AAACAC,Piperacillin 4g / Tazobactam 500mg powder and solvent for solution for injection vials,Tazobactam sodium,Intravenous,Penicillins
+vmp,323671007,0501014S0AAABAB,Piperacillin 4g / Tazobactam 500mg powder for solution for infusion vials,Piperacillin sodium,Intravenous,Penicillins
+vmp,323671007,0501014S0AAABAB,Piperacillin 4g / Tazobactam 500mg powder for solution for infusion vials,Tazobactam sodium,Intravenous,Penicillins
+vmp,39702711000001106,0501015P0AAABAB,Pivmecillinam 200mg tablets,Pivmecillinam hydrochloride,Oral,Penicillins
+vmp,32750311000001106,0501015P0AAACAC,Pivmecillinam 200mg/5ml oral suspension,Pivmecillinam hydrochloride,Oral,Penicillins
+vmp,16324411000001105,0501070Z0AAAAAA,Pristinamycin 500mg tablets,Pristinamycin,Oral,Others
+vmp,13201111000001105,0501090N0AACHCH,Pyrazinamide 1.25g/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13201211000001104,0501090N0AACHCH,Pyrazinamide 1.25g/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13201311000001107,0501090N0AACECE,Pyrazinamide 1.4g/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13201411000001100,0501090N0AACECE,Pyrazinamide 1.4g/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13201511000001101,0501090N0AABMBM,Pyrazinamide 1.5g/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13201611000001102,0501090N0AABMBM,Pyrazinamide 1.5g/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13201711000001106,0501090N0AABIBI,Pyrazinamide 100mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13201811000001103,0501090N0AABIBI,Pyrazinamide 100mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13268011000001104,0501090N0AACFCF,Pyrazinamide 105mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13268111000001103,0501090N0AACFCF,Pyrazinamide 105mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13268211000001109,0501090N0AABHBH,Pyrazinamide 125mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13268311000001101,0501090N0AABHBH,Pyrazinamide 125mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13268411000001108,0501090N0AABABA,Pyrazinamide 150mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13268511000001107,0501090N0AABABA,Pyrazinamide 150mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13268611000001106,0501090N0AAA7A7,Pyrazinamide 175mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13268711000001102,0501090N0AAA7A7,Pyrazinamide 175mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13268811000001105,0501090N0AABCBC,Pyrazinamide 1g/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13268911000001100,0501090N0AABCBC,Pyrazinamide 1g/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13269011000001109,0501090N0AABFBF,Pyrazinamide 200mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13269111000001105,0501090N0AABFBF,Pyrazinamide 200mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13269211000001104,0501090N0AABKBK,Pyrazinamide 250mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13269311000001107,0501090N0AABKBK,Pyrazinamide 250mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13269411000001100,0501090N0AABUBU,Pyrazinamide 275mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13269511000001101,0501090N0AABUBU,Pyrazinamide 275mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13269611000001102,0501090N0AABJBJ,Pyrazinamide 300mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13269711000001106,0501090N0AABJBJ,Pyrazinamide 300mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13269811000001103,0501090N0AACDCD,Pyrazinamide 312.5mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13269911000001108,0501090N0AACDCD,Pyrazinamide 312.5mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13270011000001107,0501090N0AABEBE,Pyrazinamide 350mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13270111000001108,0501090N0AABEBE,Pyrazinamide 350mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13270211000001102,0501090N0AABDBD,Pyrazinamide 375mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13270311000001105,0501090N0AABDBD,Pyrazinamide 375mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13270411000001103,0501090N0AABTBT,Pyrazinamide 400mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13270511000001104,0501090N0AABTBT,Pyrazinamide 400mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13270611000001100,0501090N0AABZBZ,Pyrazinamide 420mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13270711000001109,0501090N0AABZBZ,Pyrazinamide 420mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13270811000001101,0501090N0AABRBR,Pyrazinamide 425mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13270911000001106,0501090N0AABRBR,Pyrazinamide 425mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13271011000001103,0501090N0AACBCB,Pyrazinamide 430mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13271111000001102,0501090N0AACBCB,Pyrazinamide 430mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13271211000001108,0501090N0AABGBG,Pyrazinamide 450mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13271311000001100,0501090N0AABGBG,Pyrazinamide 450mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13271411000001107,0501090N0AABVBV,Pyrazinamide 490mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13271511000001106,0501090N0AABVBV,Pyrazinamide 490mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,324477005,0501090N0AACJCJ,Pyrazinamide 500mg tablets,Pyrazinamide,Oral,Others
+vmp,8673211000001105,0501090N0AABBBB,Pyrazinamide 500mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,8673311000001102,0501090N0AABBBB,Pyrazinamide 500mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13271611000001105,0501090N0AAA9A9,Pyrazinamide 50mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13271711000001101,0501090N0AAA9A9,Pyrazinamide 50mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13271811000001109,0501090N0AABPBP,Pyrazinamide 600mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13271911000001104,0501090N0AABPBP,Pyrazinamide 600mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13272011000001106,0501090N0AABSBS,Pyrazinamide 625mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13272111000001107,0501090N0AABSBS,Pyrazinamide 625mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13272211000001101,0501090N0AACACA,Pyrazinamide 650mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13272311000001109,0501090N0AACACA,Pyrazinamide 650mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13272411000001102,0501090N0AABQBQ,Pyrazinamide 675mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13272511000001103,0501090N0AABQBQ,Pyrazinamide 675mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13272611000001104,0501090N0AACCCC,Pyrazinamide 700mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13272711000001108,0501090N0AACCCC,Pyrazinamide 700mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13272811000001100,0501090N0AAA8A8,Pyrazinamide 750mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13272911000001105,0501090N0AAA8A8,Pyrazinamide 750mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13273011000001102,0501090N0AABLBL,Pyrazinamide 75mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13273111000001101,0501090N0AABLBL,Pyrazinamide 75mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13273211000001107,0501090N0AABWBW,Pyrazinamide 850mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13273311000001104,0501090N0AABWBW,Pyrazinamide 850mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,13273411000001106,0501090N0AACGCG,Pyrazinamide 91mg/5ml oral solution,Pyrazinamide,Oral,Others
+vmp,13273511000001105,0501090N0AACGCG,Pyrazinamide 91mg/5ml oral suspension,Pyrazinamide,Oral,Others
+vmp,324354009,0501070V0AAAAAA,Quinupristin 150mg / Dalfopristin 350mg powder for solution for infusion vials,Dalfopristin mesilate,Intravenous,Others
+vmp,324354009,0501070V0AAAAAA,Quinupristin 150mg / Dalfopristin 350mg powder for solution for infusion vials,Quinupristin mesilate,Intravenous,Others
+vmp,13352711000001103,0501090Q0AAAZAZ,Rifabutin 100mg/5ml oral solution,Rifabutin,Oral,Others
+vmp,13352811000001106,0501090Q0AAAZAZ,Rifabutin 100mg/5ml oral suspension,Rifabutin,Oral,Others
+vmp,324504002,0501090Q0AAABAB,Rifabutin 150mg capsules,Rifabutin,Oral,Others
+vmp,13372211000001108,0501090Q0AAAUAU,Rifabutin 150mg/5ml oral solution,Rifabutin,Oral,Others
+vmp,13353011000001109,0501090Q0AAAUAU,Rifabutin 150mg/5ml oral suspension,Rifabutin,Oral,Others
+vmp,13372311000001100,0501090Q0AAAJAJ,Rifabutin 50mg/5ml oral solution,Rifabutin,Oral,Others
+vmp,13353111000001105,0501090Q0AAAJAJ,Rifabutin 50mg/5ml oral suspension,Rifabutin,Oral,Others
+vmp,13372411000001107,0501090Q0AAAGAG,Rifabutin 60mg/5ml oral solution,Rifabutin,Oral,Others
+vmp,13353211000001104,0501090Q0AAAGAG,Rifabutin 60mg/5ml oral suspension,Rifabutin,Oral,Others
+vmp,13372511000001106,0501090Q0AAALAL,Rifabutin 75mg/5ml oral solution,Rifabutin,Oral,Others
+vmp,13353311000001107,0501090Q0AAALAL,Rifabutin 75mg/5ml oral suspension,Rifabutin,Oral,Others
+vmp,13372611000001105,0501090Q0AAAVAV,Rifabutin 90mg/5ml oral solution,Rifabutin,Oral,Others
+vmp,13353411000001100,0501090Q0AAAVAV,Rifabutin 90mg/5ml oral suspension,Rifabutin,Oral,Others
+vmp,35934411000001101,0501090R0AAAFAF,Rifampicin 100mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,13372711000001101,0501090R0AAAMAM,Rifampicin 120mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13372811000001109,0501090R0AAAMAM,Rifampicin 120mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,324500006,0501090S0AAAAAA,Rifampicin 150mg / Isoniazid 100mg tablets,Isoniazid,Oral,Others
+vmp,324500006,0501090S0AAAAAA,Rifampicin 150mg / Isoniazid 100mg tablets,Rifampicin,Oral,Others
+vmp,324479008,0501090R0AAAAAA,Rifampicin 150mg capsules,Rifampicin,Oral,Others
+vmp,13372911000001104,0501090R0AAAKAK,Rifampicin 150mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13373011000001107,0501090R0AAAKAK,Rifampicin 150mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,13373111000001108,0501090R0AAANAN,Rifampicin 200mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13373211000001102,0501090R0AAANAN,Rifampicin 200mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,13532611000001105,0501090R0AAAUAU,Rifampicin 210mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13532711000001101,0501090R0AAAUAU,Rifampicin 210mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,13373311000001105,0501090R0AAAQAQ,Rifampicin 30.5mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13373411000001103,0501090R0AAAQAQ,Rifampicin 30.5mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,324501005,0501090S0AAABAB,Rifampicin 300mg / Isoniazid 150mg tablets,Isoniazid,Oral,Others
+vmp,324501005,0501090S0AAABAB,Rifampicin 300mg / Isoniazid 150mg tablets,Rifampicin,Oral,Others
+vmp,324480006,0501090R0AAABAB,Rifampicin 300mg capsules,Rifampicin,Oral,Others
+vmp,13373511000001104,0501090R0AAAPAP,Rifampicin 300mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13373611000001100,0501090R0AAAPAP,Rifampicin 300mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,13373711000001109,0501090R0AAARAR,Rifampicin 480mg/5ml oral solution,Rifampicin,Oral,Others
+vmp,13373811000001101,0501090R0AAARAR,Rifampicin 480mg/5ml oral suspension,Rifampicin,Oral,Others
+vmp,35934511000001102,0501090R0AAADAD,Rifampicin 600mg powder and solvent for solution for infusion vials,Rifampicin,Intravenous,Others
+vmp,22192511000001100,0501070X0AAACAC,Rifaximin 100mg/5ml oral suspension,Rifaximin,Oral,Others
+vmp,412555008,0501070X0AAAAAA,Rifaximin 200mg tablets,Rifaximin,Oral,Others
+vmp,445522003,0501070X0AAABAB,Rifaximin 550mg tablets,Rifaximin,Oral,Others
+vmp,324316009,0501070N0AAADAD,Sodium fusidate 250mg tablets,Sodium fusidate,Oral,Others
+vmp,35927411000001109,0501070N0AAABAB,Sodium fusidate 500mg powder and solvent for solution for infusion vials,Sodium fusidate,Intravenous,Others
+vmp,324503008,0501090U0AAAAAA,Streptomycin 1g powder for solution for injection vials,Streptomycin sulfate,Intramuscular,Others
+vmp,13454711000001102,0501080J0AAAFAF,Sulfadiazine 150mg/5ml oral suspension,Sulfadiazine,Oral,Sulfonamides and trimethoprim
+vmp,13454811000001105,0501080J0AAAHAH,Sulfadiazine 250mg/5ml oral suspension,Sulfadiazine,Oral,Sulfonamides and trimethoprim
+vmp,324411000,0501080J0AAABAB,Sulfadiazine 500mg tablets,Sulfadiazine,Oral,Sulfonamides and trimethoprim
+vmp,13454911000001100,0501080J0AAAGAG,Sulfadiazine 500mg/5ml oral suspension,Sulfadiazine,Oral,Sulfonamides and trimethoprim
+vmp,5241611000001103,0501080T0AAAAAA,Sulfamethoxypyridazine 500mg tablets,Sulfamethoxypyridazine,Oral,Sulfonamides and trimethoprim
+vmp,15474111000001108,0501080V0AAADAD,Sulfapyridine 250mg capsules,Sulfapyridine,Oral,Sulfonamides and trimethoprim
+vmp,17335611000001108,0501070AAAAAAAA,Taurolidine 2% nebuliser liquid,Taurolidine,Inhalation,Others
+vmp,20151411000001107,0501070AAAAABAB,Taurolidine 2g/100ml intraperitoneal solution bottles,Taurolidine,Intraperitoneal,Others
+vmp,20177311000001108,0501070AAAAABAB,Taurolidine 5g/250ml intraperitoneal solution bottles,Taurolidine,Intraperitoneal,Others
+vmp,29734011000001109,0501070ADAAAAAA,Tedizolid 200mg powder for solution for infusion vials,Tedizolid phosphate,Intravenous,Others
+vmp,703915009,0501070ADAAABAB,Tedizolid 200mg tablets,Tedizolid phosphate,Oral,Others
+vmp,35915111000001103,0501070T0AAABAB,Teicoplanin 200mg powder and solvent for solution for injection vials,Teicoplanin,Intramuscular,Others
+vmp,35915111000001103,0501070T0AAABAB,Teicoplanin 200mg powder and solvent for solution for injection vials,Teicoplanin,Intravenous,Others
+vmp,35915111000001103,0501070T0AAABAB,Teicoplanin 200mg powder and solvent for solution for injection vials,Teicoplanin,Oral,Others
+vmp,35915211000001109,0501070T0AAAAAA,Teicoplanin 400mg powder and solvent for solution for injection vials,Teicoplanin,Intramuscular,Others
+vmp,35915211000001109,0501070T0AAAAAA,Teicoplanin 400mg powder and solvent for solution for injection vials,Teicoplanin,Intravenous,Others
+vmp,35915211000001109,0501070T0AAAAAA,Teicoplanin 400mg powder and solvent for solution for injection vials,Teicoplanin,Oral,Others
+vmp,407790000,0501050T0AAAAAA,Telithromycin 400mg tablets,Telithromycin,Oral,Macrolides
+vmp,9553611000001102,0501012U0AAABAB,Temocillin 1g powder for solution for injection vials,Temocillin sodium,Intramuscular,Penicillins
+vmp,9553611000001102,0501012U0AAABAB,Temocillin 1g powder for solution for injection vials,Temocillin sodium,Intravenous,Penicillins
+vmp,21407411000001104,0501030V0AAARAR,Tetracycline 125mg/5ml oral solution,Tetracycline hydrochloride,Oral,Tetracyclines
+vmp,39704711000001101,0501030V0AAAAAA,Tetracycline 250mg capsules,Tetracycline hydrochloride,Oral,Tetracyclines
+vmp,39704811000001109,0501030V0AAAFAF,Tetracycline 250mg tablets,Tetracycline hydrochloride,Oral,Tetracyclines
+vmp,10194111000001109,0501100J0AAAAAA,Thalidomide 100mg tablets,Thalidomide,Oral,Others
+vmp,10193111000001107,0501100J0AAAJAJ,Thalidomide 25mg tablets,Thalidomide,Oral,Others
+vmp,10193511000001103,0501100J0AAAIAI,Thalidomide 50mg tablets,Thalidomide,Oral,Others
+vmp,13303011000001104,0501100J0AAAHAH,Thalidomide 50mg/5ml oral solution,Thalidomide,Oral,Others
+vmp,13303111000001103,0501100J0AAAHAH,Thalidomide 50mg/5ml oral suspension,Thalidomide,Oral,Others
+vmp,323772006,0501014N0AAACAC,Ticarcillin 3g / Clavulanic acid 200mg powder for solution for infusion vials,Ticarcillin sodium,Intravenous,Penicillins
+vmp,323772006,0501014N0AAACAC,Ticarcillin 3g / Clavulanic acid 200mg powder for solution for infusion vials,Potassium clavulanate,Intravenous,Penicillins
+vmp,10328711000001100,0501030Y0AAAAAA,Tigecycline 50mg powder for solution for infusion vials,Tigecycline,Intravenous,Tetracyclines
+vmp,324554008,0501110G0AAABAB,Tinidazole 500mg tablets,Tinidazole,Oral,"Metronidazole, tinidazole and ornidazole"
+vmp,32936811000001108,0501040U0AAANAN,Tobramycin 170mg/1.7ml nebuliser liquid ampoules,Tobramycin,Inhalation,Aminoglycosides
+vmp,34194211000001103,0501040U0AAAAAA,Tobramycin 20mg/2ml solution for injection vials,Tobramycin sulfate,Intramuscular,Aminoglycosides
+vmp,34194211000001103,0501040U0AAAAAA,Tobramycin 20mg/2ml solution for injection vials,Tobramycin sulfate,Intravenous,Aminoglycosides
+vmp,23676411000001103,0501040U0AAAMAM,Tobramycin 20mg/5ml oral solution,Tobramycin,Oral,Aminoglycosides
+vmp,4516011000001106,0501040U0AAAIAI,Tobramycin 240mg/6ml solution for injection vials,Tobramycin,Intramuscular,Aminoglycosides
+vmp,4516011000001106,0501040U0AAAIAI,Tobramycin 240mg/6ml solution for injection vials,Tobramycin,Intravenous,Aminoglycosides
+vmp,19544811000001101,0501040U0AAALAL,Tobramycin 28mg inhalation powder capsules with device,Tobramycin,Inhalation,Aminoglycosides
+vmp,14801411000001105,0501040U0AAAKAK,Tobramycin 300mg/4ml nebuliser liquid ampoules,Tobramycin,Inhalation,Aminoglycosides
+vmp,4145111000001102,0501040U0AAAGAG,Tobramycin 300mg/5ml nebuliser liquid ampoules,Tobramycin,Inhalation,Aminoglycosides
+vmp,35919711000001100,0501040U0AAAEAE,Tobramycin 40mg/1ml solution for injection ampoules,Tobramycin sulfate,Intramuscular,Aminoglycosides
+vmp,35919711000001100,0501040U0AAAEAE,Tobramycin 40mg/1ml solution for injection ampoules,Tobramycin sulfate,Intravenous,Aminoglycosides
+vmp,4957911000001108,0501040U0AAABAB,Tobramycin 40mg/1ml solution for injection vials,Tobramycin sulfate,Intramuscular,Aminoglycosides
+vmp,4957911000001108,0501040U0AAABAB,Tobramycin 40mg/1ml solution for injection vials,Tobramycin sulfate,Intravenous,Aminoglycosides
+vmp,32656811000001108,0501040U0AAAHAH,Tobramycin 40mg/5ml oral solution,Tobramycin,Oral,Aminoglycosides
+vmp,35919811000001108,0501040U0AAAFAF,Tobramycin 80mg/2ml solution for infusion ampoules,Tobramycin sulfate,Intramuscular,Aminoglycosides
+vmp,35919811000001108,0501040U0AAAFAF,Tobramycin 80mg/2ml solution for infusion ampoules,Tobramycin sulfate,Intravenous,Aminoglycosides
+vmp,4145011000001103,0501040U0AAACAC,Tobramycin 80mg/2ml solution for injection vials,Tobramycin,Intramuscular,Aminoglycosides
+vmp,4145011000001103,0501040U0AAACAC,Tobramycin 80mg/2ml solution for injection vials,Tobramycin,Intravenous,Aminoglycosides
+vmp,324430000,0501080W0AAADAD,Trimethoprim 100mg tablets,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,36144011000001106,0501080W0AAAAAA,Trimethoprim 100mg/5ml solution for injection ampoules,Trimethoprim,Intravenous,Sulfonamides and trimethoprim
+vmp,324431001,0501080W0AAAEAE,Trimethoprim 200mg tablets,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13374511000001101,0501080W0AAAMAM,Trimethoprim 200mg/5ml oral solution,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13374611000001102,0501080W0AAAMAM,Trimethoprim 200mg/5ml oral suspension,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13374711000001106,0501080W0AAANAN,Trimethoprim 20mg/5ml oral solution,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13374811000001103,0501080W0AAANAN,Trimethoprim 20mg/5ml oral suspension,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13374911000001108,0501080W0AAAPAP,Trimethoprim 240mg/5ml oral solution,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13375011000001108,0501080W0AAAPAP,Trimethoprim 240mg/5ml oral suspension,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,39022311000001100,0501080W0AAAIAI,Trimethoprim 50mg/5ml oral suspension sugar free,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13375111000001109,0501080W0AAAQAQ,Trimethoprim 7mg/5ml oral solution,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,13375211000001103,0501080W0AAAQAQ,Trimethoprim 7mg/5ml oral suspension,Trimethoprim,Oral,Sulfonamides and trimethoprim
+vmp,324334008,0501070U0AAAAAA,Vancomycin 125mg capsules,Vancomycin hydrochloride,Oral,Others
+vmp,15453011000001107,0501070U0AAALAL,Vancomycin 125mg/5ml oral solution,Vancomycin hydrochloride,Oral,Others
+vmp,15453111000001108,0501070U0AAALAL,Vancomycin 125mg/5ml oral suspension,Vancomycin hydrochloride,Oral,Others
+vmp,324333002,0501070U0AAAFAF,Vancomycin 1g powder for solution for infusion vials,Vancomycin hydrochloride,Intravenous,Others
+vmp,324333002,0501070U0AAAFAF,Vancomycin 1g powder for solution for infusion vials,Vancomycin hydrochloride,Oral,Others
+vmp,324333002,0501070U0AAAFAF,Vancomycin 1g powder for solution for infusion vials,Vancomycin hydrochloride,Gastroenteral,Others
+vmp,324335009,0501070U0AAABAB,Vancomycin 250mg capsules,Vancomycin hydrochloride,Oral,Others
+vmp,8818611000001100,0501070U0AAAKAK,Vancomycin 250mg/5ml oral solution,Vancomycin hydrochloride,Oral,Others
+vmp,8818711000001109,0501070U0AAAKAK,Vancomycin 250mg/5ml oral suspension,Vancomycin hydrochloride,Oral,Others
+vmp,324337001,0501070U0AAACAC,Vancomycin 500mg powder for solution for infusion vials,Vancomycin hydrochloride,Intravenous,Others
+vmp,324337001,0501070U0AAACAC,Vancomycin 500mg powder for solution for infusion vials,Vancomycin hydrochloride,Oral,Others
+vmp,324337001,0501070U0AAACAC,Vancomycin 500mg powder for solution for infusion vials,Vancomycin hydrochloride,Gastroenteral,Others
+vmp,12940811000001109,0501070U0AAAHAH,Vancomycin 50mg/5ml oral solution,Vancomycin hydrochloride,Oral,Others
+vmp,13455811000001106,0501070U0AAAMAM,Vancomycin 62.5mg/5ml oral solution,Vancomycin hydrochloride,Oral,Others

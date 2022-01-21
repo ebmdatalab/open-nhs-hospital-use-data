@@ -1,9 +1,9 @@
-create_med_use_table <- function(data) {
+create_med_use_table <- function(data, field) {
   
   # Select variable names (just a quick check that the correct variables are in data)
   # This needs to be tested better
   data <- data %>% 
-    select(stp_name, vtmnm, volume_ddd, prop_use, pos, total, rank)
+    select(stp_name, all_of(field), volume_ddd, prop_use, pos, total, rank)
   
   # Define data for table ----
   data_temp <- data %>% 
@@ -11,7 +11,7 @@ create_med_use_table <- function(data) {
     replace_na(list(volume_ddd = 0, 
                     prop_use = 0)) %>% 
     pivot_wider(id_cols = c(stp_name, total, rank),
-                names_from = vtmnm, 
+                names_from = all_of(field), 
                 values_from = c(volume_ddd, prop_use), 
                 values_fill = 0) %>% 
     select(stp_name, starts_with("prop"), total)
@@ -23,7 +23,7 @@ create_med_use_table <- function(data) {
                             length = nrow(data_temp)))
   
   # Define colour palette for conditional formatting ---
-  green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
+  # green_pal <- function(x) rgb(colorRamp(c("#effbf7", "#31cf96"))(x), maxColorValue = 255)
   
   # Extract list of column names from data for defining conditional formatting
   # Here we extract all variable names starting with "prop_use"
@@ -31,17 +31,17 @@ create_med_use_table <- function(data) {
   
   # Define generic function for conditional formatting
   # Note, this only works when the data that is used for the table is names "data_tab"
-  col_style_fun <- function(value) {
-    normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
-    color <- green_pal(normalized)
-    list(background = color)
-  }
+  # col_style_fun <- function(value) {
+  #   normalized <- (value - min(data_tab$prop_scale)) / (max(data_tab$prop_scale) - min(data_tab$prop_scale))
+  #   color <- green_pal(normalized)
+  #   list(background = color)
+  # }
   
   # Create list with default column formatting for one column
   # Add a placeholder for the name of each column, this will be replaced with the
   # correct names in a for loop later
   col_def_list_prop_1 <- list(reactable::colDef(name = "NAME_PLACEHOLDER",
-                                                style = col_style_fun,
+                                                # style = col_style_fun,
                                                 minWidth = 100,
                                                 format = colFormat(percent = TRUE, 
                                                                    digits = 1)))
@@ -51,9 +51,9 @@ create_med_use_table <- function(data) {
   col_def_list_prop_all <- rep(col_def_list_prop_1, length(prop_use_var_list))
   names(col_def_list_prop_all) <- prop_use_var_list
   
-  # Regex to extract the product name only from the column name
-  prop_use_var_list_products <- stringr::str_extract(string = prop_use_var_list, 
-                                                     pattern = "(?<=prop_use_)[:alpha:]+")
+  # Extract the product name only from the column name
+  prop_use_var_list_products <- stringr::str_remove(string = prop_use_var_list, 
+                                                    pattern = "prop_use_")
   
   # For loop to fill the placeholder name with the correct product name
   for (product in seq_along(col_def_list_prop_all)) {

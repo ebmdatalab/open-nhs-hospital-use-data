@@ -165,12 +165,12 @@ db_scmd <- dplyr::tbl(conn_ebm_scmd, sql_query_scmd)
 db_scmd <- db_scmd %>% 
   dplyr::filter(vmp_snomed_code %in% codes)
 
-db_scmd <- dplyr::collect(db_scmd)
+df_scmd <- dplyr::collect(db_scmd)
 
 # df_scmd %>% skimr::skim()
 
 # Tidy tidy tidy data
-df_scmd_names <- db_scmd %>% 
+df_scmd_names <- df_scmd %>% 
   dplyr::left_join(dplyr::select(df_etr, ods_code, ods_name, stp_code), by = "ods_code") %>% 
   # some data cleaning as scmd uses some ods codes that are not up to date
   mutate(stp_code = as.character(stp_code),
@@ -185,6 +185,8 @@ df_scmd_names <- db_scmd %>%
            ods_code == "R1E" ~ "QNC", # Staffs
            ods_code == "TAD" ~ "QWO", # W Yorks
            ods_code == "TAJ" ~ "QUA", # Black country
+           ods_code == "TAH" ~ "QF7", # South Yorkshire & Bassetlow
+           ods_code == "TAF" ~ "QMJ", # North Central London
            TRUE ~ stp_code
          ))
 
@@ -386,9 +388,9 @@ df_scmd_ddd <- df_scmd_mg %>%
 
 temp_ggplot <- df_scmd_ddd %>%
   group_by(year_month, vtmnm) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
   ggplot(aes(x = year_month, 
-             y = volume_ddd, 
+             y = volume_ddd/10^3, 
              colour = vtmnm, 
              group = vtmnm)) +
   geom_line(size = 1, alpha = 0.5) +
@@ -398,7 +400,7 @@ temp_ggplot <- df_scmd_ddd %>%
                                "<b>Volume:</b> ", round(volume_ddd, 0), "<br>",
                                "<b>Medication:</b> ", vtmnm)), size = 2) +
   scale_x_date(date_breaks = "4 month", date_labels =  "%b %y") +  scale_colour_viridis_d() +
-  labs(x = NULL, y = "Defined Daily Dose",
+  labs(x = NULL, y = "Defined Daily Dose (thousands)",
        colour = NULL) +
   geom_vline(xintercept = as.numeric(as.Date("2020-03-31")), 
              color = "orange", 
@@ -425,7 +427,7 @@ df_scmd_ddd_map <- df_scmd_ddd %>%
 
 temp_ggplot <- df_scmd_ddd_map %>%
   group_by(comm_region_name, year_month, vtmnm) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>% 
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
   ggplot(aes(x = year_month, y = volume_ddd, 
              colour = comm_region_name, group = comm_region_name)) +
@@ -462,14 +464,15 @@ plotly::ggplotly(temp_ggplot,
 
 ### Regional prescribing
 
-```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of COVID treatments."}
+```{r fig.width=8, fig.height=4, fig.cap="Figure. Total regional prescribing of COVID treatments by region for financial year 2021-22."}
 temp_ggplot <- df_scmd_ddd_map %>% 
+  filter(year_month >= as.Date("2021-04-01") & year_month < as.Date("2022-04-01")) %>%
   select(year_month, ods_code, vtmnm, volume_ddd, comm_region_name) %>% 
   mutate(comm_region_name = fct_explicit_na(comm_region_name)) %>% 
   group_by(comm_region_name, vtmnm) %>%
-  summarise(volume_ddd = sum(volume_ddd)) %>%
+  summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>%
   group_by(comm_region_name) %>%
-  mutate(prop_use = volume_ddd / sum(volume_ddd),
+  mutate(prop_use = volume_ddd / sum(volume_ddd, na.rm = TRUE),
          pos = cumsum(volume_ddd) - volume_ddd/2,
          total = sum(volume_ddd)) %>%
   ungroup() %>% 
@@ -503,9 +506,9 @@ plotly::ggplotly(temp_ggplot,
 
 ### STPs
 
-```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of COVID treatments for 20 STPs with the largest volume across all selected medications."}
+```{r, fig.width=8, fig.height=6, fig.cap="Figure. Total prescribing of COVID treatments in financial year 2021-22 for the top 20 STPs with the largest volume across all selected medications."}
 df_scmd_ddd_map_temp <- df_scmd_ddd_map %>% 
-  filter(year_month >= as.Date("2019-08-01") & year_month <= as.Date("2020-07-01")) %>%
+  filter(year_month >= as.Date("2021-04-01") & year_month < as.Date("2022-04-01")) %>%
   select(year_month, ods_code, vtmnm, volume_ddd, stp_name) %>% 
   mutate(stp_name = fct_explicit_na(stp_name)) %>% 
   group_by(stp_name, vtmnm) %>%
@@ -555,7 +558,7 @@ layout(legend = list(orientation = "h", x = -0.5, y =-.15))
 # - total <dbl>
 # - rank <int>
 
-create_med_use_table(data = df_scmd_ddd_map_temp)
+create_med_use_table(data = df_scmd_ddd_map_temp, field = 'vtmnm')
 
 ```
 

@@ -1,0 +1,145 @@
+from ebmdatalab import bq
+import os
+import pandas as pd
+import numpy as np
+
+mapping = pd.read_csv('../lib/ingredients.csv')
+cats = pd.read_csv('../lib/categories.csv', header = None, names=["category_code","category"])
+
+mapping.groupby('product_id')["category_id"].nunique()
+mapping['product_id'].nunique()
+
+mapping = mapping.join(cats, on='product_id', how="left")
+
+
+
+sql = '''
+WITH bnf_codes AS (  
+  SELECT presentation_code as bnf_code, chemical 
+  FROM hscic.bnf 
+  WHERE 
+  (presentation_code LIKE '0501%')
+) 
+  
+SELECT "vmp" AS type, vmp.id, bnf_code, vmp.nm, ing.nm AS ingredient, 
+  route.descr as route
+FROM dmd.vmp
+INNER JOIN dmd.vpi AS vpi ON vmp.id=vpi.vmp
+INNER JOIN dmd.ing as ing ON ing.id = vpi.ing
+LEFT JOIN dmd.droute on vmp.id = droute.vmp	
+LEFT JOIN dmd.route on route.cd = droute.route
+
+WHERE bnf_code IN (SELECT bnf_code FROM bnf_codes)
+
+UNION ALL
+
+SELECT "amp" AS type, amp.id, bnf_code, amp.descr as nm, ing.nm as ingredient,
+  route.descr as route
+FROM dmd.amp
+INNER JOIN dmd.vpi AS vpi ON amp.vmp=vpi.vmp
+INNER JOIN dmd.ing as ing ON ing.id = vpi.ing
+LEFT JOIN dmd.droute on amp.vmp = droute.vmp	
+LEFT JOIN dmd.route on route.cd = droute.route
+
+WHERE bnf_code IN (SELECT bnf_code FROM bnf_codes)
+
+ORDER BY type, nm  '''
+
+antibac_meds = bq.cached_read(sql, csv_path=os.path.join('..','data','antibac_meds.csv'))
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_colwidth', None)
+antibac_meds[["id", "bnf_code"]].count()
+
+antibac_meds["source"] = "bnf"
+
+
+
+
+  
+# set name of codelist for exporting file
+codelist_name="antibac_meds"
+
+# import or paste list of vtms (Virtual Therapeutic Moieties / Ingredients) by name
+names = antibac_meds["ingredient"].drop_duplicates()
+print("No of antibiotic ingredients from bnf list: ", len(names))
+
+# filter out ingredients identified as not being antimicrobial agents
+names_filtered = [k for k in names if k not in ["Citric acid", "Thalidomide", "Sodium bicarbonate", "Sodium citrate"]]
+print("No of antibiotic ingredients after filtering: ", len(names_filtered))
+
+# convert list to tuple for use in SQL query
+names_tuple = tuple(names_filtered)
+if len(names_tuple)==1:
+    # remove comma if only one item
+    names_tuple = str(names_tuple).replace(",","")
+
+sql = f'''
+SELECT "vmp" AS type, vmp.id, bnf_code, vmp.nm, ing.nm AS ingredient, 
+    route.descr as route, ddd.ddd
+FROM dmd.vmp
+INNER JOIN dmd.vpi AS vpi ON vmp.id=vpi.vmp 
+INNER JOIN dmd.ing as ing ON ing.id = vpi.ing AND ing.nm IN {names_tuple}
+LEFT JOIN dmd.droute on vmp.id = droute.vmp
+LEFT JOIN dmd.route on route.cd = droute.route
+LEFT JOIN dmd.ddd on vmp.id=ddd.vpid
+
+UNION ALL
+
+SELECT "amp" AS type, amp.id, bnf_code, amp.descr as nm, ing.nm as ingredient, 
+    route.descr as route, ddd.ddd
+FROM dmd.amp
+INNER JOIN dmd.vpi AS vpi ON amp.vmp=vpi.vmp 
+INNER JOIN dmd.ing as ing ON ing.id = vpi.ing AND ing.nm IN {names_tuple}
+LEFT JOIN dmd.droute on amp.vmp = droute.vmp
+LEFT JOIN dmd.route on route.cd = droute.route
+LEFT JOIN dmd.ddd on amp.id=ddd.vpid
+
+ORDER BY type, nm  '''
+
+dmd_antibac_meds = bq.cached_read(sql, csv_path=os.path.join('..','data',f'dmd_{codelist_name}.csv'))
+
+dmd_antibac_meds[["id", "bnf_code"]].count()
+    
+print("No of antibiotic ingredients in dmd list: ", dmd_antibac_meds["ingredient"].nunique())
+
+
+
+# investigate routes of administration
+dmd_antibac_meds.groupby("route")["id"].count().sort_values(ascending=False)
+
+
+# categorise routes of administration
+
+condlist = [dmd_antibac_meds["route"]== "Oral",
+            dmd_antibac_meds["route"].isin(["Intravenous", "Subcutaneous", "Intramuscular"]),
+            dmd_antibac_meds["route"].isin(["Cutaneous", "Auricular","Vaginal","Intralesional",
+                                        "Nasal", "Oromucosal", "Gingival"])]
+choicelist = ["Oral", "Injectable", "Topical"]
+dmd_antibac_meds["Route"] = np.select(condlist, choicelist, default="Other")
+
+print(dmd_antibac_meds[["Route", "route"]].drop_duplicates().sort_values(by="Route").head())
+
+dmd_antibac_meds = dmd_antibac_meds.drop("route", axis=1)
+
+
+# check number of distinct medicines
+print(dmd_antibac_meds["nm"].agg({"count", "nunique"}))
+dmd_antibac_meds.groupby("type")["nm"].agg({"count", "nunique"})
+
+
+# check how many products have DDDs
+dmd_antibac_meds["ddd_flag"] = np.where(dmd_antibac_meds["ddd"].notnull(), 1, 0)
+print(dmd_antibac_meds.groupby(["type"])["ddd_flag"].agg({"sum","count"}))
+print(dmd_antibac_meds.groupby(["Route"])["ddd_flag"].agg({"sum","count"}))
+
+
+
+dmd_antibac_meds.to_csv(os.path.join('..','data','antibac_codelist.csv')) #export to csv here
+
+
+
+
+
+
+
+
