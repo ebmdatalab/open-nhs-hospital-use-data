@@ -472,7 +472,7 @@ temp_ggplot <- df_scmd_ddd_map %>%
   group_by(comm_region_name, vtmnm) %>%
   summarise(volume_ddd = sum(volume_ddd, na.rm = TRUE)) %>%
   group_by(comm_region_name) %>%
-  mutate(prop_use = volume_ddd / sum(volume_ddd),
+  mutate(prop_use = volume_ddd / sum(volume_ddd, na.rm = TRUE),
          pos = cumsum(volume_ddd) - volume_ddd/2,
          total = sum(volume_ddd)) %>%
   ungroup() %>% 
